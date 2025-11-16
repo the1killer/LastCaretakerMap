@@ -164,8 +164,8 @@
             "name": "Central Warehouse Alpha",
             "id": "20",
             "description": "Central Warehouse Alpha is a warehouse with lots of loot and hostiles.",
-            "latitude": 22,
-            "longitude": 33,
+            "latitude": 23,
+            "longitude": 66,
             "image": "hangar.png"
         },
         {
@@ -263,6 +263,14 @@
             "latitude": -75,
             "longitude": 85,
             "image": "ruin.png"
+        },
+        {
+            "name": "Habitat Node 02-23",
+            "id": "33",
+            "description": "Habitat Node 02-23 is a habitat platform.",
+            "latitude": -49,
+            "longitude": 47,
+            "image": "cargo.png"
         }
     ]
 }
