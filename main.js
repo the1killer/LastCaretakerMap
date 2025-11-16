@@ -192,7 +192,7 @@ function addMarkersToMap(locations) {
             <div class="popup-content">
                 <h3>${location.name}</h3>
                 <p>${location.description}</p>
-                <p><strong>Coordinates:</strong> ${location.latitude}, ${location.longitude}</p>
+                <p><strong>Coordinates:</strong> ${location.longitude} : ${location.latitude}</p>
                 ${location.image ? `<img src="${location.image}" alt="${location.name}" class="popup-image" onerror="this.style.display='none'">` : ''}
             </div>
         `;
