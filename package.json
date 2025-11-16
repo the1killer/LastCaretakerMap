@@ -1,0 +1,17 @@
+{
+  "name": "lastcaretakermap",
+  "version": "1.0.0",
+  "description": "Interactive map application with Leaflet.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #000000;
+    min-height: 95vh;
+    padding: 0;
+}
+
+.container {
+    width: calc(100% - 40px);
+    margin: 20px;
+    background: #000000;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: auto 1fr;
+    height: calc(100vh - 40px);
+}
+
+header {
+    font-family: 'Arial', sans-serif;
+    grid-column: 1 / -1;
+    background: #000000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header h1 span {
+    font-family: 'ui-monospace', monospace;
+    color: #ff5500;
+    font-size: 1.05em;
+    font-weight: bolder;
+}
+
+header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    background: #000000;
+}
+
+#sidebar {
+    background: #000000;
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 1px solid #333;
+}
+
+#sidebar h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+#location-list {
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+}
+
+/* Custom scrollbar for location-list */
+#location-list::-webkit-scrollbar {
+    width: 12px;
+}
+
+#location-list::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+#location-list::-webkit-scrollbar-thumb {
+    background: #00C666;
+    border-radius: 6px;
+}
+
+#location-list::-webkit-scrollbar-thumb:hover {
+    background: #00ff7f;
+}
+
+/* Firefox scrollbar */
+#location-list {
+    scrollbar-width: thin;
+    scrollbar-color: #00C666 #000000;
+}
+
+.location-item {
+    font-family: 'ui-monospace', monospace;
+    background: #1a2a1a;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #333;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+}
+
+.location-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    border-color: #666;
+}
+
+.location-item.active {
+    border-color: #888;
+    background: #2a2a2a;
+}
+
+.location-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 8px; */
+}
+
+.location-item h3 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 1.1em;
+    flex: 1;
+}
+
+.toggle-visibility {
+    background: transparent;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s ease;
+    margin-left: 10px;
+}
+
+.toggle-visibility:hover {
+    background: #333;
+    border-color: #666;
+}
+
+.location-item p {
+    color: #aaa;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+.location-item .coordinates {
+    margin-top: 8px;
+    font-size: 0.85em;
+    color: #777;
+    font-family: 'ui-monospace', monospace;
+}
+
+/* Marker label styles */
+.marker-label {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.marker-label-text {
+    /* background: rgba(0, 0, 0, 0.7); */
+    color: white;
+    padding: 4px 8px;
+    /* border-radius: 4px; */
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: center;
+    /* border: 1px solid #333; */
+}
+
+/* Custom marker popup styles */
+.leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.leaflet-popup-content {
+    margin: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.popup-content h3 {
+    color: #000000;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.popup-content p {
+    color: #333;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.popup-content .popup-image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr 400px;
+    }
+    
+    #sidebar {
+        border-right: none;
+        border-top: 1px solid #333;
+    }
+    
+    header h1 {
+        font-size: 1.8em;
+    }
+}
