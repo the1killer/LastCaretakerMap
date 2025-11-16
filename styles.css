@@ -56,6 +56,32 @@ header p {
     width: 100%;
     height: 100%;
     background: #000000;
+    position: relative;
+}
+
+#version-panel {
+    position: absolute;
+    bottom: 20px;
+    right: -10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    z-index: 1000;
+    border: 1px solid #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+#version-panel a {
+    color: #00C666;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+#version-panel a:hover {
+    color: #00ff7f;
+    text-decoration: underline;
 }
 
 #sidebar {

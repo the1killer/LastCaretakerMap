@@ -4,6 +4,10 @@ An interactive map application built with Leaflet.js and Vite that displays loca
 
 Based on the game ["The Last Caretaker"](https://thelastcaretaker.com/) by [Channel 37](https://www.channel37.co/). This map is not affiliated with Channel 37, and just made by a loving fan.
 
+For your viewing pleasure, here is a screenshot of the map:
+
+
+
 ## Features
 
 - 🗺️ Interactive map with Icons from the game.
@@ -11,6 +15,13 @@ Based on the game ["The Last Caretaker"](https://thelastcaretaker.com/) by [Chan
 - 🔍 Click locations to zoom and view details
 - 📱 Responsive design for mobile and desktop
 - ⚡ Fast development with Vite and HMR
+
+### Future plans/hopes
+
+- 🎨 Add custom markers
+- 🔍 Add search functionality
+- 📋 Enhance location details
+- 🗝️ Add hidden locations
 
 ## Getting Started
 

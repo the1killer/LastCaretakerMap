@@ -18,7 +18,8 @@ L.Icon.Default.mergeOptions({
 const map = L.map('map', {
     crs: L.CRS.Simple,
     minZoom: -2,
-    maxZoom: 4
+    maxZoom: 4,
+    zoomControl: false
 });
 
 // Set the view based on the coordinate system
