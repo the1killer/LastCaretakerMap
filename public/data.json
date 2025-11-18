@@ -78,7 +78,8 @@
             "description": "Dark Vein Station is an oil rig that can mine infinite oil.",
             "latitude": -70,
             "longitude": 49,
-            "image": "oilrig.png"
+            "image": "oilrig.png",
+            "flags": "exo"
         },
         {
             "name": "Hampton Grave",
@@ -113,9 +114,9 @@
             "image": "cargo.png"
         },
         {
-            "name": "Habitat Node 19-4",
+            "name": "Habitat Node 09-4",
             "id": "14",
-            "description": "Habitat Node 19-4 is a habitat platform.",
+            "description": "Habitat Node 09-4 is a habitat platform.",
             "latitude": 16,
             "longitude": 82,
             "image": "cargo.png"
@@ -271,6 +272,17 @@
             "latitude": -49,
             "longitude": 47,
             "image": "cargo.png"
+        },
+        {
+            "name": "Helios Reserve Draco",
+            "id": "34",
+            "description": "Helios Reserve Draco is a power platform.",
+            "latitude": -64,
+            "longitude": 62,
+            "image": "solar.png",
+            "primaryNumbers": "2",
+            "secondaryNumbers": "1,3,4,2,5,6,6,7,12,6",
+            "flags": "exo"
         }
     ]
 }
