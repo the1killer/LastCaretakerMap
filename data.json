@@ -22,7 +22,8 @@
             "description": "Navigation Beacon 49 is the first navigation beacon.",
             "latitude": 6,
             "longitude": 33,
-            "image": "beacon.png"
+            "image": "beacon.png",
+            "radarRadius": 27
         },
         {
             "name": "Lazarus Complex",
@@ -30,7 +31,8 @@
             "description": "Lazarus Complex is a human growth facility.",
             "latitude": -2,
             "longitude": 69,
-            "image": "lazarus.png"
+            "image": "lazarus.png",
+            "radarRadius": 31
         },
         {
             "name": "Norfolk Grave",
@@ -46,7 +48,8 @@
             "description": "Navigation Beacon 15 is another navigation beacon.",
             "latitude": -53,
             "longitude": 69,
-            "image": "beacon.png"
+            "image": "beacon.png",
+            "radarRadius": 30
         },
         {
             "name": "Seed Vault Prometheus",
@@ -103,7 +106,8 @@
             "description": "The Last Listener Station is a navigation beacon.",
             "latitude": 11,
             "longitude": 115,
-            "image": "beacon.png"
+            "image": "beacon.png",
+            "radarRadius": 9
         },
         {
             "name": "Habitat Node 03-12.3",
@@ -143,7 +147,8 @@
             "description": "Nomads Tower is a tower.",
             "latitude": -31,
             "longitude": 74,
-            "image": "hangar.png"
+            "image": "hangar.png",
+            "underwaterLoot": true
         },
         {
             "name": "Refuel Outpost Theta",
@@ -151,7 +156,11 @@
             "description": "Refuel Outpost Theta is a fuel depot.",
             "latitude": -45,
             "longitude": 84,
-            "image": "gaspump.png"
+            "image": "gaspump.png",
+            "flags": "exo",
+            "primaryNumbers": "23",
+            "secondaryNumbers": "2,3"
+            
         },
         {
             "name": "Habitat Node 05 X",
@@ -159,7 +168,8 @@
             "description": "Habitat Node 05 X is a habitat platform.",
             "latitude": -57,
             "longitude": 91,
-            "image": "cargo.png"
+            "image": "cargo.png",
+            "underwaterLoot": true
         },
         {
             "name": "Central Warehouse Alpha",
@@ -175,7 +185,8 @@
             "description": "Navigation Beacon 32 is a navigation beacon.",
             "latitude": 35,
             "longitude": 109,
-            "image": "beacon.png"
+            "image": "beacon.png",
+            "radarRadius": 29
         },
         {
             "name": "Salem Grave",
@@ -202,12 +213,15 @@
             "image": "ruin.png"
         },
         {
-            "name": "Refule Outpost Delta",
+            "name": "Refuel Outpost Delta",
             "id": "25",
-            "description": "Refule Outpost Delta is a fuel depot.",
+            "description": "Refuel Outpost Delta is a fuel depot.",
             "latitude": 39,
             "longitude": 91,
-            "image": "gaspump.png"
+            "image": "gaspump.png",
+            "underwaterLoot": true,
+            "primaryNumbers": "6",
+            "secondaryNumbers": "3,4,5"
         },
         {
             "name": "Lincoln Grave",
@@ -247,7 +261,9 @@
             "description": "Habitat Node 04-7 is a habitat platform.",
             "latitude": -15,
             "longitude": 82,
-            "image": "cargo.png"
+            "image": "cargo.png",
+            "flags": "fahrt",
+            "underwaterLoot": true
         },
         {
             "name": "Habitat Node 01-2.5",
@@ -283,6 +299,146 @@
             "primaryNumbers": "2",
             "secondaryNumbers": "1,3,4,2,5,6,6,7,12,6",
             "flags": "exo"
+        }
+    ],
+    "hiddenLocations": [
+        {
+            "name": "Habitat Node 10-4",
+            "id": "h1",
+            "description": "Habitat Node 10-4 is a habitat platform.",
+            "latitude": -31,
+            "longitude": 30,
+            "image": "cargo.png"
+        }
+    ],
+    "lastListenerLocations": [
+        {
+            "name": "Seed Reserve 03",
+            "id": "l1",
+            "description": "Seed Reserve 03 is an underwater seed reserve.",
+            "latitude": 13,
+            "longitude": 118,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l2",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": 35,
+            "longitude": 126,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l3",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": 53,
+            "longitude": 110,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l4",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": 51,
+            "longitude": 90,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l5",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": 30,
+            "longitude": 96,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 12",
+            "id": "l6",
+            "description": "Seed Reserve 12 is an underwater seed reserve.",
+            "latitude": -6,
+            "longitude": 70,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l7",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": 10,
+            "longitude": 59,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l8",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": 17,
+            "longitude": 39,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l9",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": 15,
+            "longitude": 14,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l10",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": -12,
+            "longitude": 28,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l11",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": -14,
+            "longitude": 57,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l12",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": -36,
+            "longitude": 87,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l13",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": -52,
+            "longitude": 80,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l14",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": -98,
+            "longitude": 70,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l15",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": -56,
+            "longitude": 52,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve",
+            "id": "l16",
+            "description": "Seed Reserve is an underwater seed reserve.",
+            "latitude": -41,
+            "longitude": 57,
+            "image": "seedvault.png"
         }
     ]
 }
