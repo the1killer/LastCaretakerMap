@@ -85,6 +85,8 @@ new GridLayer({
 const markers = {};
 const markerLabels = {};
 let locations = [];
+let hiddenLocations = [];
+let lastListenerLocations = [];
 
 // Load visibility state from localStorage
 function getVisibilityState(locationId) {
@@ -142,20 +144,55 @@ async function loadLocations() {
     try {
         const response = await fetch('./data.json');
         const data = await response.json();
-        locations = data.locations;
+        locations = data.locations || [];
+        hiddenLocations = data.hiddenLocations || [];
+        lastListenerLocations = data.lastListenerLocations || [];
         
-        displayLocations(locations);
-        addMarkersToMap(locations);
-        
-        // Fit map to show all markers
-        if (locations.length > 0) {
-            const bounds = L.latLngBounds(locations.map(loc => [-loc.latitude, loc.longitude]));
-            map.fitBounds(bounds, { padding: [50, 50] });
-        }
+        refreshDisplay();
     } catch (error) {
         console.error('Error loading locations:', error);
         document.getElementById('location-list').innerHTML = 
             '<p style="color: red;">Error loading locations. Please check data.json file.</p>';
+    }
+}
+
+// Refresh the display based on current settings
+function refreshDisplay() {
+    // Clear existing markers
+    Object.values(markers).forEach(marker => map.removeLayer(marker));
+    Object.values(markerLabels).forEach(label => map.removeLayer(label));
+    
+    // Clear marker references
+    Object.keys(markers).forEach(key => delete markers[key]);
+    Object.keys(markerLabels).forEach(key => delete markerLabels[key]);
+    
+    // Get current settings
+    const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
+    const showLastListener = localStorage.getItem('show-last-listener') === 'true';
+    
+    // Display sections based on settings
+    displayLocationSections();
+    
+    // Add markers for enabled location types
+    addMarkersToMap(locations);
+    
+    if (showHidden) {
+        addMarkersToMap(hiddenLocations);
+    }
+    
+    if (showLastListener) {
+        addMarkersToMap(lastListenerLocations);
+    }
+    
+    // Fit map to show all visible markers
+    const visibleLocations = [locations];
+    if (showHidden) visibleLocations.push(hiddenLocations);
+    if (showLastListener) visibleLocations.push(lastListenerLocations);
+    
+    const allLocations = visibleLocations.flat();
+    if (allLocations.length > 0) {
+        const bounds = L.latLngBounds(allLocations.map(loc => [-loc.latitude, loc.longitude]));
+        map.fitBounds(bounds, { padding: [50, 50] });
     }
 }
 
@@ -210,55 +247,114 @@ function addMarkersToMap(locations) {
     });
 }
 
-// Display locations in sidebar
-function displayLocations(locations) {
+// Display location sections in sidebar
+function displayLocationSections() {
     const locationList = document.getElementById('location-list');
     locationList.innerHTML = '';
     
+    // Get current settings
+    const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
+    const showLastListener = localStorage.getItem('show-last-listener') === 'true';
+    
+    // Create sections
+    if (locations.length > 0) {
+        const mainSection = createLocationSection('Locations', locations, 'main-locations', true);
+        locationList.appendChild(mainSection);
+    }
+    
+    if (showHidden && hiddenLocations.length > 0) {
+        const hiddenSection = createLocationSection('Hidden Locations', hiddenLocations, 'hidden-locations', false);
+        locationList.appendChild(hiddenSection);
+    }
+    
+    if (showLastListener && lastListenerLocations.length > 0) {
+        const lastListenerSection = createLocationSection('Last Listener Locations', lastListenerLocations, 'last-listener-locations', false);
+        locationList.appendChild(lastListenerSection);
+    }
+}
+
+// Create a collapsible location section
+function createLocationSection(title, locations, sectionId, isExpanded = true) {
+    const section = document.createElement('div');
+    section.className = 'location-section';
+    section.id = sectionId;
+    
+    // Create section header
+    const header = document.createElement('div');
+    header.className = 'section-header';
+    header.innerHTML = `
+        <h3>• ${title} <span class="section-count">(${locations.length})</span></h3>
+        <span class="section-toggle">${isExpanded ? '▼' : '▶'}</span>
+    `;
+    
+    // Create section content
+    const content = document.createElement('div');
+    content.className = `section-content ${isExpanded ? 'expanded' : 'collapsed'}`;
+    
+    // Add locations to content
     locations.forEach(location => {
-        const locationItem = document.createElement('div');
-        locationItem.className = 'location-item';
-        locationItem.id = `location-${location.id}`;
-        
-        const isVisible = getVisibilityState(location.id);
-        
-        locationItem.innerHTML = `
-            <div class="location-header">
-                <h3>${location.name}</h3>
-                <button class="toggle-visibility" id="toggle-${location.id}" title="Toggle visibility">
-                    ${isVisible ? '👁️' : '👁️‍🗨️'}
-                </button>
-            </div>
-            <!--<p>${location.description}</p>-->
-            <!--<div class="coordinates">📍 ${location.latitude}, ${location.longitude}</div>-->
-        `;
-        
-        // Add click event to zoom to marker (only on the item, not the button)
-        locationItem.addEventListener('click', (e) => {
-            // Don't trigger if clicking the toggle button
-            if (e.target.classList.contains('toggle-visibility')) {
-                return;
-            }
-            const marker = markers[location.id];
-            if (marker && getVisibilityState(location.id)) {
-                map.setView([-location.latitude, location.longitude], 6);
-                marker.openPopup();
-                highlightLocation(location.id);
-            }
-        });
-        
-        // Add toggle button click event
-        const toggleButton = locationItem.querySelector(`#toggle-${location.id}`);
-        toggleButton.addEventListener('click', (e) => {
-            e.stopPropagation();
-            toggleMarkerVisibility(location.id);
-        });
-        
-        // Update button appearance
-        updateToggleButton(location.id, isVisible);
-        
-        locationList.appendChild(locationItem);
+        const locationItem = createLocationItem(location);
+        content.appendChild(locationItem);
     });
+    
+    // Toggle section on header click
+    header.addEventListener('click', () => {
+        const isCurrentlyExpanded = content.classList.contains('expanded');
+        content.classList.toggle('expanded');
+        content.classList.toggle('collapsed');
+        header.querySelector('.section-toggle').textContent = isCurrentlyExpanded ? '▶' : '▼';
+    });
+    
+    section.appendChild(header);
+    section.appendChild(content);
+    
+    return section;
+}
+
+// Create a location item
+function createLocationItem(location) {
+    const locationItem = document.createElement('div');
+    locationItem.className = 'location-item';
+    locationItem.id = `location-${location.id}`;
+    
+    const isVisible = getVisibilityState(location.id);
+    
+    locationItem.innerHTML = `
+        <div class="location-header">
+            <h3>${location.name}</h3>
+            <button class="toggle-visibility" id="toggle-${location.id}" title="Toggle visibility">
+                ${isVisible ? '👁️' : '👁️‍🗨️'}
+            </button>
+        </div>
+        <!--<p>${location.description}</p>-->
+        <!--<div class="coordinates">📍 ${location.latitude}, ${location.longitude}</div>-->
+    `;
+    
+    // Add click event to zoom to marker (only on the item, not the button)
+    locationItem.addEventListener('click', (e) => {
+        // Don't trigger if clicking the toggle button
+        if (e.target.classList.contains('toggle-visibility')) {
+            return;
+        }
+        const marker = markers[location.id];
+        if (marker && getVisibilityState(location.id)) {
+            map.setView([-location.latitude, location.longitude], 6);
+            marker.openPopup();
+            highlightLocation(location.id);
+        }
+    });
+    
+    // Add toggle button click event
+    const toggleButton = locationItem.querySelector(`#toggle-${location.id}`);
+    toggleButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMarkerVisibility(location.id);
+    });
+    
+    // Update button appearance
+    updateToggleButton(location.id, isVisible);
+    
+    return locationItem;
 }
 
 // Highlight selected location in sidebar
@@ -275,6 +371,85 @@ function highlightLocation(locationId) {
         selectedItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 }
+
+// Settings popup functionality
+const settingsPopup = document.getElementById('settings-popup');
+const settingsButton = document.getElementById('settings-button');
+const closeSettingsButton = document.getElementById('close-settings');
+const clearDataButton = document.getElementById('clear-data-button');
+const showHiddenCheckbox = document.getElementById('show-hidden-locations');
+const showLastListenerCheckbox = document.getElementById('show-last-listener');
+
+// Open settings popup
+settingsButton.addEventListener('click', () => {
+    settingsPopup.classList.add('active');
+    // Load current settings state
+    loadSettingsState();
+});
+
+// Close settings popup
+closeSettingsButton.addEventListener('click', () => {
+    settingsPopup.classList.remove('active');
+});
+
+// Close popup when clicking outside
+settingsPopup.addEventListener('click', (e) => {
+    if (e.target === settingsPopup) {
+        settingsPopup.classList.remove('active');
+    }
+});
+
+// Close popup with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && settingsPopup.classList.contains('active')) {
+        settingsPopup.classList.remove('active');
+    }
+});
+
+// Clear local data
+clearDataButton.addEventListener('click', () => {
+    if (confirm('Are you sure you want to clear all local data? This will reset all visibility preferences.')) {
+        // Clear all marker visibility states for all location types
+        const allLocations = [...locations, ...hiddenLocations, ...lastListenerLocations];
+        allLocations.forEach(location => {
+            localStorage.removeItem(`marker-visible-${location.id}`);
+        });
+        
+        // Clear settings
+        localStorage.removeItem('show-hidden-locations');
+        localStorage.removeItem('show-last-listener');
+        
+        // Reload the page to reset everything
+        window.location.reload();
+    }
+});
+
+// Load settings state from localStorage
+function loadSettingsState() {
+    const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
+    const showLastListener = localStorage.getItem('show-last-listener') === 'true';
+    
+    showHiddenCheckbox.checked = showHidden;
+    showLastListenerCheckbox.checked = showLastListener;
+}
+
+// Save settings state to localStorage
+function saveSettingsState() {
+    localStorage.setItem('show-hidden-locations', showHiddenCheckbox.checked);
+    localStorage.setItem('show-last-listener', showLastListenerCheckbox.checked);
+}
+
+// Handle show hidden locations toggle
+showHiddenCheckbox.addEventListener('change', () => {
+    saveSettingsState();
+    refreshDisplay();
+});
+
+// Handle show last listener locations toggle
+showLastListenerCheckbox.addEventListener('change', () => {
+    saveSettingsState();
+    refreshDisplay();
+});
 
 // Initialize the application
 loadLocations();

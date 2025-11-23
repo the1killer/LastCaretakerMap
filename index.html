@@ -21,8 +21,42 @@
         </header>
         
         <div id="sidebar">
-            <h2>Locations</h2>
+            <div class="sidebar-header">
+                <h2>Locations</h2>
+                <button id="settings-button" class="settings-button" title="Settings">⚙️</button>
+            </div>
             <div id="location-list"></div>
+        </div>
+
+        <!-- Settings Popup -->
+        <div id="settings-popup" class="settings-popup">
+            <div class="settings-content">
+                <div class="settings-header">
+                    <h3>Settings</h3>
+                    <button id="close-settings" class="close-button">✕</button>
+                </div>
+                <div class="settings-body">
+                    <div class="setting-item">
+                        <button id="clear-data-button" class="setting-button">Clear Local Data</button>
+                        <p class="setting-description">Reset all visibility preferences</p>
+                    </div>
+                    <div class="setting-item">
+                        <label class="setting-toggle">
+                            <input type="checkbox" id="show-hidden-locations">
+                            <span>Show Hidden Locations</span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label class="setting-toggle">
+                            <input type="checkbox" id="show-last-listener">
+                            <span>Show Last Listener Locations</span>
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <a href="https://github.com/the1killer/lastcaretakermap" target="_blank" rel="noopener noreferrer" class="help-link">📖 Help & Documentation</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="map">
