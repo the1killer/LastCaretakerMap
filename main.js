@@ -18,7 +18,7 @@ L.Icon.Default.mergeOptions({
 const map = L.map('map', {
     crs: L.CRS.Simple,
     minZoom: -2,
-    maxZoom: 4,
+    maxZoom: 6,
     zoomControl: false
 });
 
