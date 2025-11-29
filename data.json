@@ -420,7 +420,7 @@
             "name": "Seed Reserve",
             "id": "l14",
             "description": "Seed Reserve is an underwater seed reserve.",
-            "latitude": -98,
+            "latitude": -68,
             "longitude": 70,
             "image": "seedvault.png"
         },
