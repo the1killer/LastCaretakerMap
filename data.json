@@ -309,6 +309,30 @@
             "latitude": -31,
             "longitude": 30,
             "image": "cargo.png"
+        },
+        {
+            "name": "Seed Reserve 19",
+            "id": "h2",
+            "description": "Seed Reserve 19 is an underwater seed reserve.",
+            "latitude": 33,
+            "longitude": 66,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 06",
+            "id": "h2",
+            "description": "Seed Reserve 06 is an underwater seed reserve.",
+            "latitude": -9,
+            "longitude": 99,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 18",
+            "id": "h2",
+            "description": "Seed Reserve 18 is an underwater seed reserve.",
+            "latitude": -78,
+            "longitude": 93,
+            "image": "seedvault.png"
         }
     ],
     "lastListenerLocations": [
