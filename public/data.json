@@ -311,19 +311,19 @@
             "image": "cargo.png"
         },
         {
-            "name": "Seed Reserve 19",
-            "id": "h2",
-            "description": "Seed Reserve 19 is an underwater seed reserve.",
-            "latitude": 33,
-            "longitude": 66,
-            "image": "seedvault.png"
-        },
-        {
             "name": "Seed Reserve 06",
             "id": "h2",
             "description": "Seed Reserve 06 is an underwater seed reserve.",
             "latitude": -9,
             "longitude": 99,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 17",
+            "id": "h2",
+            "description": "Seed Reserve 17 is an underwater seed reserve.",
+            "latitude": -29,
+            "longitude": 42,
             "image": "seedvault.png"
         },
         {
@@ -333,9 +333,33 @@
             "latitude": -78,
             "longitude": 93,
             "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 19",
+            "id": "h2",
+            "description": "Seed Reserve 19 is an underwater seed reserve.",
+            "latitude": 33,
+            "longitude": 66,
+            "image": "seedvault.png"
         }
     ],
     "lastListenerLocations": [
+        {
+            "name": "Seed Reserve 01",
+            "id": "l7",
+            "description": "Seed Reserve 01 is an underwater seed reserve.",
+            "latitude": 10,
+            "longitude": 59,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 02",
+            "id": "l10",
+            "description": "Seed Reserve 02 is an underwater seed reserve.",
+            "latitude": -12,
+            "longitude": 28,
+            "image": "seedvault.png"
+        },
         {
             "name": "Seed Reserve 03",
             "id": "l1",
@@ -345,79 +369,7 @@
             "image": "seedvault.png"
         },
         {
-            "name": "Seed Reserve",
-            "id": "l2",
-            "description": "Seed Reserve is an underwater seed reserve.",
-            "latitude": 35,
-            "longitude": 126,
-            "image": "seedvault.png"
-        },
-        {
-            "name": "Seed Reserve",
-            "id": "l3",
-            "description": "Seed Reserve is an underwater seed reserve.",
-            "latitude": 53,
-            "longitude": 110,
-            "image": "seedvault.png"
-        },
-        {
-            "name": "Seed Reserve",
-            "id": "l4",
-            "description": "Seed Reserve is an underwater seed reserve.",
-            "latitude": 51,
-            "longitude": 90,
-            "image": "seedvault.png"
-        },
-        {
-            "name": "Seed Reserve",
-            "id": "l5",
-            "description": "Seed Reserve is an underwater seed reserve.",
-            "latitude": 30,
-            "longitude": 96,
-            "image": "seedvault.png"
-        },
-        {
-            "name": "Seed Reserve 12",
-            "id": "l6",
-            "description": "Seed Reserve 12 is an underwater seed reserve.",
-            "latitude": -6,
-            "longitude": 70,
-            "image": "seedvault.png"
-        },
-        {
-            "name": "Seed Reserve",
-            "id": "l7",
-            "description": "Seed Reserve is an underwater seed reserve.",
-            "latitude": 10,
-            "longitude": 59,
-            "image": "seedvault.png"
-        },
-        {
-            "name": "Seed Reserve",
-            "id": "l8",
-            "description": "Seed Reserve is an underwater seed reserve.",
-            "latitude": 17,
-            "longitude": 39,
-            "image": "seedvault.png"
-        },
-        {
-            "name": "Seed Reserve",
-            "id": "l9",
-            "description": "Seed Reserve is an underwater seed reserve.",
-            "latitude": 15,
-            "longitude": 14,
-            "image": "seedvault.png"
-        },
-        {
-            "name": "Seed Reserve",
-            "id": "l10",
-            "description": "Seed Reserve is an underwater seed reserve.",
-            "latitude": -12,
-            "longitude": 28,
-            "image": "seedvault.png"
-        },
-        {
-            "name": "Seed Reserve",
+            "name": "Seed Reserve 04",
             "id": "l11",
             "description": "Seed Reserve is an underwater seed reserve.",
             "latitude": -14,
@@ -425,43 +377,99 @@
             "image": "seedvault.png"
         },
         {
-            "name": "Seed Reserve",
-            "id": "l12",
-            "description": "Seed Reserve is an underwater seed reserve.",
-            "latitude": -36,
-            "longitude": 87,
-            "image": "seedvault.png"
-        },
-        {
-            "name": "Seed Reserve",
+            "name": "Seed Reserve 05",
             "id": "l13",
-            "description": "Seed Reserve is an underwater seed reserve.",
+            "description": "Seed Reserve 05 is an underwater seed reserve.",
             "latitude": -52,
             "longitude": 80,
             "image": "seedvault.png"
         },
         {
-            "name": "Seed Reserve",
+            "name": "Seed Reserve 07",
+            "id": "l3",
+            "description": "Seed Reserve 07 is an underwater seed reserve.",
+            "latitude": 53,
+            "longitude": 110,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 08",
+            "id": "l16",
+            "description": "Seed Reserve 08 is an underwater seed reserve.",
+            "latitude": -41,
+            "longitude": 57,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 09",
+            "id": "l9",
+            "description": "Seed Reserve 09 is an underwater seed reserve.",
+            "latitude": 15,
+            "longitude": 14,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 10",
+            "id": "l4",
+            "description": "Seed Reserve 10 is an underwater seed reserve.",
+            "latitude": 51,
+            "longitude": 90,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 11",
             "id": "l14",
-            "description": "Seed Reserve is an underwater seed reserve.",
+            "description": "Seed Reserve 11 is an underwater seed reserve.",
             "latitude": -68,
             "longitude": 70,
             "image": "seedvault.png"
         },
         {
-            "name": "Seed Reserve",
+            "name": "Seed Reserve 12",
+            "id": "l6",
+            "description": "Seed Reserve 12 is an underwater seed reserve.",
+            "latitude": -6,
+            "longitude": 79,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 13",
             "id": "l15",
-            "description": "Seed Reserve is an underwater seed reserve.",
+            "description": "Seed Reserve 13 is an underwater seed reserve.",
             "latitude": -56,
             "longitude": 52,
             "image": "seedvault.png"
         },
         {
-            "name": "Seed Reserve",
-            "id": "l16",
-            "description": "Seed Reserve is an underwater seed reserve.",
-            "latitude": -41,
-            "longitude": 57,
+            "name": "Seed Reserve 14",
+            "id": "l8",
+            "description": "Seed Reserve 14 is an underwater seed reserve.",
+            "latitude": 17,
+            "longitude": 39,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 15",
+            "id": "l5",
+            "description": "Seed Reserve 15 is an underwater seed reserve.",
+            "latitude": 30,
+            "longitude": 96,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 16",
+            "id": "l12",
+            "description": "Seed Reserve 16 is an underwater seed reserve.",
+            "latitude": -36,
+            "longitude": 87,
+            "image": "seedvault.png"
+        },
+        {
+            "name": "Seed Reserve 20",
+            "id": "l2",
+            "description": "Seed Reserve 20 is an underwater seed reserve.",
+            "latitude": 35,
+            "longitude": 126,
             "image": "seedvault.png"
         }
     ]
