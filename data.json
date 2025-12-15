@@ -120,10 +120,11 @@
         {
             "name": "Habitat Node 09-4",
             "id": "14",
-            "description": "Habitat Node 09-4 is a habitat platform.",
+            "description": "Habitat Node 09-4 is a habitat platform also known as Shark Base. Also has two underwater loot rooms the later being at 120m.",
             "latitude": 16,
             "longitude": 82,
-            "image": "cargo.png"
+            "image": "cargo.png",
+            "underwaterLoot": true
         },
         {
             "name": "Habitat Node 20-16",
@@ -287,7 +288,8 @@
             "description": "Habitat Node 02-23 is a habitat platform.",
             "latitude": -49,
             "longitude": 47,
-            "image": "cargo.png"
+            "image": "cargo.png",
+            "flags": "rhino, fahrt"
         },
         {
             "name": "Helios Reserve Draco",
@@ -320,7 +322,7 @@
         },
         {
             "name": "Seed Reserve 17",
-            "id": "h2",
+            "id": "h3",
             "description": "Seed Reserve 17 is an underwater seed reserve.",
             "latitude": -29,
             "longitude": 42,
@@ -328,7 +330,7 @@
         },
         {
             "name": "Seed Reserve 18",
-            "id": "h2",
+            "id": "h4",
             "description": "Seed Reserve 18 is an underwater seed reserve.",
             "latitude": -78,
             "longitude": 93,
@@ -336,7 +338,7 @@
         },
         {
             "name": "Seed Reserve 19",
-            "id": "h2",
+            "id": "h5",
             "description": "Seed Reserve 19 is an underwater seed reserve.",
             "latitude": 33,
             "longitude": 66,
