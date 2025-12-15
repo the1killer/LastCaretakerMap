@@ -486,6 +486,11 @@ header p {
     color: #000000;
 }
 
+.locid {
+    font-size: 8px;
+    color: #999999;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .container {

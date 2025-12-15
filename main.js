@@ -254,6 +254,7 @@ function addMarkersToMap(locations, locationType = 'regular') {
                 <p>${location.description}</p>
                 <p><strong>Coordinates:</strong> ${location.longitude} : ${location.latitude}</p>
                 ${location.image ? `<img src="${location.image}" alt="${location.name}" class="popup-image" onerror="this.style.display='none'">` : ''}
+                <p><small class="locid">(id: ${location.id})</small></p>
             </div>
         `;
         
