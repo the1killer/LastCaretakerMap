@@ -88,6 +88,7 @@ const radarCircles = {};
 let locations = [];
 let hiddenLocations = [];
 let lastListenerLocations = [];
+let caves = [];
 let selectedMarkerId = null;
 
 // Load visibility state from localStorage
@@ -154,6 +155,7 @@ async function loadLocations() {
         locations = data.locations || [];
         hiddenLocations = data.hiddenLocations || [];
         lastListenerLocations = data.lastListenerLocations || [];
+        caves = data.caves || [];
         
         refreshDisplay();
     } catch (error) {
@@ -178,6 +180,7 @@ function refreshDisplay() {
     // Get current settings
     const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
     const showLastListener = localStorage.getItem('show-last-listener') === 'true';
+    const showCaves = localStorage.getItem('show-caves') === 'true';
     
     // Display sections based on settings
     displayLocationSections();
@@ -193,10 +196,15 @@ function refreshDisplay() {
         addMarkersToMap(lastListenerLocations, 'lastListener');
     }
     
+    if (showCaves) {
+        addMarkersToMap(caves, 'caves');
+    }
+    
     // Fit map to show all visible markers
     const visibleLocations = [locations];
     if (showHidden) visibleLocations.push(hiddenLocations);
     if (showLastListener) visibleLocations.push(lastListenerLocations);
+    if (showCaves) visibleLocations.push(caves);
     
     const allLocations = visibleLocations.flat();
     if (allLocations.length > 0) {
@@ -281,6 +289,7 @@ function displayLocationSections() {
     // Get current settings
     const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
     const showLastListener = localStorage.getItem('show-last-listener') === 'true';
+    const showCaves = localStorage.getItem('show-caves') === 'true';
     
     // Create sections
     if (locations.length > 0) {
@@ -296,6 +305,11 @@ function displayLocationSections() {
     if (showLastListener && lastListenerLocations.length > 0) {
         const lastListenerSection = createLocationSection('Last Listener Locations', lastListenerLocations, 'last-listener-locations', false);
         locationList.appendChild(lastListenerSection);
+    }
+    
+    if (showCaves && caves.length > 0) {
+        const cavesSection = createLocationSection('Caves', caves, 'caves-locations', false);
+        locationList.appendChild(cavesSection);
     }
 }
 
@@ -428,6 +442,7 @@ const closeSettingsButton = document.getElementById('close-settings');
 const clearDataButton = document.getElementById('clear-data-button');
 const showHiddenCheckbox = document.getElementById('show-hidden-locations');
 const showLastListenerCheckbox = document.getElementById('show-last-listener');
+const showCavesCheckbox = document.getElementById('show-caves');
 
 // Open settings popup
 settingsButton.addEventListener('click', () => {
@@ -459,7 +474,7 @@ document.addEventListener('keydown', (e) => {
 clearDataButton.addEventListener('click', () => {
     if (confirm('Are you sure you want to clear all local data? This will reset all visibility preferences.')) {
         // Clear all marker visibility states for all location types
-        const allLocations = [...locations, ...hiddenLocations, ...lastListenerLocations];
+        const allLocations = [...locations, ...hiddenLocations, ...lastListenerLocations, ...caves];
         allLocations.forEach(location => {
             localStorage.removeItem(`marker-visible-${location.id}`);
         });
@@ -467,6 +482,7 @@ clearDataButton.addEventListener('click', () => {
         // Clear settings
         localStorage.removeItem('show-hidden-locations');
         localStorage.removeItem('show-last-listener');
+        localStorage.removeItem('show-caves');
         
         // Reload the page to reset everything
         window.location.reload();
@@ -477,15 +493,18 @@ clearDataButton.addEventListener('click', () => {
 function loadSettingsState() {
     const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
     const showLastListener = localStorage.getItem('show-last-listener') === 'true';
+    const showCaves = localStorage.getItem('show-caves') === 'true';
     
     showHiddenCheckbox.checked = showHidden;
     showLastListenerCheckbox.checked = showLastListener;
+    showCavesCheckbox.checked = showCaves;
 }
 
 // Save settings state to localStorage
 function saveSettingsState() {
     localStorage.setItem('show-hidden-locations', showHiddenCheckbox.checked);
     localStorage.setItem('show-last-listener', showLastListenerCheckbox.checked);
+    localStorage.setItem('show-caves', showCavesCheckbox.checked);
 }
 
 // Handle show hidden locations toggle
@@ -496,6 +515,12 @@ showHiddenCheckbox.addEventListener('change', () => {
 
 // Handle show last listener locations toggle
 showLastListenerCheckbox.addEventListener('change', () => {
+    saveSettingsState();
+    refreshDisplay();
+});
+
+// Handle show caves toggle
+showCavesCheckbox.addEventListener('change', () => {
     saveSettingsState();
     refreshDisplay();
 });
