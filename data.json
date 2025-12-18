@@ -4,24 +4,24 @@
             "name": "Sanctuary 37",
             "id": "1",
             "description": "Sanctuary 37 is the starter area.",
-            "latitude": 8,
             "longitude": 11,
+            "latitude": 8,
             "image": "hangar.png"
         },
         {
             "name": "Habitat Node 06-3.5",
             "id": "1a",
             "description": "Habitat Node 06-3.5 is a habitat platform.",
-            "latitude": 3,
             "longitude": 23,
+            "latitude": 3,
             "image": "cargo.png"
         },
         {
             "name": "Navigation Beacon 49",
             "id": "2",
             "description": "Navigation Beacon 49 is the first navigation beacon.",
-            "latitude": 6,
             "longitude": 33,
+            "latitude": 6,
             "image": "beacon.png",
             "radarRadius": 27
         },
@@ -29,8 +29,8 @@
             "name": "Lazarus Complex",
             "id": "3",
             "description": "Lazarus Complex is a human growth facility.",
-            "latitude": -2,
             "longitude": 69,
+            "latitude": -2,
             "image": "lazarus.png",
             "radarRadius": 31
         },
@@ -38,16 +38,16 @@
             "name": "Norfolk Grave",
             "id": "4",
             "description": "Norfolk Grave is an underwater ruin.",
-            "latitude": -41,
             "longitude": 58,
+            "latitude": -41,
             "image": "ruin.png"
         },
         {
             "name": "Navigation Beacon 15",
             "id": "5",
             "description": "Navigation Beacon 15 is another navigation beacon.",
-            "latitude": -53,
             "longitude": 69,
+            "latitude": -53,
             "image": "beacon.png",
             "radarRadius": 30
         },
@@ -55,32 +55,32 @@
             "name": "Seed Vault Prometheus",
             "id": "6",
             "description": "Seed Vault Prometheus is a seed vault.",
-            "latitude": -66,
             "longitude": 81,
+            "latitude": -66,
             "image": "seedvault.png"
         },
         {
             "name": "Helios Reserve Orion",
             "id": "7",
             "description": "Helios Reserve Orion is power platform with both solar and wind power.",
-            "latitude": 9,
             "longitude": 53,
+            "latitude": 9,
             "image": "solar.png"
         },
         {
             "name": "Refuel Outpost Gamma",
             "id": "8",
             "description": "Refuel Outpost Gamma is a fuel depot with both diesel and petrol.",
-            "latitude": -7,
             "longitude": 47,
+            "latitude": -7,
             "image": "gaspump.png"
         },
         {
             "name": "Dark Vein Station",
             "id": "9",
             "description": "Dark Vein Station is an oil rig that can mine infinite oil.",
-            "latitude": -70,
             "longitude": 49,
+            "latitude": -70,
             "image": "oilrig.png",
             "flags": "exo"
         },
@@ -88,24 +88,24 @@
             "name": "Hampton Grave",
             "id": "10",
             "description": "Hampton Grave is an underwater ruin.",
-            "latitude": 19,
             "longitude": 102,
+            "latitude": 19,
             "image": "ruin.png"
         },
         {
             "name": "Exodus Station",
             "id": "11",
             "description": "Exodus Station is a rocket launch platform.",
-            "latitude": 47,
             "longitude": 125,
+            "latitude": 47,
             "image": "rocket.png"
         },
         {
             "name": "The Last Listener Station",
             "id": "12",
             "description": "The Last Listener Station is a navigation beacon.",
-            "latitude": 11,
             "longitude": 115,
+            "latitude": 11,
             "image": "beacon.png",
             "radarRadius": 9
         },
@@ -113,16 +113,16 @@
             "name": "Habitat Node 03-12.3",
             "id": "13",
             "description": "Habitat Node 03-12.3 is a habitat platform.",
-            "latitude": 15,
             "longitude": 97,
+            "latitude": 15,
             "image": "cargo.png"
         },
         {
             "name": "Habitat Node 09-4",
             "id": "14",
             "description": "Habitat Node 09-4 is a habitat platform also known as Shark Base. Also has two underwater loot rooms the later being at 120m.",
-            "latitude": 16,
             "longitude": 82,
+            "latitude": 16,
             "image": "cargo.png",
             "underwaterLoot": true
         },
@@ -130,24 +130,24 @@
             "name": "Habitat Node 20-16",
             "id": "15",
             "description": "Habitat Node 20-16 is a habitat platform.",
-            "latitude": 21,
             "longitude": 130,
+            "latitude": 21,
             "image": "cargo.png"
         },
         {
             "name": "Habitat Node 21-7",
             "id": "16",
             "description": "Habitat Node 21-7 is a habitat platform.",
-            "latitude": 50,
             "longitude": 104,
+            "latitude": 50,
             "image": "cargo.png"
         },
         {
             "name": "Nomads Tower",
             "id": "17",
             "description": "Nomads Tower is a tower.",
-            "latitude": -31,
             "longitude": 74,
+            "latitude": -31,
             "image": "hangar.png",
             "underwaterLoot": true
         },
@@ -155,20 +155,19 @@
             "name": "Refuel Outpost Theta",
             "id": "18",
             "description": "Refuel Outpost Theta is a fuel depot.",
-            "latitude": -45,
             "longitude": 84,
+            "latitude": -45,
             "image": "gaspump.png",
             "flags": "exo",
             "primaryNumbers": "23",
             "secondaryNumbers": "2,3"
-            
         },
         {
             "name": "Habitat Node 05 X",
             "id": "19",
             "description": "Habitat Node 05 X is a habitat platform.",
-            "latitude": -57,
             "longitude": 91,
+            "latitude": -57,
             "image": "cargo.png",
             "underwaterLoot": true
         },
@@ -176,16 +175,16 @@
             "name": "Central Warehouse Alpha",
             "id": "20",
             "description": "Central Warehouse Alpha is a warehouse with lots of loot and hostiles.",
-            "latitude": 23,
             "longitude": 66,
+            "latitude": 23,
             "image": "hangar.png"
         },
         {
             "name": "Navigation Beacon 32",
             "id": "21",
             "description": "Navigation Beacon 32 is a navigation beacon.",
-            "latitude": 35,
             "longitude": 109,
+            "latitude": 35,
             "image": "beacon.png",
             "radarRadius": 29
         },
@@ -193,32 +192,32 @@
             "name": "Salem Grave",
             "id": "22",
             "description": "Salem Grave is an underwater ruin.",
-            "latitude": 55,
             "longitude": 108,
+            "latitude": 55,
             "image": "ruin.png"
         },
         {
             "name": "Helios Reserve Lyra",
             "id": "23",
             "description": "Helios Reserve Lyra is a power platform.",
-            "latitude": 28,
             "longitude": 120,
+            "latitude": 28,
             "image": "solar.png"
         },
         {
             "name": "Dover Grave",
             "id": "24",
             "description": "Dover Grave is an underwater ruin.",
-            "latitude": 35,
             "longitude": 135,
+            "latitude": 35,
             "image": "ruin.png"
         },
         {
             "name": "Refuel Outpost Delta",
             "id": "25",
             "description": "Refuel Outpost Delta is a fuel depot.",
-            "latitude": 39,
             "longitude": 91,
+            "latitude": 39,
             "image": "gaspump.png",
             "underwaterLoot": true,
             "primaryNumbers": "6",
@@ -228,40 +227,40 @@
             "name": "Lincoln Grave",
             "id": "26",
             "description": "Lincoln Grave is an underwater ruin.",
-            "latitude": 4,
             "longitude": 80,
+            "latitude": 4,
             "image": "ruin.png"
         },
         {
             "name": "Helios Reserve Gemini",
             "id": "27",
             "description": "Helios Reserve Gemini is a power platform.",
-            "latitude": -26,
             "longitude": 60,
+            "latitude": -26,
             "image": "solar.png"
         },
         {
             "name": "Winston Grave",
             "id": "28",
             "description": "Winston Grave is an underwater ruin.",
-            "latitude": -12,
             "longitude": 27,
+            "latitude": -12,
             "image": "ruin.png"
         },
         {
             "name": "Brighton Grave",
             "id": "29",
             "description": "Brighton Grave is an underwater ruin.",
-            "latitude": -14,
             "longitude": 57,
+            "latitude": -14,
             "image": "ruin.png"
         },
         {
             "name": "Habitat Node 04-7",
             "id": "30",
             "description": "Habitat Node 04-7 is a habitat platform.",
-            "latitude": -15,
             "longitude": 82,
+            "latitude": -15,
             "image": "cargo.png",
             "flags": "fahrt",
             "underwaterLoot": true
@@ -270,24 +269,24 @@
             "name": "Habitat Node 01-2.5",
             "id": "31",
             "description": "Habitat Node 01-2.5 is a habitat platform.",
-            "latitude": -78,
             "longitude": 68,
+            "latitude": -78,
             "image": "cargo.png"
         },
         {
             "name": "York Grave",
             "id": "32",
             "description": "York Grave is an underwater ruin.",
-            "latitude": -75,
             "longitude": 85,
+            "latitude": -75,
             "image": "ruin.png"
         },
         {
             "name": "Habitat Node 02-23",
             "id": "33",
             "description": "Habitat Node 02-23 is a habitat platform.",
-            "latitude": -49,
             "longitude": 47,
+            "latitude": -49,
             "image": "cargo.png",
             "flags": "rhino, fahrt"
         },
@@ -295,12 +294,83 @@
             "name": "Helios Reserve Draco",
             "id": "34",
             "description": "Helios Reserve Draco is a power platform.",
-            "latitude": -64,
             "longitude": 62,
+            "latitude": -64,
             "image": "solar.png",
             "primaryNumbers": "2",
             "secondaryNumbers": "1,3,4,2,5,6,6,7,12,6",
             "flags": "exo"
+        },
+        {
+            "name": "Sanctuary Dock 12",
+            "id": "34a",
+            "description": "Sanctuary Dock 12 is another docking area.",
+            "longitude": 88,
+            "latitude": 27,
+            "image": "hangar.png"
+        },
+        {
+            "name": "NDNS Node 29, -2",
+            "id": "35",
+            "description": "NDNS Node 29, -2 is a NDNS Node. (Improperly named as 55,-2)",
+            "longitude": 29,
+            "latitude": -2,
+            "image": "ndns.png",
+            "primaryNumbers": "2"
+        },
+        {
+            "name": "NDNS Node 55, -2",
+            "id": "36",
+            "description": "NDNS Node 55, -2 is a NDNS Node.",
+            "longitude": 55,
+            "latitude": -2,
+            "image": "ndns.png",
+            "primaryNumbers": "1"
+        },
+        {
+            "name": "NDNS Node 70, 14",
+            "id": "37",
+            "description": "NDNS Node 70, 14 is a NDNS Node.",
+            "longitude": 70,
+            "latitude": 14,
+            "image": "ndns.png",
+            "primaryNumbers": "10"
+        },
+        {
+            "name": "NDNS Node 84, -2",
+            "id": "38",
+            "description": "NDNS Node 84, -2 is a NDNS Node.",
+            "longitude": 84,
+            "latitude": -2,
+            "image": "ndns.png",
+            "primaryNumbers": "4"
+        },
+        {
+            "name": "NDNS Node 70, -17",
+            "id": "39",
+            "description": "NDNS Node 70, -17 is a NDNS Node.",
+            "longitude": 70,
+            "latitude": -17,
+            "image": "ndns.png",
+            "primaryNumbers": "7"
+        },
+        {
+            "name": "NDNS Node 70, -42",
+            "id": "40",
+            "description": "NDNS Node 70, -42 is a NDNS Node.",
+            "longitude": 70,
+            "latitude": -42,
+            "image": "ndns.png",
+            "primaryNumbers": "8"
+        },
+        {
+            "name": "NDNS Node 70, -82",
+            "id": "41",
+            "description": "NDNS Node 70, -82 is a NDNS Node.",
+            "longitude": 70,
+            "latitude": -82,
+            "image": "ndns.png",
+            "primaryNumbers": "9"
         }
     ],
     "hiddenLocations": [
@@ -308,41 +378,94 @@
             "name": "Habitat Node 10-4",
             "id": "h1",
             "description": "Habitat Node 10-4 is a habitat platform.",
-            "latitude": -31,
             "longitude": 30,
+            "latitude": -31,
             "image": "cargo.png"
         },
         {
             "name": "Seed Reserve 06",
             "id": "h2",
             "description": "Seed Reserve 06 is an underwater seed reserve.",
-            "latitude": -9,
             "longitude": 99,
+            "latitude": -9,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 17",
             "id": "h3",
             "description": "Seed Reserve 17 is an underwater seed reserve.",
-            "latitude": -29,
             "longitude": 42,
+            "latitude": -29,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 18",
             "id": "h4",
             "description": "Seed Reserve 18 is an underwater seed reserve.",
-            "latitude": -78,
             "longitude": 93,
+            "latitude": -78,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 19",
             "id": "h5",
             "description": "Seed Reserve 19 is an underwater seed reserve.",
-            "latitude": 33,
             "longitude": 66,
+            "latitude": 33,
             "image": "seedvault.png"
+        },
+        {
+            "name": "NDNS Node 110, -2",
+            "id": "h6",
+            "description": "NDNS Node 110, -2 is a NDNS Node.",
+            "longitude": 110,
+            "latitude": -2,
+            "image": "ndns.png",
+            "primaryNumbers": "5"
+        },
+        {
+            "name": "NDNS Node 150, -2",
+            "id": "h7",
+            "description": "NDNS Node 150, -2 is a NDNS Node.",
+            "longitude": 150,
+            "latitude": -2,
+            "image": "ndns.png",
+            "primaryNumbers": "6"
+        },
+        {
+            "name": "NDNS Node -10, -2",
+            "id": "h8",
+            "description": "NDNS Node -10, -2 is a NDNS Node.",
+            "longitude": -10,
+            "latitude": -2,
+            "image": "ndns.png",
+            "primaryNumbers": "3"
+        },
+        {
+            "name": "NDNS Node 70, 38",
+            "id": "h9",
+            "description": "NDNS Node 70, 38 is a NDNS Node.",
+            "longitude": 70,
+            "latitude": 38,
+            "image": "ndns.png",
+            "primaryNumbers": "11"
+        },
+        {
+            "name": "NDNS Node 70, 78",
+            "id": "h10",
+            "description": "NDNS Node 70, 78 is a NDNS Node.",
+            "longitude": 70,
+            "latitude": 78,
+            "image": "ndns.png",
+            "primaryNumbers": "12"
+        },
+        {
+            "name": "Habitat Node 38-98",
+            "id": "h11",
+            "description": "Habitat Node 38-98 is a habitat platform. The final location for the Mother quest line.",
+            "longitude": 8,
+            "latitude": -38,
+            "image": "cargo.png"
         }
     ],
     "lastListenerLocations": [
@@ -350,129 +473,187 @@
             "name": "Seed Reserve 01",
             "id": "l7",
             "description": "Seed Reserve 01 is an underwater seed reserve.",
-            "latitude": 10,
             "longitude": 59,
+            "latitude": 10,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 02",
             "id": "l10",
             "description": "Seed Reserve 02 is an underwater seed reserve.",
-            "latitude": -12,
             "longitude": 28,
+            "latitude": -12,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 03",
             "id": "l1",
             "description": "Seed Reserve 03 is an underwater seed reserve.",
-            "latitude": 13,
             "longitude": 118,
+            "latitude": 13,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 04",
             "id": "l11",
             "description": "Seed Reserve is an underwater seed reserve.",
-            "latitude": -14,
             "longitude": 57,
+            "latitude": -14,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 05",
             "id": "l13",
             "description": "Seed Reserve 05 is an underwater seed reserve.",
-            "latitude": -52,
             "longitude": 80,
+            "latitude": -52,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 07",
             "id": "l3",
             "description": "Seed Reserve 07 is an underwater seed reserve.",
-            "latitude": 53,
             "longitude": 110,
+            "latitude": 53,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 08",
             "id": "l16",
             "description": "Seed Reserve 08 is an underwater seed reserve.",
-            "latitude": -41,
             "longitude": 57,
+            "latitude": -41,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 09",
             "id": "l9",
             "description": "Seed Reserve 09 is an underwater seed reserve.",
-            "latitude": 15,
             "longitude": 14,
+            "latitude": 15,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 10",
             "id": "l4",
             "description": "Seed Reserve 10 is an underwater seed reserve.",
-            "latitude": 51,
             "longitude": 90,
+            "latitude": 51,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 11",
             "id": "l14",
             "description": "Seed Reserve 11 is an underwater seed reserve.",
-            "latitude": -68,
             "longitude": 70,
+            "latitude": -68,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 12",
             "id": "l6",
             "description": "Seed Reserve 12 is an underwater seed reserve.",
-            "latitude": -6,
             "longitude": 79,
+            "latitude": -6,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 13",
             "id": "l15",
             "description": "Seed Reserve 13 is an underwater seed reserve.",
-            "latitude": -56,
             "longitude": 52,
+            "latitude": -56,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 14",
             "id": "l8",
             "description": "Seed Reserve 14 is an underwater seed reserve.",
-            "latitude": 17,
             "longitude": 39,
+            "latitude": 17,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 15",
             "id": "l5",
             "description": "Seed Reserve 15 is an underwater seed reserve.",
-            "latitude": 30,
             "longitude": 96,
+            "latitude": 30,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 16",
             "id": "l12",
             "description": "Seed Reserve 16 is an underwater seed reserve.",
-            "latitude": -36,
             "longitude": 87,
+            "latitude": -36,
             "image": "seedvault.png"
         },
         {
             "name": "Seed Reserve 20",
             "id": "l2",
             "description": "Seed Reserve 20 is an underwater seed reserve.",
-            "latitude": 35,
             "longitude": 126,
+            "latitude": 35,
             "image": "seedvault.png"
+        }
+    ],
+    "caves": [
+        {
+            "name": "Twin Tide",
+            "id": "c1",
+            "description": "Twin Tide is a cave. Entrance at 97m depth. Max depth 103m",
+            "longitude": 110,
+            "latitude": 28,
+            "image": "cave.png"
+        },
+        {
+            "name": "North Lantern",
+            "id": "c2",
+            "description": "North Lantern is a cave. Entrance at 66m depth. Max depth 93m",
+            "longitude": 55,
+            "latitude": -82,
+            "image": "cave.png"
+        },
+        {
+            "name": "Grey Mouth",
+            "id": "c3",
+            "description": "Grey Mouth is a cave. Entrance at 200m depth. Max depth 200m",
+            "longitude": 110,
+            "latitude": 4,
+            "image": "cave.png"
+        },
+        {
+            "name": "South Echo",
+            "id": "c4",
+            "description": "South Echo is a cave. Entrance at 94m depth. Max depth 94m",
+            "longitude": 73,
+            "latitude": 38,
+            "image": "cave.png"
+        },
+        {
+            "name": "Deep Silence",
+            "id": "c5",
+            "description": "Deep Silence is a cave. Entrance at 110m depth. Max depth 170m",
+            "longitude": 49,
+            "latitude": -20,
+            "image": "cave.png"
+        },
+        {
+            "name": "Far Horizon",
+            "id": "c6",
+            "description": "Far Horizon is a cave. Entrance at 137m depth. Max depth 170m",
+            "longitude": 134,
+            "latitude": 55,
+            "image": "cave.png"
+        },
+        {
+            "name": "First Whisper",
+            "id": "c7",
+            "description": "First Whisper is a cave. Entrance at 80m depth. Max depth 80m",
+            "longitude": 9,
+            "latitude": 5,
+            "image": "cave.png"
         }
     ]
 }
