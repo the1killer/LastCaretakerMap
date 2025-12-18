@@ -304,7 +304,7 @@
         },
         {
             "name": "Sanctuary Dock 12",
-            "id": "35",
+            "id": "34a",
             "description": "Sanctuary Dock 12 is another docking area.",
             "latitude": 27,
             "longitude": 88,
@@ -459,6 +459,14 @@
             "longitude": 70,
             "image": "ndns.png",
             "primaryNumbers": "12"
+        },
+        {
+            "name": "Habitat Node 38-98",
+            "id": "h11",
+            "description": "Habitat Node 38-98 is a habitat platform. The final location for the Mother quest line.",
+            "latitude": -38,
+            "longitude": 8,
+            "image": "cargo.png"
         }
     ],
     "lastListenerLocations": [
@@ -594,15 +602,15 @@
     "caves": [
         {
             "name": "Twin Tide",
-            "id": "h11",
+            "id": "c1",
             "description": "Twin Tide is a cave. Entrance at 97m depth. Max depth 103m",
-            "latitude": 109,
-            "longitude": 28,
+            "latitude": 28,
+            "longitude": 110,
             "image": "cave.png"
         },
         {
             "name": "North Lantern",
-            "id": "h12",
+            "id": "c2",
             "description": "North Lantern is a cave. Entrance at 66m depth. Max depth 93m",
             "latitude": -82,
             "longitude": 55,
@@ -610,7 +618,7 @@
         },
         {
             "name": "Grey Mouth",
-            "id": "h13",
+            "id": "c3",
             "description": "Grey Mouth is a cave. Entrance at 200m depth. Max depth 200m",
             "latitude": 4,
             "longitude": 110,
@@ -618,7 +626,7 @@
         },
         {
             "name": "South Echo",
-            "id": "h14",
+            "id": "c4",
             "description": "South Echo is a cave. Entrance at 94m depth. Max depth 94m",
             "latitude": 38,
             "longitude": 73,
@@ -626,7 +634,7 @@
         },
         {
             "name": "Deep Silence",
-            "id": "h15",
+            "id": "c5",
             "description": "Deep Silence is a cave. Entrance at 110m depth. Max depth 170m",
             "latitude": -20,
             "longitude": 49,
@@ -634,7 +642,7 @@
         },
         {
             "name": "Far Horizon",
-            "id": "h16",
+            "id": "c6",
             "description": "Far Horizon is a cave. Entrance at 137m depth. Max depth 170m",
             "latitude": 55,
             "longitude": 134,
@@ -642,9 +650,9 @@
         },
         {
             "name": "First Whisper",
-            "id": "h17",
+            "id": "c7",
             "description": "First Whisper is a cave. Entrance at 80m depth. Max depth 80m",
-            "latitude": 55,
+            "latitude": 5,
             "longitude": 9,
             "image": "cave.png"
         }
