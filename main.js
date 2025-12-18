@@ -19,6 +19,7 @@ const map = L.map('map', {
     crs: L.CRS.Simple,
     minZoom: -2,
     maxZoom: 6,
+    zoomSnap: 0.5,
     zoomControl: false
 });
 
