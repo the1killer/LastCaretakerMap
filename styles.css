@@ -151,11 +151,35 @@ header p {
     border-color: #666;
 }
 
+.section-header-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
 .section-header h3 {
     color: #ffffff;
     margin: 0;
     font-size: 1.1em;
     font-weight: bold;
+}
+
+.category-toggle {
+    padding: 4px 8px;
+    font-size: 16px;
+    background: transparent;
+    border: 1px solid #555;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: -5px !important;
+}
+
+.category-toggle:hover {
+    background: #444;
+    border-color: #00C666;
+    transform: scale(1.1);
 }
 
 .section-count {

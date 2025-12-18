@@ -103,6 +103,60 @@ function setVisibilityState(locationId, visible) {
     localStorage.setItem(`marker-visible-${locationId}`, visible);
 }
 
+// Get category visibility state from localStorage
+function getCategoryVisibilityState(categoryId) {
+    const state = localStorage.getItem(`category-visible-${categoryId}`);
+    return state === null ? true : state === 'true';
+}
+
+// Save category visibility state to localStorage
+function setCategoryVisibilityState(categoryId, visible) {
+    localStorage.setItem(`category-visible-${categoryId}`, visible);
+}
+
+// Toggle all markers in a category
+function toggleCategoryVisibility(categoryId, locations) {
+    const currentState = getCategoryVisibilityState(categoryId);
+    const newState = !currentState;
+    
+    // Update all markers in this category
+    locations.forEach(location => {
+        const marker = markers[location.id];
+        const label = markerLabels[location.id];
+        const radarCircle = radarCircles[location.id];
+        
+        if (marker) {
+            if (newState) {
+                marker.addTo(map);
+                if (label) label.addTo(map);
+                if (radarCircle) radarCircle.addTo(map);
+            } else {
+                map.removeLayer(marker);
+                if (label) map.removeLayer(label);
+                if (radarCircle) map.removeLayer(radarCircle);
+            }
+        }
+        
+        // Update individual marker state
+        setVisibilityState(location.id, newState);
+        updateToggleButton(location.id, newState);
+    });
+    
+    // Save category state
+    setCategoryVisibilityState(categoryId, newState);
+    updateCategoryToggleButton(categoryId, newState);
+}
+
+// Update category toggle button appearance
+function updateCategoryToggleButton(categoryId, visible) {
+    const button = document.getElementById(`category-toggle-${categoryId}`);
+    if (button) {
+        button.textContent = visible ? '👁️' : '👁️‍🗨️';
+        button.style.opacity = visible ? '1' : '0.5';
+        button.title = visible ? 'Hide all in category' : 'Show all in category';
+    }
+}
+
 // Toggle marker visibility
 function toggleMarkerVisibility(locationId) {
     const marker = markers[locationId];
@@ -320,11 +374,18 @@ function createLocationSection(title, locations, sectionId, isExpanded = true) {
     section.className = 'location-section';
     section.id = sectionId;
     
+    const categoryVisible = getCategoryVisibilityState(sectionId);
+    
     // Create section header
     const header = document.createElement('div');
     header.className = 'section-header';
     header.innerHTML = `
-        <h3>• ${title} <span class="section-count">(${locations.length})</span></h3>
+        <div class="section-header-content">
+            <button class="toggle-visibility category-toggle" id="category-toggle-${sectionId}" title="${categoryVisible ? 'Hide all in category' : 'Show all in category'}">
+                ${categoryVisible ? '👁️' : '👁️‍🗨️'}
+            </button>
+            <h3> ${title} <span class="section-count">(${locations.length})</span></h3>
+        </div>
         <span class="section-toggle">${isExpanded ? '▼' : '▶'}</span>
     `;
     
@@ -338,13 +399,28 @@ function createLocationSection(title, locations, sectionId, isExpanded = true) {
         content.appendChild(locationItem);
     });
     
-    // Toggle section on header click
-    header.addEventListener('click', () => {
+    // Toggle section expansion on header click (but not on category toggle button)
+    header.addEventListener('click', (e) => {
+        // Don't toggle expansion if clicking the category visibility button
+        if (e.target.classList.contains('category-toggle') || e.target.closest('.category-toggle')) {
+            return;
+        }
+        
         const isCurrentlyExpanded = content.classList.contains('expanded');
         content.classList.toggle('expanded');
         content.classList.toggle('collapsed');
         header.querySelector('.section-toggle').textContent = isCurrentlyExpanded ? '▶' : '▼';
     });
+    
+    // Add category toggle button click event
+    const categoryToggleButton = header.querySelector(`#category-toggle-${sectionId}`);
+    categoryToggleButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleCategoryVisibility(sectionId, locations);
+    });
+    
+    // Update button appearance
+    updateCategoryToggleButton(sectionId, categoryVisible);
     
     section.appendChild(header);
     section.appendChild(content);
@@ -479,6 +555,12 @@ clearDataButton.addEventListener('click', () => {
         allLocations.forEach(location => {
             localStorage.removeItem(`marker-visible-${location.id}`);
         });
+        
+        // Clear category visibility states
+        localStorage.removeItem('category-visible-main-locations');
+        localStorage.removeItem('category-visible-hidden-locations');
+        localStorage.removeItem('category-visible-last-listener-locations');
+        localStorage.removeItem('category-visible-caves-locations');
         
         // Clear settings
         localStorage.removeItem('show-hidden-locations');
