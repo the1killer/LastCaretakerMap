@@ -127,9 +127,9 @@
             "underwaterLoot": true
         },
         {
-            "name": "Habitat Node 20-16",
+            "name": "Habitat Node 08-16",
             "id": "15",
-            "description": "Habitat Node 20-16 is a habitat platform.",
+            "description": "Habitat Node 08-16 is a habitat platform.",
             "longitude": 130,
             "latitude": 21,
             "image": "cargo.png"
