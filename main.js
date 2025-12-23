@@ -40,6 +40,34 @@ const BackgroundLayer = L.GridLayer.extend({
 // Add tiled background layer
 new BackgroundLayer().addTo(map);
 
+// Add cloth map as a non-tiling image overlay with rotation
+// Define bounds to match the map's coordinate system (adjust as needed)
+const msz = 90; 
+const xmod = 45; // Offset to align the cloth map
+const ymod = 95;
+const ysz = 0.8056640625 * msz; // Vertical adjustment factor
+const clothMapBounds = [[-ysz+xmod, -msz+ymod], 
+                        [ysz+xmod, msz+ymod]];
+
+// Create custom rotated image overlay
+const RotatedImageOverlay = L.ImageOverlay.extend({
+    _initImage: function () {
+        L.ImageOverlay.prototype._initImage.call(this);
+        // this._image.style.transform = 'rotate(10deg)';
+        // this._image.style.transformOrigin = 'center center';
+    }
+});
+
+// Create the cloth map layer (initially visible)
+let clothMapLayer = new RotatedImageOverlay('./images/ingame_cloth_map.png', clothMapBounds, {
+    opacity: 0.5,
+    interactive: false,
+    zIndex: 1,
+    className: 'cloth-map-rotated'
+}).addTo(map);
+
+let clothMapVisible = false;
+
 // Create a custom grid overlay with fixed size
 const GridLayer = L.GridLayer.extend({
     createTile: function(coords) {
@@ -520,6 +548,7 @@ const clearDataButton = document.getElementById('clear-data-button');
 const showHiddenCheckbox = document.getElementById('show-hidden-locations');
 const showLastListenerCheckbox = document.getElementById('show-last-listener');
 const showCavesCheckbox = document.getElementById('show-caves');
+const showClothMapCheckbox = document.getElementById('show-cloth-map');
 
 // Open settings popup
 settingsButton.addEventListener('click', () => {
@@ -566,6 +595,7 @@ clearDataButton.addEventListener('click', () => {
         localStorage.removeItem('show-hidden-locations');
         localStorage.removeItem('show-last-listener');
         localStorage.removeItem('show-caves');
+        localStorage.removeItem('show-cloth-map');
         
         // Reload the page to reset everything
         window.location.reload();
@@ -577,10 +607,12 @@ function loadSettingsState() {
     const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
     const showLastListener = localStorage.getItem('show-last-listener') === 'true';
     const showCaves = localStorage.getItem('show-caves') === 'true';
+    const showClothMap = localStorage.getItem('show-cloth-map');
     
     showHiddenCheckbox.checked = showHidden;
     showLastListenerCheckbox.checked = showLastListener;
     showCavesCheckbox.checked = showCaves;
+    showClothMapCheckbox.checked = showClothMap === null ? true : showClothMap === 'true';
 }
 
 // Save settings state to localStorage
@@ -588,6 +620,7 @@ function saveSettingsState() {
     localStorage.setItem('show-hidden-locations', showHiddenCheckbox.checked);
     localStorage.setItem('show-last-listener', showLastListenerCheckbox.checked);
     localStorage.setItem('show-caves', showCavesCheckbox.checked);
+    localStorage.setItem('show-cloth-map', showClothMapCheckbox.checked);
 }
 
 // Handle show hidden locations toggle
@@ -607,6 +640,29 @@ showCavesCheckbox.addEventListener('change', () => {
     saveSettingsState();
     refreshDisplay();
 });
+
+// Handle show cloth map toggle
+showClothMapCheckbox.addEventListener('change', () => {
+    saveSettingsState();
+    if (showClothMapCheckbox.checked) {
+        if (!clothMapVisible) {
+            clothMapLayer.addTo(map);
+            clothMapVisible = true;
+        }
+    } else {
+        if (clothMapVisible) {
+            map.removeLayer(clothMapLayer);
+            clothMapVisible = false;
+        }
+    }
+});
+
+// Initialize cloth map visibility from localStorage
+const initialShowClothMap = localStorage.getItem('show-cloth-map');
+if (initialShowClothMap !== null && initialShowClothMap === 'false') {
+    map.removeLayer(clothMapLayer);
+    clothMapVisible = false;
+}
 
 // Initialize the application
 loadLocations();

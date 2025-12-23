@@ -515,6 +515,10 @@ header p {
     color: #999999;
 }
 
+.cloth-map-rotated {
+    rotate: 10deg;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
     .container {
