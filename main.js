@@ -91,6 +91,8 @@ let hiddenLocations = [];
 let lastListenerLocations = [];
 let caves = [];
 let selectedMarkerId = null;
+let searchQuery = '';
+let searchAllText = false;
 
 // Load visibility state from localStorage
 function getVisibilityState(locationId) {
@@ -220,6 +222,66 @@ async function loadLocations() {
     }
 }
 
+// Setup search functionality
+function setupSearch() {
+    const searchInput = document.getElementById('location-search');
+    const clearButton = document.getElementById('clear-search');
+    const searchOptions = document.querySelector('.search-options');
+    const searchAllCheckbox = document.getElementById('search-all-text');
+    
+    // Show/hide search options on focus/blur
+    searchInput.addEventListener('focus', () => {
+        searchOptions.classList.add('visible');
+    });
+    
+    searchInput.addEventListener('blur', () => {
+        // Delay to allow checkbox click to register
+        setTimeout(() => {
+            if (!searchAllCheckbox.matches(':focus')) {
+                searchOptions.classList.remove('visible');
+            }
+        }, 150);
+    });
+    
+    // Keep options visible when interacting with checkbox
+    searchOptions.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+    });
+    
+    searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value.toLowerCase();
+        clearButton.style.display = searchQuery ? 'block' : 'none';
+        displayLocationSections();
+    });
+    
+    clearButton.addEventListener('click', () => {
+        searchInput.value = '';
+        searchQuery = '';
+        clearButton.style.display = 'none';
+        displayLocationSections();
+    });
+    
+    searchAllCheckbox.addEventListener('change', (e) => {
+        searchAllText = e.target.checked;
+        if (searchQuery) {
+            displayLocationSections();
+        }
+    });
+}
+
+// Filter locations based on search query
+function filterLocations(locations) {
+    if (!searchQuery) return locations;
+    return locations.filter(location => {
+        const nameMatch = location.name.toLowerCase().includes(searchQuery);
+        if (!searchAllText) {
+            return nameMatch;
+        }
+        const descriptionMatch = location.description && location.description.toLowerCase().includes(searchQuery);
+        return nameMatch || descriptionMatch;
+    });
+}
+
 // Refresh the display based on current settings
 function refreshDisplay() {
     // Clear existing markers
@@ -346,24 +408,40 @@ function displayLocationSections() {
     const showLastListener = localStorage.getItem('show-last-listener') === 'true';
     const showCaves = localStorage.getItem('show-caves') === 'true';
     
+    // Filter locations based on search query
+    const filteredLocations = filterLocations(locations);
+    const filteredHiddenLocations = filterLocations(hiddenLocations);
+    const filteredLastListenerLocations = filterLocations(lastListenerLocations);
+    const filteredCaves = filterLocations(caves);
+    
+    // Show message if no results
+    if (searchQuery && 
+        filteredLocations.length === 0 && 
+        filteredHiddenLocations.length === 0 && 
+        filteredLastListenerLocations.length === 0 && 
+        filteredCaves.length === 0) {
+        locationList.innerHTML = '<div class="no-results">No locations found</div>';
+        return;
+    }
+    
     // Create sections
-    if (locations.length > 0) {
-        const mainSection = createLocationSection('Locations', locations, 'main-locations', true);
+    if (filteredLocations.length > 0) {
+        const mainSection = createLocationSection('Locations', filteredLocations, 'main-locations', true);
         locationList.appendChild(mainSection);
     }
     
-    if (showHidden && hiddenLocations.length > 0) {
-        const hiddenSection = createLocationSection('Hidden Locations', hiddenLocations, 'hidden-locations', false);
+    if (showHidden && filteredHiddenLocations.length > 0) {
+        const hiddenSection = createLocationSection('Hidden Locations', filteredHiddenLocations, 'hidden-locations', false);
         locationList.appendChild(hiddenSection);
     }
     
-    if (showLastListener && lastListenerLocations.length > 0) {
-        const lastListenerSection = createLocationSection('Last Listener Locations', lastListenerLocations, 'last-listener-locations', false);
+    if (showLastListener && filteredLastListenerLocations.length > 0) {
+        const lastListenerSection = createLocationSection('Last Listener Locations', filteredLastListenerLocations, 'last-listener-locations', false);
         locationList.appendChild(lastListenerSection);
     }
     
-    if (showCaves && caves.length > 0) {
-        const cavesSection = createLocationSection('Caves', caves, 'caves-locations', false);
+    if (showCaves && filteredCaves.length > 0) {
+        const cavesSection = createLocationSection('Caves', filteredCaves, 'caves-locations', false);
         locationList.appendChild(cavesSection);
     }
 }
@@ -610,3 +688,4 @@ showCavesCheckbox.addEventListener('change', () => {
 
 // Initialize the application
 loadLocations();
+setupSearch();
