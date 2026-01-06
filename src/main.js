@@ -1,18 +1,11 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import './styles.css';
+import './styles.scss';
 
-// Fix for default marker icons in Webpack/Vite
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import './settings.js'
 
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconUrl: markerIcon,
-  iconRetinaUrl: markerIcon2x,
-  shadowUrl: markerShadow,
-});
+import locationData from './data/locations.json';
+import locationTypes from './data/types.json';
 
 // Initialize the map
 const map = L.map('map', {
@@ -86,13 +79,15 @@ new GridLayer({
 const markers = {};
 const markerLabels = {};
 const radarCircles = {};
-let locations = [];
-let hiddenLocations = [];
-let lastListenerLocations = [];
-let caves = [];
+
 let selectedMarkerId = null;
 let searchQuery = '';
 let searchAllText = false;
+
+const locations = locationData.locations;
+const hiddenLocations = locationData.hiddenLocations;
+const lastListenerLocations = locationData.lastListenerLocations;
+const caves = locationData.caves;
 
 // Load visibility state from localStorage
 function getVisibilityState(locationId) {
@@ -153,8 +148,7 @@ function toggleCategoryVisibility(categoryId, locations) {
 function updateCategoryToggleButton(categoryId, visible) {
     const button = document.getElementById(`category-toggle-${categoryId}`);
     if (button) {
-        button.textContent = visible ? '👁️' : '👁️‍🗨️';
-        button.style.opacity = visible ? '1' : '0.5';
+        button.dataset.visible = visible;
         button.title = visible ? 'Hide all in category' : 'Show all in category';
     }
 }
@@ -187,39 +181,30 @@ function toggleMarkerVisibility(locationId) {
 function updateToggleButton(locationId, visible) {
     const button = document.getElementById(`toggle-${locationId}`);
     if (button) {
-        button.textContent = visible ? '👁️' : '👁️‍🗨️';
-        button.style.opacity = visible ? '1' : '0.5';
+        button.dataset.visible = visible;
     }
 }
 
 // Function to create custom icon for each location
-function createCustomIcon(imageName, locationType = 'regular') {
-    const className = locationType === 'lastListener' ? 'marker-icon-last-listener' : '';
-    return L.icon({
-        iconUrl: `./images/${imageName}`,
+const iconCache = {};
+function createCustomIcon(locationType, locationCategory = 'regular') {
+    iconCache[locationType] = iconCache[locationType] || {};
+    if (iconCache[locationType][locationCategory]) {
+        return iconCache[locationType][locationCategory];
+    }
+
+    const className = locationCategory === 'lastListener' ? 'marker-icon-last-listener' : '';
+    const icon = L.icon({
+        iconUrl: `./images/${locationTypes[locationType]}`,
         iconSize: [32, 32],
         iconAnchor: [16, 32],
         popupAnchor: [0, -50],
         className: className
     });
-}
 
-// Load and display locations from data.json
-async function loadLocations() {
-    try {
-        const response = await fetch('./data.json');
-        const data = await response.json();
-        locations = data.locations || [];
-        hiddenLocations = data.hiddenLocations || [];
-        lastListenerLocations = data.lastListenerLocations || [];
-        caves = data.caves || [];
-        
-        refreshDisplay();
-    } catch (error) {
-        console.error('Error loading locations:', error);
-        document.getElementById('location-list').innerHTML = 
-            '<p style="color: red;">Error loading locations. Please check data.json file.</p>';
-    }
+    iconCache[locationType][locationCategory] = icon;
+
+    return icon;
 }
 
 // Setup search functionality
@@ -331,12 +316,12 @@ function refreshDisplay() {
 }
 
 // Add markers to the map
-function addMarkersToMap(locations, locationType = 'regular') {
+function addMarkersToMap(locations, locationCategory = 'regular') {
     locations.forEach(location => {
         const isVisible = getVisibilityState(location.id);
         
         const marker = L.marker([-location.latitude, location.longitude], {
-            icon: createCustomIcon(location.image, locationType)
+            icon: createCustomIcon(location.type, locationCategory)
         });
         
         // Add text label above marker
@@ -378,7 +363,6 @@ function addMarkersToMap(locations, locationType = 'regular') {
                 <h3>${location.name}</h3>
                 <p>${location.description}</p>
                 <p><strong>Coordinates:</strong> ${location.longitude} : ${location.latitude}</p>
-                ${location.image ? `<img src="${location.image}" alt="${location.name}" class="popup-image" onerror="this.style.display='none'">` : ''}
                 <p><small class="locid">(id: ${location.id})</small></p>
             </div>
         `;
@@ -459,9 +443,7 @@ function createLocationSection(title, locations, sectionId, isExpanded = true) {
     header.className = 'section-header';
     header.innerHTML = `
         <div class="section-header-content">
-            <button class="toggle-visibility category-toggle" id="category-toggle-${sectionId}" title="${categoryVisible ? 'Hide all in category' : 'Show all in category'}">
-                ${categoryVisible ? '👁️' : '👁️‍🗨️'}
-            </button>
+            <button class="toggle-visibility category-toggle" id="category-toggle-${sectionId}" title="${categoryVisible ? 'Hide all in category' : 'Show all in category'}"></button>
             <h3> ${title} <span class="section-count">(${locations.length})</span></h3>
         </div>
         <span class="section-toggle">${isExpanded ? '▼' : '▶'}</span>
@@ -517,9 +499,7 @@ function createLocationItem(location) {
     locationItem.innerHTML = `
         <div class="location-header">
             <h3>${location.name}</h3>
-            <button class="toggle-visibility" id="toggle-${location.id}" title="Toggle visibility">
-                ${isVisible ? '👁️' : '👁️‍🗨️'}
-            </button>
+            <button class="toggle-visibility" id="toggle-${location.id}" title="Toggle visibility"></button>
         </div>
         <!--<p>${location.description}</p>-->
         <!--<div class="coordinates">📍 ${location.latitude}, ${location.longitude}</div>-->
@@ -590,102 +570,6 @@ function highlightMarker(locationId) {
     }
 }
 
-// Settings popup functionality
-const settingsPopup = document.getElementById('settings-popup');
-const settingsButton = document.getElementById('settings-button');
-const closeSettingsButton = document.getElementById('close-settings');
-const clearDataButton = document.getElementById('clear-data-button');
-const showHiddenCheckbox = document.getElementById('show-hidden-locations');
-const showLastListenerCheckbox = document.getElementById('show-last-listener');
-const showCavesCheckbox = document.getElementById('show-caves');
-
-// Open settings popup
-settingsButton.addEventListener('click', () => {
-    settingsPopup.classList.add('active');
-    // Load current settings state
-    loadSettingsState();
-});
-
-// Close settings popup
-closeSettingsButton.addEventListener('click', () => {
-    settingsPopup.classList.remove('active');
-});
-
-// Close popup when clicking outside
-settingsPopup.addEventListener('click', (e) => {
-    if (e.target === settingsPopup) {
-        settingsPopup.classList.remove('active');
-    }
-});
-
-// Close popup with Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && settingsPopup.classList.contains('active')) {
-        settingsPopup.classList.remove('active');
-    }
-});
-
-// Clear local data
-clearDataButton.addEventListener('click', () => {
-    if (confirm('Are you sure you want to clear all local data? This will reset all visibility preferences.')) {
-        // Clear all marker visibility states for all location types
-        const allLocations = [...locations, ...hiddenLocations, ...lastListenerLocations, ...caves];
-        allLocations.forEach(location => {
-            localStorage.removeItem(`marker-visible-${location.id}`);
-        });
-        
-        // Clear category visibility states
-        localStorage.removeItem('category-visible-main-locations');
-        localStorage.removeItem('category-visible-hidden-locations');
-        localStorage.removeItem('category-visible-last-listener-locations');
-        localStorage.removeItem('category-visible-caves-locations');
-        
-        // Clear settings
-        localStorage.removeItem('show-hidden-locations');
-        localStorage.removeItem('show-last-listener');
-        localStorage.removeItem('show-caves');
-        
-        // Reload the page to reset everything
-        window.location.reload();
-    }
-});
-
-// Load settings state from localStorage
-function loadSettingsState() {
-    const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
-    const showLastListener = localStorage.getItem('show-last-listener') === 'true';
-    const showCaves = localStorage.getItem('show-caves') === 'true';
-    
-    showHiddenCheckbox.checked = showHidden;
-    showLastListenerCheckbox.checked = showLastListener;
-    showCavesCheckbox.checked = showCaves;
-}
-
-// Save settings state to localStorage
-function saveSettingsState() {
-    localStorage.setItem('show-hidden-locations', showHiddenCheckbox.checked);
-    localStorage.setItem('show-last-listener', showLastListenerCheckbox.checked);
-    localStorage.setItem('show-caves', showCavesCheckbox.checked);
-}
-
-// Handle show hidden locations toggle
-showHiddenCheckbox.addEventListener('change', () => {
-    saveSettingsState();
-    refreshDisplay();
-});
-
-// Handle show last listener locations toggle
-showLastListenerCheckbox.addEventListener('change', () => {
-    saveSettingsState();
-    refreshDisplay();
-});
-
-// Handle show caves toggle
-showCavesCheckbox.addEventListener('change', () => {
-    saveSettingsState();
-    refreshDisplay();
-});
-
 // Initialize the application
-loadLocations();
+refreshDisplay();
 setupSearch();
