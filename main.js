@@ -2,17 +2,8 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './styles.css';
 
-// Fix for default marker icons in Webpack/Vite
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
-
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconUrl: markerIcon,
-  iconRetinaUrl: markerIcon2x,
-  shadowUrl: markerShadow,
-});
+import locationData from './data/locations.json';
+import locationTypes from './data/types.json';
 
 // Initialize the map
 const map = L.map('map', {
@@ -86,13 +77,15 @@ new GridLayer({
 const markers = {};
 const markerLabels = {};
 const radarCircles = {};
-let locations = [];
-let hiddenLocations = [];
-let lastListenerLocations = [];
-let caves = [];
+
 let selectedMarkerId = null;
 let searchQuery = '';
 let searchAllText = false;
+
+const locations = locationData.locations;
+const hiddenLocations = locationData.hiddenLocations;
+const lastListenerLocations = locationData.lastListenerLocations;
+const caves = locationData.caves;
 
 // Load visibility state from localStorage
 function getVisibilityState(locationId) {
@@ -193,33 +186,26 @@ function updateToggleButton(locationId, visible) {
 }
 
 // Function to create custom icon for each location
-function createCustomIcon(imageName, locationType = 'regular') {
-    const className = locationType === 'lastListener' ? 'marker-icon-last-listener' : '';
-    return L.icon({
-        iconUrl: `./images/${imageName}`,
+const iconCache = {};
+function createCustomIcon(locationType, locationCategory = 'regular') {
+    iconCache[locationType] = iconCache[locationType] || {};
+    if (iconCache[locationType][locationCategory]) {
+        console.log('Using cached icon for', locationType, locationCategory);
+        return iconCache[locationType][locationCategory];
+    }
+
+    const className = locationCategory === 'lastListener' ? 'marker-icon-last-listener' : '';
+    const icon = L.icon({
+        iconUrl: `./images/${locationTypes[locationType]}`,
         iconSize: [32, 32],
         iconAnchor: [16, 32],
         popupAnchor: [0, -50],
         className: className
     });
-}
 
-// Load and display locations from data.json
-async function loadLocations() {
-    try {
-        const response = await fetch('./data.json');
-        const data = await response.json();
-        locations = data.locations || [];
-        hiddenLocations = data.hiddenLocations || [];
-        lastListenerLocations = data.lastListenerLocations || [];
-        caves = data.caves || [];
-        
-        refreshDisplay();
-    } catch (error) {
-        console.error('Error loading locations:', error);
-        document.getElementById('location-list').innerHTML = 
-            '<p style="color: red;">Error loading locations. Please check data.json file.</p>';
-    }
+    iconCache[locationType][locationCategory] = icon;
+
+    return icon;
 }
 
 // Setup search functionality
@@ -331,12 +317,12 @@ function refreshDisplay() {
 }
 
 // Add markers to the map
-function addMarkersToMap(locations, locationType = 'regular') {
+function addMarkersToMap(locations, locationCategory = 'regular') {
     locations.forEach(location => {
         const isVisible = getVisibilityState(location.id);
         
         const marker = L.marker([-location.latitude, location.longitude], {
-            icon: createCustomIcon(location.image, locationType)
+            icon: createCustomIcon(location.type, locationCategory)
         });
         
         // Add text label above marker
@@ -687,5 +673,5 @@ showCavesCheckbox.addEventListener('change', () => {
 });
 
 // Initialize the application
-loadLocations();
+refreshDisplay();
 setupSearch();
