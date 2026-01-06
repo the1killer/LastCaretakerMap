@@ -1,6 +1,6 @@
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import './styles.css';
+import './styles.scss';
 
 import './settings.js'
 
@@ -148,8 +148,7 @@ function toggleCategoryVisibility(categoryId, locations) {
 function updateCategoryToggleButton(categoryId, visible) {
     const button = document.getElementById(`category-toggle-${categoryId}`);
     if (button) {
-        button.textContent = visible ? '👁️' : '👁️‍🗨️';
-        button.style.opacity = visible ? '1' : '0.5';
+        button.dataset.visible = visible;
         button.title = visible ? 'Hide all in category' : 'Show all in category';
     }
 }
@@ -182,8 +181,7 @@ function toggleMarkerVisibility(locationId) {
 function updateToggleButton(locationId, visible) {
     const button = document.getElementById(`toggle-${locationId}`);
     if (button) {
-        button.textContent = visible ? '👁️' : '👁️‍🗨️';
-        button.style.opacity = visible ? '1' : '0.5';
+        button.dataset.visible = visible;
     }
 }
 
@@ -447,9 +445,7 @@ function createLocationSection(title, locations, sectionId, isExpanded = true) {
     header.className = 'section-header';
     header.innerHTML = `
         <div class="section-header-content">
-            <button class="toggle-visibility category-toggle" id="category-toggle-${sectionId}" title="${categoryVisible ? 'Hide all in category' : 'Show all in category'}">
-                ${categoryVisible ? '👁️' : '👁️‍🗨️'}
-            </button>
+            <button class="toggle-visibility category-toggle" id="category-toggle-${sectionId}" title="${categoryVisible ? 'Hide all in category' : 'Show all in category'}"></button>
             <h3> ${title} <span class="section-count">(${locations.length})</span></h3>
         </div>
         <span class="section-toggle">${isExpanded ? '▼' : '▶'}</span>
@@ -505,9 +501,7 @@ function createLocationItem(location) {
     locationItem.innerHTML = `
         <div class="location-header">
             <h3>${location.name}</h3>
-            <button class="toggle-visibility" id="toggle-${location.id}" title="Toggle visibility">
-                ${isVisible ? '👁️' : '👁️‍🗨️'}
-            </button>
+            <button class="toggle-visibility" id="toggle-${location.id}" title="Toggle visibility"></button>
         </div>
         <!--<p>${location.description}</p>-->
         <!--<div class="coordinates">📍 ${location.latitude}, ${location.longitude}</div>-->

@@ -624,3 +624,15 @@ header p {
         max-width: none;
     }
 }
+
+.toggle-visibility {
+    &::after {
+        content: '\01F441\FE0F';
+        opacity: 1;
+    }    
+
+    &[data-visible="false"]::after  {
+        content: '\01F441\FE0F\200D\01F5E8\FE0F';
+        opacity: 0.5;
+    }
+}

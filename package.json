@@ -13,5 +13,6 @@
   },
   "devDependencies": {
     "vite": "^5.0.0"
+    "sass-embedded": "^1.97.1",
   }
 }
