@@ -190,7 +190,6 @@ const iconCache = {};
 function createCustomIcon(locationType, locationCategory = 'regular') {
     iconCache[locationType] = iconCache[locationType] || {};
     if (iconCache[locationType][locationCategory]) {
-        console.log('Using cached icon for', locationType, locationCategory);
         return iconCache[locationType][locationCategory];
     }
 
