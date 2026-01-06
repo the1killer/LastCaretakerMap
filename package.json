@@ -12,7 +12,7 @@
     "leaflet": "^1.9.4"
   },
   "devDependencies": {
-    "vite": "^5.0.0"
     "sass-embedded": "^1.97.1",
+    "vite": "^7.2.4"
   }
 }
