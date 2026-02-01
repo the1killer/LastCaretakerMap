@@ -268,7 +268,7 @@ function filterLocations(locations) {
 }
 
 // Refresh the display based on current settings
-function refreshDisplay() {
+export function refreshDisplay() {
     // Clear existing markers
     Object.values(markers).forEach(marker => map.removeLayer(marker));
     Object.values(markerLabels).forEach(label => map.removeLayer(label));

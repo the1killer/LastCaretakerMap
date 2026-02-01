@@ -1,3 +1,5 @@
+import { refreshDisplay } from './main.js';
+
 // Settings popup functionality
 const settingsPopup = document.getElementById('settings-popup');
 const settingsButton = document.getElementById('settings-button');
