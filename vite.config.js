@@ -1,7 +1,19 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
+
+const insertVersion = () => ({
+  name: 'insert-version',
+  transformIndexHtml: {
+    order: 'pre',
+    handler (html) {
+      return html.replace('%VERSION%',
+        process.env.npm_package_version || 'dev'
+      )
+    }
+  }
+})
 
 export default defineConfig({
-  base: '',
+  plugins: [insertVersion()],
   server: {
     port: 3000,
     open: true
@@ -10,4 +22,4 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets'
   }
-});
+})

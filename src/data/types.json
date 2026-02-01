@@ -1,0 +1,14 @@
+{
+	"Hanger": "Indicator_Bunker.png",
+	"Cave": "Indicator_Cave.png",
+	"Habitat": "Indicator_CrateStack.png",
+	"RefuelOutpost": "Indicator_GasPump.png",
+	"SeedVault": "Indicator_GrowRoom.png",
+	"NDNS": "Indicator_GrowthContainer.png",
+	"OilRig": "Indicator_OilRig.png",
+	"NavBeacon": "Indicator_Radio.png",
+	"Rocket": "Indicator_Rocket.png",
+	"Ruin": "Indicator_Ruin.png",
+	"Lazarus": "Indicator_Scanner.png",
+	"HeliosReserve": "Indicator_SolarPanel.png"
+}
