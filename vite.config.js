@@ -13,6 +13,7 @@ const insertVersion = () => ({
 })
 
 export default defineConfig({
+  base: './',
   plugins: [insertVersion()],
   server: {
     port: 3000,
