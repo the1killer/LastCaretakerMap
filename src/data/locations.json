@@ -42,7 +42,7 @@
             "name": "Norfolk Grave",
             "id": "4",
             "description": "Norfolk Grave is an underwater ruin.",
-            "longitude": 58,
+            "longitude": 60,
             "latitude": -41,
             "type": "Ruin",
             "gameid": "NorfolkGrave"
@@ -232,7 +232,7 @@
             "name": "Dover Grave",
             "id": "24",
             "description": "Dover Grave is an underwater ruin.",
-            "longitude": 135,
+            "longitude": 137,
             "latitude": 35,
             "type": "Ruin",
             "gameid": "DoverGrave"
@@ -241,7 +241,7 @@
             "name": "Refuel Outpost Delta",
             "id": "25",
             "description": "Refuel Outpost Delta is a fuel depot.",
-            "longitude": 91,
+            "longitude": 93,
             "latitude": 39,
             "type": "RefuelOutpost",
             "underwaterLoot": true,
@@ -262,7 +262,7 @@
             "name": "Helios Reserve Gemini",
             "id": "27",
             "description": "Helios Reserve Gemini is a power platform.",
-            "longitude": 60,
+            "longitude": 61,
             "latitude": -26,
             "type": "HeliosReserve",
             "gameid": "HeliosReserveC"
@@ -280,7 +280,7 @@
             "name": "Brighton Grave",
             "id": "29",
             "description": "Brighton Grave is an underwater ruin.",
-            "longitude": 57,
+            "longitude": 58,
             "latitude": -14,
             "type": "Ruin",
             "gameid": "BrightonGrave"
@@ -572,7 +572,7 @@
             "name": "Seed Reserve 07",
             "id": "l3",
             "description": "Seed Reserve 07 is an underwater seed reserve.",
-            "longitude": 110,
+            "longitude": 111,
             "latitude": 53,
             "type": "SeedVault",
             "gameid": "SeedReserve_07"
@@ -590,7 +590,7 @@
             "name": "Seed Reserve 09",
             "id": "l9",
             "description": "Seed Reserve 09 is an underwater seed reserve.",
-            "longitude": 14,
+            "longitude": 16,
             "latitude": 15,
             "type": "SeedVault",
             "gameid": "SeedReserve_09"
@@ -635,7 +635,7 @@
             "name": "Seed Reserve 14",
             "id": "l8",
             "description": "Seed Reserve 14 is an underwater seed reserve.",
-            "longitude": 39,
+            "longitude": 40,
             "latitude": 17,
             "type": "SeedVault",
             "gameid": "SeedReserve_14"
@@ -700,7 +700,7 @@
             "name": "South Echo",
             "id": "c4",
             "description": "South Echo is a cave. Entrance at 94m depth. Max depth 94m",
-            "longitude": 73,
+            "longitude": 75,
             "latitude": 38,
             "type": "Cave",
             "gameid": "Cave05-74,38"
