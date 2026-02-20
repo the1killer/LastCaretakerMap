@@ -6,8 +6,10 @@
 	"SeedVault": "Indicator_GrowRoom.png",
 	"NDNS": "Indicator_GrowthContainer.png",
 	"OilRig": "Indicator_OilRig.png",
+	"Maze": "Indicator_Maze.png",
 	"NavBeacon": "Indicator_Radio.png",
 	"Rocket": "Indicator_Rocket.png",
+	"RockySpire": "Indicator_Rocky.png",
 	"Ruin": "Indicator_Ruin.png",
 	"Lazarus": "Indicator_Scanner.png",
 	"HeliosReserve": "Indicator_SolarPanel.png"
