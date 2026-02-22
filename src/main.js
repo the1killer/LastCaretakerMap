@@ -319,9 +319,26 @@ export function refreshDisplay() {
 function addMarkersToMap(locations, locationCategory = 'regular') {
     locations.forEach(location => {
         const isVisible = getVisibilityState(location.id);
+        const showPrimaryNumbers = localStorage.getItem('show-primary-numbers') === 'true';
+        const primaryNumber = location.primaryNumber || location.primaryNumbers;
+        const useNumberIcon = showPrimaryNumbers && primaryNumber;
+        const markerIcon = useNumberIcon
+            ? L.divIcon({
+                className: 'number-marker-icon',
+                html: `
+                    <div class="number-marker">
+                        <img src="./images/${locationTypes[location.type]}" alt="${location.name}">
+                        <span class="number-marker-number">${primaryNumber}</span>
+                    </div>
+                `,
+                iconSize: [32, 32],
+                iconAnchor: [16, 32],
+                popupAnchor: [0, -50]
+            })
+            : createCustomIcon(location.type, locationCategory);
         
         const marker = L.marker([-location.latitude, location.longitude], {
-            icon: createCustomIcon(location.type, locationCategory)
+            icon: markerIcon
         });
         
         // Add text label above marker

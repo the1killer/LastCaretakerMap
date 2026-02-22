@@ -8,6 +8,7 @@ const clearDataButton = document.getElementById('clear-data-button');
 const showHiddenCheckbox = document.getElementById('show-hidden-locations');
 const showLastListenerCheckbox = document.getElementById('show-last-listener');
 const showCavesCheckbox = document.getElementById('show-caves');
+const showPrimaryNumbersCheckbox = document.getElementById('show-primary-numbers');
 
 // Open settings popup
 settingsButton.addEventListener('click', () => {
@@ -54,6 +55,7 @@ clearDataButton.addEventListener('click', () => {
         localStorage.removeItem('show-hidden-locations');
         localStorage.removeItem('show-last-listener');
         localStorage.removeItem('show-caves');
+        localStorage.removeItem('show-primary-numbers');
         
         // Reload the page to reset everything
         window.location.reload();
@@ -65,10 +67,12 @@ function loadSettingsState() {
     const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
     const showLastListener = localStorage.getItem('show-last-listener') === 'true';
     const showCaves = localStorage.getItem('show-caves') === 'true';
+    const showPrimaryNumbers = localStorage.getItem('show-primary-numbers') === 'true';
     
     showHiddenCheckbox.checked = showHidden;
     showLastListenerCheckbox.checked = showLastListener;
     showCavesCheckbox.checked = showCaves;
+    showPrimaryNumbersCheckbox.checked = showPrimaryNumbers;
 }
 
 // Save settings state to localStorage
@@ -76,6 +80,7 @@ function saveSettingsState() {
     localStorage.setItem('show-hidden-locations', showHiddenCheckbox.checked);
     localStorage.setItem('show-last-listener', showLastListenerCheckbox.checked);
     localStorage.setItem('show-caves', showCavesCheckbox.checked);
+    localStorage.setItem('show-primary-numbers', showPrimaryNumbersCheckbox.checked);
 }
 
 // Handle show hidden locations toggle
@@ -92,6 +97,12 @@ showLastListenerCheckbox.addEventListener('change', () => {
 
 // Handle show caves toggle
 showCavesCheckbox.addEventListener('change', () => {
+    saveSettingsState();
+    refreshDisplay();
+});
+
+// Handle display primary numbers toggle
+showPrimaryNumbersCheckbox.addEventListener('change', () => {
     saveSettingsState();
     refreshDisplay();
 });
