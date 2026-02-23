@@ -2,7 +2,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './styles.scss';
 
-import './settings.js'
+import { getMarkerColor } from './settings.js'
 
 import locationData from './data/locations.json';
 import locationTypes from './data/types.json';
@@ -187,22 +187,29 @@ function updateToggleButton(locationId, visible) {
 
 // Function to create custom icon for each location
 const iconCache = {};
+function clearIconCache() {
+    Object.keys(iconCache).forEach(key => delete iconCache[key]);
+}
 function createCustomIcon(locationType, locationCategory = 'regular') {
+    const color = getMarkerColor(locationType);
+    const cacheKey = `${locationCategory}_${color}`;
     iconCache[locationType] = iconCache[locationType] || {};
-    if (iconCache[locationType][locationCategory]) {
-        return iconCache[locationType][locationCategory];
+    if (iconCache[locationType][cacheKey]) {
+        return iconCache[locationType][cacheKey];
     }
 
-    const className = locationCategory === 'lastListener' ? 'marker-icon-last-listener' : '';
-    const icon = L.icon({
-        iconUrl: `./images/${locationTypes[locationType]}`,
+    const extraClass = locationCategory === 'lastListener' ? ' marker-icon-last-listener' : '';
+    const isBlack = color.toLowerCase() === '#000000' || color.toLowerCase() === 'black';
+    const outlineClass = isBlack ? ' no-outline' : '';
+    const icon = L.divIcon({
+        className: `colored-marker-icon${extraClass}${outlineClass}`,
+        html: `<div class="marker-icon-inner" style="background-color: ${color}; -webkit-mask-image: url('./images/${locationTypes[locationType]}'); mask-image: url('./images/${locationTypes[locationType]}');"></div>`,
         iconSize: [32, 32],
         iconAnchor: [16, 32],
-        popupAnchor: [0, -50],
-        className: className
+        popupAnchor: [0, -50]
     });
 
-    iconCache[locationType][locationCategory] = icon;
+    iconCache[locationType][cacheKey] = icon;
 
     return icon;
 }
@@ -278,6 +285,7 @@ export function refreshDisplay() {
     Object.keys(markers).forEach(key => delete markers[key]);
     Object.keys(markerLabels).forEach(key => delete markerLabels[key]);
     Object.keys(radarCircles).forEach(key => delete radarCircles[key]);
+    clearIconCache();
     
     // Get current settings
     const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
@@ -322,12 +330,13 @@ function addMarkersToMap(locations, locationCategory = 'regular') {
         const showPrimaryNumbers = localStorage.getItem('show-primary-numbers') === 'true';
         const primaryNumber = location.primaryNumber || location.primaryNumbers;
         const useNumberIcon = showPrimaryNumbers && primaryNumber;
+        const iconColor = getMarkerColor(location.type);
         const markerIcon = useNumberIcon
             ? L.divIcon({
                 className: 'number-marker-icon',
                 html: `
                     <div class="number-marker">
-                        <img src="./images/${locationTypes[location.type]}" alt="${location.name}">
+                        <div class="marker-icon-inner" style="background-color: ${iconColor}; -webkit-mask-image: url('./images/${locationTypes[location.type]}'); mask-image: url('./images/${locationTypes[location.type]}');"></div>
                         <span class="number-marker-number">${primaryNumber}</span>
                     </div>
                 `,
@@ -342,9 +351,11 @@ function addMarkersToMap(locations, locationCategory = 'regular') {
         });
         
         // Add text label above marker
+        const labelColor = getMarkerColor(location.type);
+        const noShadow = labelColor.toLowerCase() === '#000000' || labelColor.toLowerCase() === 'black' ? ' no-shadow' : '';
         const labelIcon = L.divIcon({
             className: 'marker-label',
-            html: `<div class="marker-label-text">${location.name}</div>`,
+            html: `<div class="marker-label-text${noShadow}" style="color: ${labelColor}">${location.name}</div>`,
             iconSize: [200, 30],
             iconAnchor: [100, 60]
         });

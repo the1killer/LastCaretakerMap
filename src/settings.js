@@ -1,5 +1,48 @@
 import { refreshDisplay } from './main.js';
 
+// Default marker colors per type
+const defaultMarkerColors = {
+    Hanger: '#ffffff',
+    NavBeacon: '#ffffff',
+    Rocket: '#ffffff',
+    RefuelOutpost: '#aa232f',
+    HeliosReserve: '#AB5024',
+    Habitat: '#1C86E6',
+    RockySpire: '#A67E3D',
+    Maze: '#A67E3D',
+    Ruin: '#000000',
+    NDNS: '#555555',
+    Cave: '#8A1CE6',
+    SeedVault: '#1CE2E6',
+    Lazarus: '#ffffff',
+    OilRig: '#ffffff'
+};
+
+// Friendly display names for types
+const typeDisplayNames = {
+    Hanger: 'Hangars',
+    NavBeacon: 'Nav Beacons',
+    Rocket: 'Rocket',
+    RefuelOutpost: 'Fuel',
+    HeliosReserve: 'Solar',
+    Habitat: 'Habitat',
+    RockySpire: 'Rockyspire',
+    Maze: 'Maze',
+    Ruin: 'Ruin',
+    NDNS: 'NDNS',
+    Cave: 'Cave',
+    SeedVault: 'Seed Vault',
+    Lazarus: 'Lazarus',
+    OilRig: 'Oil Rig'
+};
+
+// Get the marker color for a given type, checking user overrides first
+export function getMarkerColor(type) {
+    const userColor = localStorage.getItem(`marker-color-${type}`);
+    if (userColor) return userColor;
+    return defaultMarkerColors[type] || '#ffffff';
+}
+
 // Settings popup functionality
 const settingsPopup = document.getElementById('settings-popup');
 const settingsButton = document.getElementById('settings-button');
@@ -57,6 +100,11 @@ clearDataButton.addEventListener('click', () => {
         localStorage.removeItem('show-caves');
         localStorage.removeItem('show-primary-numbers');
         
+        // Clear marker color settings
+        Object.keys(defaultMarkerColors).forEach(type => {
+            localStorage.removeItem(`marker-color-${type}`);
+        });
+        
         // Reload the page to reset everything
         window.location.reload();
     }
@@ -73,6 +121,9 @@ function loadSettingsState() {
     showLastListenerCheckbox.checked = showLastListener;
     showCavesCheckbox.checked = showCaves;
     showPrimaryNumbersCheckbox.checked = showPrimaryNumbers;
+
+    // Populate marker color pickers
+    populateColorSettings();
 }
 
 // Save settings state to localStorage
@@ -106,3 +157,51 @@ showPrimaryNumbersCheckbox.addEventListener('change', () => {
     saveSettingsState();
     refreshDisplay();
 });
+
+// Populate marker color settings grid
+function populateColorSettings() {
+    const container = document.getElementById('marker-color-settings');
+    if (!container) return;
+    container.innerHTML = '';
+
+    Object.keys(defaultMarkerColors).forEach(type => {
+        const currentColor = getMarkerColor(type);
+        const row = document.createElement('div');
+        row.className = 'color-setting-row';
+        row.innerHTML = `
+            <label for="color-${type}">${typeDisplayNames[type] || type}</label>
+            <input type="color" id="color-${type}" value="${currentColor}" data-type="${type}">
+        `;
+        container.appendChild(row);
+
+        const input = row.querySelector(`#color-${type}`);
+        input.addEventListener('input', (e) => {
+            localStorage.setItem(`marker-color-${type}`, e.target.value);
+            refreshDisplay();
+        });
+    });
+}
+
+// Reset colors to defaults
+const resetColorsButton = document.getElementById('reset-colors-button');
+if (resetColorsButton) {
+    resetColorsButton.addEventListener('click', () => {
+        Object.keys(defaultMarkerColors).forEach(type => {
+            localStorage.removeItem(`marker-color-${type}`);
+        });
+        populateColorSettings();
+        refreshDisplay();
+    });
+}
+
+// Set all colors to white
+const allWhiteButton = document.getElementById('all-white-button');
+if (allWhiteButton) {
+    allWhiteButton.addEventListener('click', () => {
+        Object.keys(defaultMarkerColors).forEach(type => {
+            localStorage.setItem(`marker-color-${type}`, '#ffffff');
+        });
+        populateColorSettings();
+        refreshDisplay();
+    });
+}

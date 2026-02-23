@@ -414,7 +414,8 @@ header p {
     justify-content: center;
 }
 
-.number-marker img {
+.number-marker img,
+.number-marker .marker-icon-inner {
     width: 100%;
     height: 100%;
     display: block;
@@ -431,6 +432,29 @@ header p {
     background: rgba(155, 155, 155, 0.75);
     line-height: 0.85;
     
+}
+
+/* Colored marker icon styles */
+.colored-marker-icon {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    filter: drop-shadow(1px 0 0 #000) drop-shadow(-1px 0 0 #000) drop-shadow(0 1px 0 #000) drop-shadow(0 -1px 0 #000);
+
+    &.no-outline {
+        filter: none;
+    }
+}
+
+.marker-icon-inner {
+    width: 32px;
+    height: 32px;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
 }
 
 /* Marker label styles */
@@ -452,7 +476,13 @@ header p {
     font-weight: bold;
     white-space: nowrap;
     text-align: center;
+    letter-spacing: 1px;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 4px rgba(255, 255, 255, 0.9);
     /* border: 1px solid #333; */
+
+    &.no-shadow {
+        text-shadow: none;
+    }
 }
 
 /* Custom marker popup styles */
@@ -510,6 +540,8 @@ header p {
     border-radius: 12px;
     width: 90%;
     max-width: 500px;
+    max-height: 85vh;
+    overflow-y: auto;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     animation: slideIn 0.3s ease;
 }
@@ -632,6 +664,78 @@ header p {
 .help-link:hover {
     background: #00C666;
     color: #000000;
+}
+
+/* Marker color settings */
+.color-section-title {
+    color: #ffffff;
+    margin: 0 0 4px 0;
+    font-size: 1.1em;
+}
+
+.marker-color-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    margin-bottom: 12px;
+}
+
+.color-setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    label {
+        color: #ccc;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    input[type="color"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 32px;
+        height: 24px;
+        border: 1px solid #555;
+        border-radius: 4px;
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+        flex-shrink: 0;
+
+        &::-webkit-color-swatch-wrapper {
+            padding: 2px;
+        }
+
+        &::-webkit-color-swatch {
+            border: none;
+            border-radius: 2px;
+        }
+
+        &::-moz-color-swatch {
+            border: none;
+            border-radius: 2px;
+        }
+    }
+}
+
+.color-buttons-row {
+    display: flex;
+    gap: 8px;
+}
+
+.reset-colors-button {
+    background: #444 !important;
+    border-color: #555 !important;
+    font-size: 12px !important;
+    padding: 6px 12px !important;
+    flex: 1;
+
+    &:hover {
+        background: #555 !important;
+        border-color: #666 !important;
+    }
 }
 
 .locid {
