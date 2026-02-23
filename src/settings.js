@@ -112,9 +112,9 @@ clearDataButton.addEventListener('click', () => {
 
 // Load settings state from localStorage
 function loadSettingsState() {
-    const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
-    const showLastListener = localStorage.getItem('show-last-listener') === 'true';
-    const showCaves = localStorage.getItem('show-caves') === 'true';
+    const showHidden = localStorage.getItem('show-hidden-locations') !== 'false';
+    const showLastListener = localStorage.getItem('show-last-listener') !== 'false';
+    const showCaves = localStorage.getItem('show-caves') !== 'false';
     const showPrimaryNumbers = localStorage.getItem('show-primary-numbers') === 'true';
     
     showHiddenCheckbox.checked = showHidden;

@@ -288,9 +288,9 @@ export function refreshDisplay() {
     clearIconCache();
     
     // Get current settings
-    const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
-    const showLastListener = localStorage.getItem('show-last-listener') === 'true';
-    const showCaves = localStorage.getItem('show-caves') === 'true';
+    const showHidden = localStorage.getItem('show-hidden-locations') !== 'false';
+    const showLastListener = localStorage.getItem('show-last-listener') !== 'false';
+    const showCaves = localStorage.getItem('show-caves') !== 'false';
     
     // Display sections based on settings
     displayLocationSections();
@@ -420,9 +420,9 @@ function displayLocationSections() {
     locationList.innerHTML = '';
     
     // Get current settings
-    const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
-    const showLastListener = localStorage.getItem('show-last-listener') === 'true';
-    const showCaves = localStorage.getItem('show-caves') === 'true';
+    const showHidden = localStorage.getItem('show-hidden-locations') !== 'false';
+    const showLastListener = localStorage.getItem('show-last-listener') !== 'false';
+    const showCaves = localStorage.getItem('show-caves') !== 'false';
     
     // Filter locations based on search query
     const filteredLocations = filterLocations(locations);
