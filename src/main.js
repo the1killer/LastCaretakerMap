@@ -386,10 +386,14 @@ function addMarkersToMap(locations, locationCategory = 'regular') {
         }
         
         // Create popup content
+        const primaryNum = location.primaryNumber || location.primaryNumbers;
+        const secondaryNum = location.secondaryNumber || location.secondaryNumbers;
         const popupContent = `
             <div class="popup-content">
                 <h3>${location.name}</h3>
                 <p>${location.description}</p>
+                ${primaryNum ? `<p><strong>Primary #:</strong> ${primaryNum}</p>` : ''}
+                ${secondaryNum ? `<p><strong>Secondary #:</strong> ${secondaryNum}</p>` : ''}
                 <p><strong>Coordinates:</strong> ${location.longitude} : ${location.latitude}</p>
                 <p><small class="locid">(id: ${location.id})</small></p>
             </div>
