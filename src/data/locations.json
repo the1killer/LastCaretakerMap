@@ -85,9 +85,9 @@
             "gameid": "RefuelOutpostA"
         },
         {
-            "name": "Dark Vein Station",
+            "name": "Black Vein Station",
             "id": "9",
-            "description": "Dark Vein Station is an oil rig that can mine infinite oil.",
+            "description": "Black Vein Station is an oil rig that can mine infinite oil.",
             "longitude": 49,
             "latitude": -70,
             "type": "OilRig",
@@ -182,9 +182,9 @@
             "gameid": "RefuelOutpostC"
         },
         {
-            "name": "Habitat Node 05 X",
+            "name": "Habitat Node 05-14.5",
             "id": "19",
-            "description": "Habitat Node 05 X is a habitat platform.",
+            "description": "Habitat Node 05-14.5 is a habitat platform.",
             "longitude": 91,
             "latitude": -57,
             "type": "Habitat",
