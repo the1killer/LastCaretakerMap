@@ -82,6 +82,7 @@
             "longitude": 47,
             "latitude": -7,
             "type": "RefuelOutpost",
+            "primaryNumbers": "19",
             "gameid": "RefuelOutpostA"
         },
         {
