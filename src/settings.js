@@ -1,4 +1,10 @@
-import { refreshDisplay } from './main.js';
+import {
+    refreshDisplay,
+    locations,
+    hiddenLocations,
+    lastListenerLocations,
+    caves
+} from './main.js';
 
 // Default marker colors per type
 const defaultMarkerColors = {
@@ -15,7 +21,10 @@ const defaultMarkerColors = {
     Cave: '#8A1CE6',
     SeedVault: '#1CE2E6',
     Lazarus: '#ffffff',
-    OilRig: '#ffffff'
+    OilRig: '#ffffff',
+    SharkBay: '#E61CE6',
+    StarChild: '#E61CE6',
+    RollerFactory: '#E61CE6'
 };
 
 // Friendly display names for types

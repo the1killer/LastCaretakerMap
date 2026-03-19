@@ -415,6 +415,33 @@
             "type": "NDNS",
             "primaryNumbers": "9",
             "gameid": "GrowthContainer09"
+        },
+        {
+            "name": "Transposium",
+            "id": "h17",
+            "description": "Transposium is a maze puzzle location.",
+            "longitude": 112,
+            "latitude": 22,
+            "type": "Maze",
+            "gameid": "Maze1"
+        },
+        {
+            "name": "Platform Omega",
+            "id": "43",
+            "description": "Platform Omega is a shark nursery bay.",
+            "longitude": 90,
+            "latitude": 6,
+            "type": "SharkBay",
+            "gameid": "Platform_Omega"
+        }, 
+        {
+            "name": "Talon Offshore Proving Deck",
+            "id": "44",
+            "description": "Talon Offshore Proving Deck is Roller Boi Factory.",
+            "longitude": 97,
+            "latitude": 58,
+            "type": "RollerFactory",
+            "gameid": "Proving_Deck"
         }
     ],
     "hiddenLocations": [
@@ -569,13 +596,22 @@
             "gameid": "QuarantineStackDawn"
         },
         {
-            "name": "Transposium",
-            "id": "h17",
-            "description": "Transposium is a maze puzzle location.",
-            "longitude": 112,
-            "latitude": 22,
-            "type": "Maze",
-            "gameid": "Maze1"
+            "name": "Statue Rocky Spire",
+            "id": "h18",
+            "description": "Statue on top of a very tall rocky spire.",
+            "longitude": 183,
+            "latitude": -38,
+            "type": "RockySpire",
+            "gameid": "StatueRockySpire"
+        },
+        {
+            "name": "Courier Sieve Node Facility",
+            "id": "h20",
+            "description": "Courier Sieve Node Facility is a location for Star Child.",
+            "longitude": 169,
+            "latitude": -2,
+            "type": "StarChild",
+            "gameid": "StarChildA"
         }
     ],
     "lastListenerLocations": [

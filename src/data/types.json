@@ -12,5 +12,8 @@
 	"RockySpire": "Indicator_Rocky.png",
 	"Ruin": "Indicator_Ruin.png",
 	"Lazarus": "Indicator_Scanner.png",
-	"HeliosReserve": "Indicator_SolarPanel.png"
+	"HeliosReserve": "Indicator_SolarPanel.png",
+	"StarChild": "Indicator_StarChild.png",
+	"RollerFactory": "Indicator_RollerBoiFactory.png",
+	"SharkBay": "Indicator_SharkBay.png"
 }

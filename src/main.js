@@ -84,10 +84,10 @@ let selectedMarkerId = null;
 let searchQuery = '';
 let searchAllText = false;
 
-const locations = locationData.locations;
-const hiddenLocations = locationData.hiddenLocations;
-const lastListenerLocations = locationData.lastListenerLocations;
-const caves = locationData.caves;
+export const locations = locationData.locations;
+export const hiddenLocations = locationData.hiddenLocations;
+export const lastListenerLocations = locationData.lastListenerLocations;
+export const caves = locationData.caves;
 
 // Load visibility state from localStorage
 function getVisibilityState(locationId) {
