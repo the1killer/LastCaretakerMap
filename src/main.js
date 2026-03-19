@@ -545,7 +545,7 @@ function createLocationItem(location) {
         }
         const marker = markers[location.id];
         if (marker && getVisibilityState(location.id)) {
-            map.setView([-location.latitude, location.longitude], 6);
+            map.setView([-location.latitude, location.longitude]);
             marker.openPopup();
             highlightLocation(location.id);
             highlightMarker(location.id);
