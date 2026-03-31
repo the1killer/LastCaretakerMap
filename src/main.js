@@ -395,7 +395,7 @@ function addMarkersToMap(locations, locationCategory = 'regular') {
                 ${primaryNum ? `<p><strong>Primary #:</strong> ${primaryNum}</p>` : ''}
                 ${secondaryNum ? `<p><strong>Secondary #:</strong> ${secondaryNum}</p>` : ''}
                 <p><strong>Coordinates:</strong> ${location.longitude} : ${location.latitude}</p>
-                <p><small class="locid">(id: ${location.id})</small></p>
+                <p><small class="locid">(id: ${location.id})&nbsp;&nbsp;(gameid: ${location.gameid})</small></p>
             </div>
         `;
         
