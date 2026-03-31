@@ -98,7 +98,46 @@ function getVisibilityState(locationId) {
 // Save visibility state to localStorage
 function setVisibilityState(locationId, visible) {
     localStorage.setItem(`marker-visible-${locationId}`, visible);
+
 }
+
+// --- Visit state (not-visited / visited / cleared) ---
+const VISIT_STATES = ['not-visited', 'visited', 'cleared'];
+const VISIT_ICONS  = { 'not-visited': '☐', 'visited': '✔', 'cleared': '✔' }; //✅
+const VISIT_LABELS = { 'not-visited': 'Not Visited', 'visited': 'Visited', 'cleared': 'Cleared' };
+
+function getVisitState(locationId) {
+    return localStorage.getItem(`location-visit-${locationId}`) || 'not-visited';
+}
+
+function setVisitState(locationId, state) {
+    localStorage.setItem(`location-visit-${locationId}`, state);
+}
+
+function cycleVisitState(locationId) {
+    const current = getVisitState(locationId);
+    const next = VISIT_STATES[(VISIT_STATES.indexOf(current) + 1) % VISIT_STATES.length];
+    setVisitState(locationId, next);
+    return next;
+}
+
+// Update the visit overlay badge on a map marker's icon element
+function updateMarkerVisitOverlay(locationId, state) {
+    const marker = markers[locationId];
+    if (!marker) return;
+    const el = marker.getElement();
+    if (!el) return;
+    const overlay = el.querySelector('.visit-overlay');
+    if (overlay) overlay.dataset.state = state;
+}
+
+// Apply/remove the hide-visit-overlays class from the map container
+export function applyVisitOverlayVisibility() {
+    const show = localStorage.getItem('show-visit-overlays') !== 'false';
+    document.getElementById('map').classList.toggle('hide-visit-overlays', !show);
+}
+
+// --- End visit state ---
 
 // Get category visibility state from localStorage
 function getCategoryVisibilityState(categoryId) {
@@ -203,7 +242,7 @@ function createCustomIcon(locationType, locationCategory = 'regular') {
     const outlineClass = isBlack ? ' no-outline' : '';
     const icon = L.divIcon({
         className: `colored-marker-icon${extraClass}${outlineClass}`,
-        html: `<div class="marker-icon-inner" style="background-color: ${color}; -webkit-mask-image: url('./images/${locationTypes[locationType]}'); mask-image: url('./images/${locationTypes[locationType]}');"></div>`,
+        html: `<div class="marker-icon-inner" style="background-color: ${color}; -webkit-mask-image: url('./images/${locationTypes[locationType]}'); mask-image: url('./images/${locationTypes[locationType]}');"></div><div class="visit-overlay" data-state="not-visited"></div>`,
         iconSize: [32, 32],
         iconAnchor: [16, 32],
         popupAnchor: [0, -50]
@@ -310,6 +349,9 @@ export function refreshDisplay() {
         addMarkersToMap(caves, 'caves');
     }
     
+    // Apply visit overlay visibility setting
+    applyVisitOverlayVisibility();
+
     // Fit map to show all visible markers
     const visibleLocations = [locations];
     if (showHidden) visibleLocations.push(hiddenLocations);
@@ -338,6 +380,7 @@ function addMarkersToMap(locations, locationCategory = 'regular') {
                     <div class="number-marker">
                         <div class="marker-icon-inner" style="background-color: ${iconColor}; -webkit-mask-image: url('./images/${locationTypes[location.type]}'); mask-image: url('./images/${locationTypes[location.type]}');"></div>
                         <span class="number-marker-number">${primaryNumber}</span>
+                        <div class="visit-overlay" data-state="not-visited"></div>
                     </div>
                 `,
                 iconSize: [32, 32],
@@ -378,6 +421,14 @@ function addMarkersToMap(locations, locationCategory = 'regular') {
             });
         }
         
+        // Update visit overlay whenever the marker element is added to the DOM
+        marker.on('add', () => {
+            const el = marker.getElement();
+            if (!el) return;
+            const overlay = el.querySelector('.visit-overlay');
+            if (overlay) overlay.dataset.state = getVisitState(location.id);
+        });
+
         // Only add to map if visible
         if (isVisible) {
             marker.addTo(map);
@@ -385,22 +436,41 @@ function addMarkersToMap(locations, locationCategory = 'regular') {
             if (radarCircle) radarCircle.addTo(map);
         }
         
-        // Create popup content
+        // Create popup content (generated dynamically so visit state is always fresh)
         const primaryNum = location.primaryNumber || location.primaryNumbers;
         const secondaryNum = location.secondaryNumber || location.secondaryNumbers;
-        const popupContent = `
-            <div class="popup-content">
-                <h3>${location.name}</h3>
-                <p>${location.description}</p>
-                ${primaryNum ? `<p><strong>Primary #:</strong> ${primaryNum}</p>` : ''}
-                ${secondaryNum ? `<p><strong>Secondary #:</strong> ${secondaryNum}</p>` : ''}
-                <p><strong>Coordinates:</strong> ${location.longitude} : ${location.latitude}</p>
-                <p><small class="locid">(id: ${location.id})&nbsp;&nbsp;(gameid: ${location.gameid})</small></p>
-            </div>
-        `;
-        
-        marker.bindPopup(popupContent);
-        
+        marker.bindPopup(() => {
+            const state = getVisitState(location.id);
+            return `
+                <div class="popup-content">
+                    <h3>${location.name}</h3>
+                    <p>${location.description}</p>
+                    ${primaryNum ? `<p><strong>Primary #:</strong> ${primaryNum}</p>` : ''}
+                    ${secondaryNum ? `<p><strong>Secondary #:</strong> ${secondaryNum}</p>` : ''}
+                    <p><strong>Coordinates:</strong> ${location.longitude} : ${location.latitude}</p>
+                    <button class="visit-status-btn" data-location-id="${location.id}" data-state="${state}">
+                        <span class="visit-icon">${VISIT_ICONS[state]}</span>
+                        <span class="visit-text">${VISIT_LABELS[state]}</span>
+                    </button>
+                    <p><small class="locid">(id: ${location.id})&nbsp;&nbsp;(gameid: ${location.gameid})</small></p>
+                </div>
+            `;
+        });
+
+        // Bind visit-status button click after popup opens
+        marker.on('popupopen', (e) => {
+            const btn = e.popup.getElement().querySelector('.visit-status-btn');
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    const newState = cycleVisitState(location.id);
+                    btn.dataset.state = newState;
+                    btn.querySelector('.visit-icon').textContent = VISIT_ICONS[newState];
+                    btn.querySelector('.visit-text').textContent = VISIT_LABELS[newState];
+                    updateMarkerVisitOverlay(location.id, newState);
+                });
+            }
+        });
+
         // Store marker, label, and radar circle references
         markers[location.id] = marker;
         markerLabels[location.id] = label;

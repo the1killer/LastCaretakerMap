@@ -396,7 +396,7 @@ header p {
 }
 
 /* Selected marker highlight */
-.marker-selected {
+.marker-selected .marker-icon-inner {
     filter: brightness(0) saturate(100%) invert(85%) sepia(79%) saturate(1475%) hue-rotate(359deg) brightness(104%) contrast(104%) !important;
 }
 
@@ -440,6 +440,7 @@ header p {
     border: none;
     box-shadow: none;
     filter: drop-shadow(1px 0 0 #000) drop-shadow(-1px 0 0 #000) drop-shadow(0 1px 0 #000) drop-shadow(0 -1px 0 #000);
+    position: relative;
 
     &.no-outline {
         filter: none;
@@ -455,6 +456,36 @@ header p {
     mask-repeat: no-repeat;
     -webkit-mask-position: center;
     mask-position: center;
+}
+
+/* Visit status overlay badge on map markers */
+.visit-overlay {
+    position: absolute;
+    bottom: -3px;
+    right: -6px;
+    width: 18px;
+    height: 18px;
+    display: none;
+    pointer-events: none;
+    z-index: 10;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &[data-state="visited"] {
+        display: block;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.5' fill='rgba(255,255,255,0.95)' stroke='%23888' stroke-width='1'/%3E%3Cpolyline points='3.5,8.5 6.5,11.5 12.5,4.5' fill='none' stroke='%23333' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+
+    &[data-state="cleared"] {
+        display: block;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.5' fill='%2300C666' stroke='%23009944' stroke-width='1'/%3E%3Cpolyline points='3.5,8.5 6.5,11.5 12.5,4.5' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+}
+
+/* Hide overlays when setting is off */
+.hide-visit-overlays .visit-overlay {
+    display: none !important;
 }
 
 /* Marker label styles */
@@ -500,6 +531,46 @@ header p {
     color: #000000;
     margin-bottom: 10px;
     font-size: 1.2em;
+}
+
+/* Visit status button inside popup */
+.visit-status-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    border: 2px solid #bbb;
+    background: #f0f0f0;
+    color: #555;
+
+    .visit-icon {
+        font-size: 15px;
+        line-height: 1;
+    }
+
+    &[data-state="visited"] {
+        border-color: #aaa;
+        background: #ffffff;
+        color: #333;
+    }
+
+    &[data-state="cleared"] {
+        border-color: #009944;
+        background: #00C666;
+        color: #000;
+    }
+
+    &:hover {
+        opacity: 0.82;
+        transform: none;
+    }
 }
 
 .popup-content p {

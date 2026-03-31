@@ -1,5 +1,6 @@
 import {
     refreshDisplay,
+    applyVisitOverlayVisibility,
     locations,
     hiddenLocations,
     lastListenerLocations,
@@ -61,6 +62,7 @@ const showHiddenCheckbox = document.getElementById('show-hidden-locations');
 const showLastListenerCheckbox = document.getElementById('show-last-listener');
 const showCavesCheckbox = document.getElementById('show-caves');
 const showPrimaryNumbersCheckbox = document.getElementById('show-primary-numbers');
+const showVisitOverlaysCheckbox = document.getElementById('show-visit-overlays');
 
 // Open settings popup
 settingsButton.addEventListener('click', () => {
@@ -108,6 +110,12 @@ clearDataButton.addEventListener('click', () => {
         localStorage.removeItem('show-last-listener');
         localStorage.removeItem('show-caves');
         localStorage.removeItem('show-primary-numbers');
+        localStorage.removeItem('show-visit-overlays');
+        
+        // Clear all visit states
+        allLocations.forEach(location => {
+            localStorage.removeItem(`location-visit-${location.id}`);
+        });
         
         // Clear marker color settings
         Object.keys(defaultMarkerColors).forEach(type => {
@@ -125,11 +133,13 @@ function loadSettingsState() {
     const showLastListener = localStorage.getItem('show-last-listener') !== 'false';
     const showCaves = localStorage.getItem('show-caves') !== 'false';
     const showPrimaryNumbers = localStorage.getItem('show-primary-numbers') === 'true';
+    const showVisitOverlays = localStorage.getItem('show-visit-overlays') !== 'false';
     
     showHiddenCheckbox.checked = showHidden;
     showLastListenerCheckbox.checked = showLastListener;
     showCavesCheckbox.checked = showCaves;
     showPrimaryNumbersCheckbox.checked = showPrimaryNumbers;
+    showVisitOverlaysCheckbox.checked = showVisitOverlays;
 
     // Populate marker color pickers
     populateColorSettings();
@@ -141,6 +151,7 @@ function saveSettingsState() {
     localStorage.setItem('show-last-listener', showLastListenerCheckbox.checked);
     localStorage.setItem('show-caves', showCavesCheckbox.checked);
     localStorage.setItem('show-primary-numbers', showPrimaryNumbersCheckbox.checked);
+    localStorage.setItem('show-visit-overlays', showVisitOverlaysCheckbox.checked);
 }
 
 // Handle show hidden locations toggle
@@ -165,6 +176,12 @@ showCavesCheckbox.addEventListener('change', () => {
 showPrimaryNumbersCheckbox.addEventListener('change', () => {
     saveSettingsState();
     refreshDisplay();
+});
+
+// Handle show visit overlays toggle (no full refresh needed, just apply CSS class)
+showVisitOverlaysCheckbox.addEventListener('change', () => {
+    saveSettingsState();
+    applyVisitOverlayVisibility();
 });
 
 // Populate marker color settings grid
