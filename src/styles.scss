@@ -334,6 +334,7 @@ header p {
     transition: all 0.3s ease;
     border: 2px solid #333;
     box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
+    position: relative;
 }
 
 .location-item:hover {
@@ -375,6 +376,32 @@ header p {
 .toggle-visibility:hover {
     background: #333;
     border-color: #666;
+}
+
+/* Visit status icon in sidebar rows */
+.sidebar-visit-icon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 16px;
+    height: 16px;
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+
+    &[data-state="visited"] {
+        opacity: 1;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.5' fill='rgba(255,255,255,0.95)' stroke='%23888' stroke-width='1'/%3E%3Cpolyline points='3.5,8.5 6.5,11.5 12.5,4.5' fill='none' stroke='%23333' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+
+    &[data-state="cleared"] {
+        opacity: 1;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7.5' fill='%2300C666' stroke='%23009944' stroke-width='1'/%3E%3Cpolyline points='3.5,8.5 6.5,11.5 12.5,4.5' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
 }
 
 .location-item p {

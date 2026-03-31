@@ -131,6 +131,12 @@ function updateMarkerVisitOverlay(locationId, state) {
     if (overlay) overlay.dataset.state = state;
 }
 
+// Update the visit icon in the sidebar row
+function updateSidebarVisitIcon(locationId, state) {
+    const icon = document.getElementById(`sidebar-visit-${locationId}`);
+    if (icon) icon.dataset.state = state;
+}
+
 // Apply/remove the hide-visit-overlays class from the map container
 export function applyVisitOverlayVisibility() {
     const show = localStorage.getItem('show-visit-overlays') !== 'false';
@@ -467,6 +473,7 @@ function addMarkersToMap(locations, locationCategory = 'regular') {
                     btn.querySelector('.visit-icon').textContent = VISIT_ICONS[newState];
                     btn.querySelector('.visit-text').textContent = VISIT_LABELS[newState];
                     updateMarkerVisitOverlay(location.id, newState);
+                    updateSidebarVisitIcon(location.id, newState);
                 });
             }
         });
@@ -597,8 +604,10 @@ function createLocationItem(location) {
     locationItem.id = `location-${location.id}`;
     
     const isVisible = getVisibilityState(location.id);
+    const visitState = getVisitState(location.id);
     
     locationItem.innerHTML = `
+        <span class="sidebar-visit-icon" id="sidebar-visit-${location.id}" data-state="${visitState}"></span>
         <div class="location-header">
             <h3>${location.name}</h3>
             <button class="toggle-visibility" id="toggle-${location.id}" title="Toggle visibility"></button>
