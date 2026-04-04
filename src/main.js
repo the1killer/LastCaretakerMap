@@ -37,9 +37,9 @@ new BackgroundLayer().addTo(map);
 
 // Add cloth map as a non-tiling image overlay with rotation
 // Define bounds to match the map's coordinate system (adjust as needed)
-let msz = 80; 
-let xmod = 50; // Offset to align the cloth map
-let ymod = 90;
+let msz = parseFloat(localStorage.getItem('cloth-map-msz')) || 80;
+let xmod = parseFloat(localStorage.getItem('cloth-map-xmod')) || 50; // Offset to align the cloth map
+let ymod = parseFloat(localStorage.getItem('cloth-map-ymod')) || 90;
 const YSZ_RATIO = 0.8056640625; // Vertical adjustment factor
 let clothMapBounds = [[-YSZ_RATIO*msz+xmod, -msz+ymod], 
                         [YSZ_RATIO*msz+xmod, msz+ymod]];
@@ -715,6 +715,7 @@ function highlightMarker(locationId) {
             icon.classList.add('marker-selected');
         }
     }
+    updateHash();
 }
 
 // Settings popup functionality
@@ -864,13 +865,21 @@ setupSearch();
 
     if (!xmodSlider || !ymodSlider) return;
 
+    // Restore saved values into slider elements
+    xmodSlider.value = xmod; xmodValue.textContent = xmod;
+    ymodSlider.value = ymod; ymodValue.textContent = ymod;
+
     const mszSlider = document.getElementById('msz-slider');
     const mszValue = document.getElementById('msz-value');
+    if (mszSlider) {
+        mszSlider.value = msz; mszValue.textContent = msz;
+    }
 
     if (mszSlider) {
         mszSlider.addEventListener('input', () => {
             msz = parseFloat(mszSlider.value);
             mszValue.textContent = msz;
+            localStorage.setItem('cloth-map-msz', msz);
             updateClothMapBounds();
         });
     }
@@ -878,12 +887,62 @@ setupSearch();
     xmodSlider.addEventListener('input', () => {
         xmod = parseFloat(xmodSlider.value);
         xmodValue.textContent = xmod;
+        localStorage.setItem('cloth-map-xmod', xmod);
         updateClothMapBounds();
     });
 
     ymodSlider.addEventListener('input', () => {
         ymod = parseFloat(ymodSlider.value);
         ymodValue.textContent = ymod;
+        localStorage.setItem('cloth-map-ymod', ymod);
         updateClothMapBounds();
     });
 })();
+
+// --- URL Hash state ---
+function updateHash() {
+    const center = map.getCenter();
+    const zoom = map.getZoom();
+    const lat = center.lat.toFixed(4);
+    const lng = center.lng.toFixed(4);
+    const markerPart = selectedMarkerId != null ? `/${selectedMarkerId}` : '';
+    history.replaceState(null, '', `#${lat}/${lng}/${zoom}${markerPart}`);
+}
+
+function parseHash() {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return null;
+    const parts = hash.split('/');
+    if (parts.length < 3) return null;
+    const lat = parseFloat(parts[0]);
+    const lng = parseFloat(parts[1]);
+    const zoom = parseFloat(parts[2]);
+    const markerId = parts[3] != null ? parts[3] : null;
+    if (isNaN(lat) || isNaN(lng) || isNaN(zoom)) return null;
+    return { lat, lng, zoom, markerId };
+}
+
+map.on('moveend zoomend', updateHash);
+
+map.on('popupclose', () => {
+    if (selectedMarkerId !== null) {
+        const el = markers[selectedMarkerId]?.getElement();
+        if (el) el.classList.remove('marker-selected');
+    }
+    selectedMarkerId = null;
+    updateHash();
+});
+
+// Restore position/zoom/marker from hash on load
+const hashState = parseHash();
+if (hashState) {
+    map.setView([hashState.lat, hashState.lng], hashState.zoom);
+    if (hashState.markerId) {
+        const hashMarker = markers[hashState.markerId];
+        if (hashMarker) {
+            hashMarker.openPopup();
+            highlightLocation(hashState.markerId);
+            highlightMarker(hashState.markerId);
+        }
+    }
+}
