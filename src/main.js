@@ -16,6 +16,8 @@ const map = L.map('map', {
     zoomControl: false
 });
 
+window.map = map; // Expose map for debugging
+
 // Set the view based on the coordinate system
 map.setView([30, 0], 0);
 
@@ -32,6 +34,40 @@ const BackgroundLayer = L.GridLayer.extend({
 
 // Add tiled background layer
 new BackgroundLayer().addTo(map);
+
+// Add cloth map as a non-tiling image overlay with rotation
+// Define bounds to match the map's coordinate system (adjust as needed)
+let msz = 80; 
+let xmod = 50; // Offset to align the cloth map
+let ymod = 90;
+const YSZ_RATIO = 0.8056640625; // Vertical adjustment factor
+let clothMapBounds = [[-YSZ_RATIO*msz+xmod, -msz+ymod], 
+                        [YSZ_RATIO*msz+xmod, msz+ymod]];
+
+function updateClothMapBounds() {
+    const ysz = YSZ_RATIO * msz;
+    const newBounds = [[-ysz + xmod, -msz + ymod], [ysz + xmod, msz + ymod]];
+    clothMapLayer.setBounds(newBounds);
+}
+
+// Create custom rotated image overlay
+const RotatedImageOverlay = L.ImageOverlay.extend({
+    _initImage: function () {
+        L.ImageOverlay.prototype._initImage.call(this);
+        // this._image.style.transform = 'rotate(10deg)';
+        // this._image.style.transformOrigin = 'center center';
+    }
+});
+
+// Create the cloth map layer (initially visible)
+let clothMapLayer = new RotatedImageOverlay('./images/ingame_cloth_map.png', clothMapBounds, {
+    opacity: 0.5,
+    interactive: false,
+    zIndex: 1,
+    className: 'cloth-map-rotated'
+}).addTo(map);
+
+let clothMapVisible = false;
 
 // Create a custom grid overlay with fixed size
 const GridLayer = L.GridLayer.extend({
@@ -681,6 +717,173 @@ function highlightMarker(locationId) {
     }
 }
 
+// Settings popup functionality
+const settingsPopup = document.getElementById('settings-popup');
+const settingsButton = document.getElementById('settings-button');
+const closeSettingsButton = document.getElementById('close-settings');
+const clearDataButton = document.getElementById('clear-data-button');
+const showHiddenCheckbox = document.getElementById('show-hidden-locations');
+const showLastListenerCheckbox = document.getElementById('show-last-listener');
+const showCavesCheckbox = document.getElementById('show-caves');
+const showClothMapCheckbox = document.getElementById('show-cloth-map');
+
+// Open settings popup
+settingsButton.addEventListener('click', () => {
+    settingsPopup.classList.add('active');
+    // Load current settings state
+    loadSettingsState();
+});
+
+// Close settings popup
+closeSettingsButton.addEventListener('click', () => {
+    settingsPopup.classList.remove('active');
+});
+
+// Close popup when clicking outside
+settingsPopup.addEventListener('click', (e) => {
+    if (e.target === settingsPopup) {
+        settingsPopup.classList.remove('active');
+    }
+});
+
+// Close popup with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && settingsPopup.classList.contains('active')) {
+        settingsPopup.classList.remove('active');
+    }
+});
+
+// Clear local data
+clearDataButton.addEventListener('click', () => {
+    if (confirm('Are you sure you want to clear all local data? This will reset all visibility preferences.')) {
+        // Clear all marker visibility states for all location types
+        const allLocations = [...locations, ...hiddenLocations, ...lastListenerLocations, ...caves];
+        allLocations.forEach(location => {
+            localStorage.removeItem(`marker-visible-${location.id}`);
+        });
+        
+        // Clear category visibility states
+        localStorage.removeItem('category-visible-main-locations');
+        localStorage.removeItem('category-visible-hidden-locations');
+        localStorage.removeItem('category-visible-last-listener-locations');
+        localStorage.removeItem('category-visible-caves-locations');
+        
+        // Clear settings
+        localStorage.removeItem('show-hidden-locations');
+        localStorage.removeItem('show-last-listener');
+        localStorage.removeItem('show-caves');
+        localStorage.removeItem('show-cloth-map');
+        
+        // Reload the page to reset everything
+        window.location.reload();
+    }
+});
+
+// Load settings state from localStorage
+function loadSettingsState() {
+    const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
+    const showLastListener = localStorage.getItem('show-last-listener') === 'true';
+    const showCaves = localStorage.getItem('show-caves') === 'true';
+    const showClothMap = localStorage.getItem('show-cloth-map');
+    
+    showHiddenCheckbox.checked = showHidden;
+    showLastListenerCheckbox.checked = showLastListener;
+    showCavesCheckbox.checked = showCaves;
+    showClothMapCheckbox.checked = showClothMap === null ? false : showClothMap === 'true';
+}
+
+// Save settings state to localStorage
+function saveSettingsState() {
+    localStorage.setItem('show-hidden-locations', showHiddenCheckbox.checked);
+    localStorage.setItem('show-last-listener', showLastListenerCheckbox.checked);
+    localStorage.setItem('show-caves', showCavesCheckbox.checked);
+    localStorage.setItem('show-cloth-map', showClothMapCheckbox.checked);
+}
+
+// Handle show hidden locations toggle
+showHiddenCheckbox.addEventListener('change', () => {
+    saveSettingsState();
+    refreshDisplay();
+});
+
+// Handle show last listener locations toggle
+showLastListenerCheckbox.addEventListener('change', () => {
+    saveSettingsState();
+    refreshDisplay();
+});
+
+// Handle show caves toggle
+showCavesCheckbox.addEventListener('change', () => {
+    saveSettingsState();
+    refreshDisplay();
+});
+
+// Handle show cloth map toggle
+function setClothMapControlsVisible(visible) {
+    const display = visible ? '' : 'none';
+    const left = document.getElementById('cloth-map-controls-left');
+    const right = document.getElementById('cloth-map-controls');
+    if (left) left.style.display = display;
+    if (right) right.style.display = display;
+}
+
+showClothMapCheckbox.addEventListener('change', () => {
+    saveSettingsState();
+    if (showClothMapCheckbox.checked) {
+        if (!clothMapVisible) {
+            clothMapLayer.addTo(map);
+            clothMapVisible = true;
+        }
+    } else {
+        if (clothMapVisible) {
+            map.removeLayer(clothMapLayer);
+            clothMapVisible = false;
+        }
+    }
+    setClothMapControlsVisible(showClothMapCheckbox.checked);
+});
+
+// Initialize cloth map visibility from localStorage
+const initialShowClothMap = localStorage.getItem('show-cloth-map');
+if (initialShowClothMap !== 'true') {
+    map.removeLayer(clothMapLayer);
+    clothMapVisible = false;
+}
+setClothMapControlsVisible(initialShowClothMap === 'true');
+
 // Initialize the application
 refreshDisplay();
 setupSearch();
+
+// Wire up cloth map position sliders
+(function setupClothMapSliders() {
+    const xmodSlider = document.getElementById('xmod-slider');
+    const ymodSlider = document.getElementById('ymod-slider');
+    const xmodValue = document.getElementById('xmod-value');
+    const ymodValue = document.getElementById('ymod-value');
+
+    if (!xmodSlider || !ymodSlider) return;
+
+    const mszSlider = document.getElementById('msz-slider');
+    const mszValue = document.getElementById('msz-value');
+
+    if (mszSlider) {
+        mszSlider.addEventListener('input', () => {
+            msz = parseFloat(mszSlider.value);
+            mszValue.textContent = msz;
+            updateClothMapBounds();
+        });
+    }
+
+    xmodSlider.addEventListener('input', () => {
+        xmod = parseFloat(xmodSlider.value);
+        xmodValue.textContent = xmod;
+        updateClothMapBounds();
+    });
+
+    ymodSlider.addEventListener('input', () => {
+        ymod = parseFloat(ymodSlider.value);
+        ymodValue.textContent = ymod;
+        updateClothMapBounds();
+    });
+})();
