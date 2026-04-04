@@ -19,14 +19,30 @@
 
         gtag('config', 'G-YZ96EQNFSB');
     </script>
-  <script type="module" crossorigin src="./assets/index-BWF--rfr.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-lTPK_kLO.css">
+  <script type="module" crossorigin src="./assets/index-BzKr438H.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-y0l0TP5f.css">
 </head>
 <body>
     <div class="container">
         <header>
+            <div id="cloth-map-controls-left" class="cloth-map-controls cloth-map-controls-left">
+                <div class="cloth-map-slider">
+                    <label for="msz-slider">Cloth Map Size: <span id="msz-value">80</span></label>
+                    <input type="range" id="msz-slider" min="10" max="300" value="80" step="0.5">
+                </div>
+            </div>
             <h1>THE LAST C<span>⋀</span>RETAKER MAP</h1>
             <!-- <p>Explore locations across the world</p> -->
+            <div id="cloth-map-controls" class="cloth-map-controls">
+                <div class="cloth-map-slider">
+                    <label for="xmod-slider">Cloth Map Vertical offset: <span id="xmod-value">50</span></label>
+                    <input type="range" id="xmod-slider" min="-200" max="200" value="50" step="0.5">
+                </div>
+                <div class="cloth-map-slider">
+                    <label for="ymod-slider">Cloth Map Horizontal offset: <span id="ymod-value">90</span></label>
+                    <input type="range" id="ymod-slider" min="-200" max="200" value="90" step="0.5">
+                </div>
+            </div>
         </header>
         
         <div id="sidebar">
@@ -91,6 +107,12 @@
                             <span>Show visit status badges on map icons</span>
                         </label>
                         <p class="setting-description">Displays ✔ badge on markers when visited or cleared</p>
+                    </div>
+                    <div class="setting-item">
+                        <label class="setting-toggle">
+                            <input type="checkbox" id="show-cloth-map">
+                            <span>Show Cloth Map Overlay</span>
+                        </label>
                     </div>
                     <div class="setting-item">
                         <h4 class="color-section-title">Marker Colors</h4>
