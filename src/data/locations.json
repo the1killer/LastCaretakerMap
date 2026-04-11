@@ -1,833 +1,869 @@
-{
-    "locations": [
-        {
-            "name": "Sanctuary 37",
-            "id": "1",
-            "description": "Sanctuary 37 is the starter area.",
-            "longitude": 11,
-            "latitude": 8,
-            "type": "Hanger",
-            "gameid": "SanctuaryDock37"
-        },
-        {
-            "name": "Habitat Node 06-3.5",
-            "id": "1a",
-            "description": "Habitat Node 06-3.5 is a habitat platform.",
-            "longitude": 23,
-            "latitude": 3,
-            "type": "Habitat",
-            "gameid": "HabitatNode06"
-        },
-        {
-            "name": "Navigation Beacon 49",
-            "id": "2",
-            "description": "Navigation Beacon 49 is the first navigation beacon.",
-            "longitude": 33,
-            "latitude": 6,
-            "type": "NavBeacon",
-            "radarRadius": 27,
-            "gameid": "NavigationBeacon49"
-        },
-        {
-            "name": "Lazarus Complex",
-            "id": "3",
-            "description": "Lazarus Complex is a human growth facility.",
-            "longitude": 69,
-            "latitude": -2,
-            "type": "Lazarus",
-            "radarRadius": 31,
-            "secondaryNumbers": "6,7,21,22,23,24,51,52,53,54",
-            "gameid": "LazarusComplex"
-        },
-        {
-            "name": "Norfolk Grave",
-            "id": "4",
-            "description": "Norfolk Grave is an underwater ruin.",
-            "longitude": 60,
-            "latitude": -41,
-            "type": "Ruin",
-            "gameid": "NorfolkGrave"
-        },
-        {
-            "name": "Navigation Beacon 15",
-            "id": "5",
-            "description": "Navigation Beacon 15 is another navigation beacon.",
-            "longitude": 69,
-            "latitude": -53,
-            "type": "NavBeacon",
-            "radarRadius": 30,
-            "gameid": "NavigationBeacon15"
-        },
-        {
-            "name": "Seed Vault Prometheus",
-            "id": "6",
-            "description": "Seed Vault Prometheus is a seed vault.",
-            "longitude": 81,
-            "latitude": -66,
-            "type": "SeedVault",
-            "gameid": "SeedVaultA"
-        },
-        {
-            "name": "Helios Reserve Orion",
-            "id": "7",
-            "description": "Helios Reserve Orion is power platform with both solar and wind power.",
-            "longitude": 53,
-            "latitude": 9,
-            "type": "HeliosReserve",
-            "gameid": "HeliosReserveA"
-        },
-        {
-            "name": "Refuel Outpost Gamma",
-            "id": "8",
-            "description": "Refuel Outpost Gamma is a fuel depot with both diesel and petrol.",
-            "longitude": 47,
-            "latitude": -7,
-            "type": "RefuelOutpost",
-            "primaryNumbers": "19",
-            "gameid": "RefuelOutpostA"
-        },
-        {
-            "name": "Black Vein Station",
-            "id": "9",
-            "description": "Black Vein Station is an oil rig that can mine infinite oil.",
-            "longitude": 49,
-            "latitude": -70,
-            "type": "OilRig",
-            "flags": "exo",
-            "gameid": "BlackVeinStation"
-        },
-        {
-            "name": "Hampton Grave",
-            "id": "10",
-            "description": "Hampton Grave is an underwater ruin.",
-            "longitude": 102,
-            "latitude": 19,
-            "type": "Ruin",
-            "gameid": "HamptonGrave"
-        },
-        {
-            "name": "Exodus Station",
-            "id": "11",
-            "description": "Exodus Station is a rocket launch platform.",
-            "longitude": 125,
-            "latitude": 47,
-            "type": "Rocket",
-            "primaryNumbers": "2",
-            "secondaryNumbers": "8,32,24-9",
-            "gameid": "ExodusStation"
-        },
-        {
-            "name": "The Last Listener Station",
-            "id": "12",
-            "description": "The Last Listener Station is a navigation beacon.",
-            "longitude": 115,
-            "latitude": 11,
-            "type": "NavBeacon",
-            "radarRadius": 9,
-            "gameid": "TheLastListener"
-        },
-        {
-            "name": "Habitat Node 03-12.3",
-            "id": "13",
-            "description": "Habitat Node 03-12.3 is a habitat platform.",
-            "longitude": 97,
-            "latitude": 15,
-            "type": "Habitat",
-            "gameid": "HabitatNode03"
-        },
-        {
-            "name": "Habitat Node 09-4",
-            "id": "14",
-            "description": "Habitat Node 09-4 is a habitat platform also known as Shark Base. Also has two underwater loot rooms the later being at 120m.",
-            "longitude": 82,
-            "latitude": 16,
-            "type": "Habitat",
-            "underwaterLoot": true,
-            "gameid": "HabitatNode09"
-        },
-        {
-            "name": "Habitat Node 08-16",
-            "id": "15",
-            "description": "Habitat Node 08-16 is a habitat platform.",
-            "longitude": 130,
-            "latitude": 21,
-            "type": "Habitat",
-            "gameid": "HabitatNode08"
-        },
-        {
-            "name": "Habitat Node 21-7",
-            "id": "16",
-            "description": "Habitat Node 21-7 is a habitat platform.",
-            "longitude": 104,
-            "latitude": 50,
-            "type": "Habitat",
-            "gameid": "HabitatNode14"
-        },
-        {
-            "name": "Nomads Tower",
-            "id": "17",
-            "description": "Nomads Tower is a tower.",
-            "longitude": 74,
-            "latitude": -31,
-            "type": "Hanger",
-            "underwaterLoot": true,
-            "gameid": "NomadsTower"
-        },
-        {
-            "name": "Refuel Outpost Theta",
-            "id": "18",
-            "description": "Refuel Outpost Theta is a fuel depot.",
-            "longitude": 84,
-            "latitude": -45,
-            "type": "RefuelOutpost",
-            "flags": "exo",
-            "primaryNumbers": "23",
-            "secondaryNumbers": "2,3",
-            "gameid": "RefuelOutpostC"
-        },
-        {
-            "name": "Habitat Node 05-14.5",
-            "id": "19",
-            "description": "Habitat Node 05-14.5 is a habitat platform.",
-            "longitude": 91,
-            "latitude": -57,
-            "type": "Habitat",
-            "underwaterLoot": true,
-            "gameid": "HabitatNode-05-14.5"
-        },
-        {
-            "name": "Central Warehouse Alpha",
-            "id": "20",
-            "description": "Central Warehouse Alpha is a warehouse with lots of loot and hostiles.",
-            "longitude": 66,
-            "latitude": 23,
-            "type": "Hanger",
-            "gameid": "DepotA"
-        },
-        {
-            "name": "Navigation Beacon 32",
-            "id": "21",
-            "description": "Navigation Beacon 32 is a navigation beacon.",
-            "longitude": 109,
-            "latitude": 35,
-            "type": "NavBeacon",
-            "radarRadius": 29,
-            "primaryNumbers": "2",
-            "secondaryNumbers": "32,72,0",
-            "gameid": "NavigationBeacon32"
-        },
-        {
-            "name": "Salem Grave",
-            "id": "22",
-            "description": "Salem Grave is an underwater ruin.",
-            "longitude": 108,
-            "latitude": 55,
-            "type": "Ruin",
-            "gameid": "SalemGrave"
-        },
-        {
-            "name": "Helios Reserve Lyra",
-            "id": "23",
-            "description": "Helios Reserve Lyra is a power platform.",
-            "longitude": 120,
-            "latitude": 28,
-            "type": "HeliosReserve",
-            "gameid": "HeliosReserve24"
-        },
-        {
-            "name": "Dover Grave",
-            "id": "24",
-            "description": "Dover Grave is an underwater ruin.",
-            "longitude": 137,
-            "latitude": 35,
-            "type": "Ruin",
-            "gameid": "DoverGrave"
-        },
-        {
-            "name": "Refuel Outpost Delta",
-            "id": "25",
-            "description": "Refuel Outpost Delta is a fuel depot.",
-            "longitude": 93,
-            "latitude": 39,
-            "type": "RefuelOutpost",
-            "underwaterLoot": true,
-            "primaryNumbers": "6",
-            "secondaryNumbers": "3,4,5",
-            "gameid": "RefuelOutpostB"
-        },
-        {
-            "name": "Lincoln Grave",
-            "id": "26",
-            "description": "Lincoln Grave is an underwater ruin.",
-            "longitude": 80,
-            "latitude": 4,
-            "type": "Ruin",
-            "gameid": "LincolnGrave"
-        },
-        {
-            "name": "Helios Reserve Gemini",
-            "id": "27",
-            "description": "Helios Reserve Gemini is a power platform.",
-            "longitude": 61,
-            "latitude": -26,
-            "type": "HeliosReserve",
-            "gameid": "HeliosReserveC"
-        },
-        {
-            "name": "Winston Grave",
-            "id": "28",
-            "description": "Winston Grave is an underwater ruin.",
-            "longitude": 27,
-            "latitude": -12,
-            "type": "Ruin",
-            "gameid": "WinstonGrave"
-        },
-        {
-            "name": "Brighton Grave",
-            "id": "29",
-            "description": "Brighton Grave is an underwater ruin.",
-            "longitude": 58,
-            "latitude": -14,
-            "type": "Ruin",
-            "gameid": "BrightonGrave"
-        },
-        {
-            "name": "Habitat Node 04-7",
-            "id": "30",
-            "description": "Habitat Node 04-7 is a habitat platform.",
-            "longitude": 82,
-            "latitude": -15,
-            "type": "Habitat",
-            "flags": "fahrt",
-            "underwaterLoot": true,
-            "gameid": "HabitatNode04"
-        },
-        {
-            "name": "Habitat Node 01-2.5",
-            "id": "31",
-            "description": "Habitat Node 01-2.5 is a habitat platform.",
-            "longitude": 68,
-            "latitude": -78,
-            "type": "Habitat",
-            "gameid": "HabitatNode01"
-        },
-        {
-            "name": "York Grave",
-            "id": "32",
-            "description": "York Grave is an underwater ruin.",
-            "longitude": 85,
-            "latitude": -75,
-            "type": "Ruin",
-            "gameid": "YorkGrave"
-        },
-        {
-            "name": "Habitat Node 02-23",
-            "id": "33",
-            "description": "Habitat Node 02-23 is a habitat platform.",
-            "longitude": 47,
-            "latitude": -49,
-            "type": "Habitat",
-            "flags": "rhino, fahrt",
-            "gameid": "HabitatNode02"
-        },
-        {
-            "name": "Helios Reserve Draco",
-            "id": "34",
-            "description": "Helios Reserve Draco is a power platform.",
-            "longitude": 62,
-            "latitude": -64,
-            "type": "HeliosReserve",
-            "primaryNumbers": "2",
-            "secondaryNumbers": "1,3,4,2,5,6,6,7,12,6",
-            "flags": "exo",
-            "gameid": "HeliosReserveD"
-        },
-        {
-            "name": "Sanctuary Dock 12",
-            "id": "34a",
-            "description": "Sanctuary Dock 12 is another docking area.",
-            "longitude": 88,
-            "latitude": 27,
-            "type": "Hanger",
-            "gameid": "SanctuaryDock12"
-        },
-        {
-            "name": "NDNS Node 29, -2",
-            "id": "35",
-            "description": "NDNS Node 29, -2 is a NDNS Node. (Improperly named as 55,-2)",
-            "longitude": 29,
-            "latitude": -2,
-            "type": "NDNS",
-            "primaryNumbers": "2",
-            "gameid": "GrowthContainer02"
-        },
-        {
-            "name": "NDNS Node 55, -2",
-            "id": "36",
-            "description": "NDNS Node 55, -2 is a NDNS Node.",
-            "longitude": 55,
-            "latitude": -2,
-            "type": "NDNS",
-            "primaryNumbers": "1",
-            "gameid": "GrowthContainer01"
-        },
-        {
-            "name": "NDNS Node 70, 14",
-            "id": "37",
-            "description": "NDNS Node 70, 14 is a NDNS Node.",
-            "longitude": 70,
-            "latitude": 14,
-            "type": "NDNS",
-            "primaryNumbers": "10",
-            "gameid": "GrowthContainer10"
-        },
-        {
-            "name": "NDNS Node 84, -2",
-            "id": "38",
-            "description": "NDNS Node 84, -2 is a NDNS Node.",
-            "longitude": 84,
-            "latitude": -2,
-            "type": "NDNS",
-            "primaryNumbers": "4",
-            "gameid": "GrowthContainer04"
-        },
-        {
-            "name": "NDNS Node 70, -17",
-            "id": "39",
-            "description": "NDNS Node 70, -17 is a NDNS Node.",
-            "longitude": 70,
-            "latitude": -17,
-            "type": "NDNS",
-            "primaryNumbers": "7",
-            "gameid": "GrowthContainer07"
-        },
-        {
-            "name": "NDNS Node 70, -42",
-            "id": "40",
-            "description": "NDNS Node 70, -42 is a NDNS Node.",
-            "longitude": 70,
-            "latitude": -42,
-            "type": "NDNS",
-            "primaryNumbers": "8",
-            "gameid": "GrowthContainer08"
-        },
-        {
-            "name": "NDNS Node 70, -82",
-            "id": "41",
-            "description": "NDNS Node 70, -82 is a NDNS Node.",
-            "longitude": 70,
-            "latitude": -82,
-            "type": "NDNS",
-            "primaryNumbers": "9",
-            "gameid": "GrowthContainer09"
-        },
-        {
-            "name": "Transposium",
-            "id": "h17",
-            "description": "Transposium is a maze puzzle location.",
-            "longitude": 112,
-            "latitude": 22,
-            "type": "Maze",
-            "gameid": "Maze1"
-        },
-        {
-            "name": "Platform Omega",
-            "id": "43",
-            "description": "Platform Omega is a shark nursery bay.",
-            "longitude": 90,
-            "latitude": 6,
-            "type": "SharkBay",
-            "gameid": "Platform_Omega"
-        }, 
-        {
-            "name": "Talon Offshore Proving Deck",
-            "id": "44",
-            "description": "Talon Offshore Proving Deck is Roller Boi Factory.",
-            "longitude": 97,
-            "latitude": 58,
-            "type": "RollerFactory",
-            "gameid": "Proving_Deck"
-        }
-    ],
-    "hiddenLocations": [
-        {
-            "name": "Habitat Node 10-4",
-            "id": "h1",
-            "description": "Habitat Node 10-4 is a habitat platform.",
-            "longitude": 30,
-            "latitude": -31,
-            "type": "Habitat",
-            "gameid": "HabitatNode10"
-        },
-        {
-            "name": "Seed Reserve 06",
-            "id": "h2",
-            "description": "Seed Reserve 06 is an underwater seed reserve.",
-            "longitude": 99,
-            "latitude": -9,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_06"
-        },
-        {
-            "name": "Seed Reserve 17",
-            "id": "h3",
-            "description": "Seed Reserve 17 is an underwater seed reserve.",
-            "longitude": 42,
-            "latitude": -29,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_17"
-        },
-        {
-            "name": "Seed Reserve 18",
-            "id": "h4",
-            "description": "Seed Reserve 18 is an underwater seed reserve.",
-            "longitude": 93,
-            "latitude": -78,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_18"
-        },
-        {
-            "name": "Seed Reserve 19",
-            "id": "h5",
-            "description": "Seed Reserve 19 is an underwater seed reserve.",
-            "longitude": 66,
-            "latitude": 33,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_19"
-        },
-        {
-            "name": "NDNS Node 110, -2",
-            "id": "h6",
-            "description": "NDNS Node 110, -2 is a NDNS Node.",
-            "longitude": 110,
-            "latitude": -2,
-            "type": "NDNS",
-            "primaryNumbers": "5",
-            "gameid": "GrowthContainer05"
-        },
-        {
-            "name": "NDNS Node 150, -2",
-            "id": "h7",
-            "description": "NDNS Node 150, -2 is a NDNS Node.",
-            "longitude": 150,
-            "latitude": -2,
-            "type": "NDNS",
-            "primaryNumbers": "6",
-            "gameid": "GrowthContainer06"
-        },
-        {
-            "name": "NDNS Node -10, -2",
-            "id": "h8",
-            "description": "NDNS Node -10, -2 is a NDNS Node.",
-            "longitude": -10,
-            "latitude": -2,
-            "type": "NDNS",
-            "primaryNumbers": "3",
-            "gameid": "GrowthContainer03"
-        },
-        {
-            "name": "NDNS Node 70, 38",
-            "id": "h9",
-            "description": "NDNS Node 70, 38 is a NDNS Node.",
-            "longitude": 70,
-            "latitude": 38,
-            "type": "NDNS",
-            "primaryNumbers": "11",
-            "gameid": "GrowthContainer11"
-        },
-        {
-            "name": "NDNS Node 70, 78",
-            "id": "h10",
-            "description": "NDNS Node 70, 78 is a NDNS Node.",
-            "longitude": 70,
-            "latitude": 78,
-            "type": "NDNS",
-            "primaryNumbers": "12",
-            "gameid": "GrowthContainer12"
-        },
-        {
-            "name": "Habitat Node 38-98",
-            "id": "h11",
-            "description": "Habitat Node 38-98 is a habitat platform. The final location for the Mother quest line.",
-            "longitude": 8,
-            "latitude": -38,
-            "type": "Habitat",
-            "gameid": "HabitatNode-38-98"
-        },
-        {
-            "name": "Unlisted Tower",
-            "id": "h12",
-            "description": "Unlisted Tower, Paint x5",
-            "longitude": 113,
-            "latitude": -21,
-            "type": "RockySpire",
-            "gameid": "UnlistedTower",
-            "underwaterLoot": true
-        },
-        {
-            "name": "Quarantine Stack Amen",
-            "id": "h13",
-            "description": "Quarantine Stack Amen is a quarantine stack. Paint x1, Power Triode 336",
-            "longitude": 147,
-            "latitude": -38,
-            "type": "RockySpire",
-            "gameid": "QuarantineStackAmen"
-        },
-        {
-            "name": "Quarantine Stack Aurora",
-            "id": "h14",
-            "description": "Quarantine Stack Aurora is a quarantine stack. Paint x2, Power Triode 268",
-            "longitude": 160,
-            "latitude": -38,
-            "type": "RockySpire",
-            "gameid": "QuarantineStackAurora"
-        },
-        {
-            "name": "Quarantine Stack Chorus",
-            "id": "h15",
-            "description": "Quarantine Stack Chorus is a quarantine stack. Paint x1, Power Triode 108",
-            "longitude": 147,
-            "latitude": -32,
-            "type": "RockySpire",
-            "gameid": "QuarantineStackChorus"
-        },
-        {
-            "name": "Quarantine Stack Dawn",
-            "id": "h16",
-            "description": "Quarantine Stack Dawn is a quarantine stack. Paint x1, Power Triode 437",
-            "longitude": 150,
-            "latitude": -46,
-            "type": "RockySpire",
-            "gameid": "QuarantineStackDawn"
-        },
-        {
-            "name": "Statue Rocky Spire",
-            "id": "h18",
-            "description": "Statue on top of a very tall rocky spire.",
-            "longitude": 183,
-            "latitude": -38,
-            "type": "RockySpire",
-            "gameid": "StatueRockySpire"
-        },
-        {
-            "name": "Courier Sieve Node Facility",
-            "id": "h20",
-            "description": "Courier Sieve Node Facility is a location for Star Child.",
-            "longitude": 169,
-            "latitude": -2,
-            "type": "StarChild",
-            "gameid": "StarChildA"
-        }
-    ],
-    "lastListenerLocations": [
-        {
-            "name": "Seed Reserve 01",
-            "id": "l7",
-            "description": "Seed Reserve 01 is an underwater seed reserve.",
-            "longitude": 59,
-            "latitude": 10,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_01"
-        },
-        {
-            "name": "Seed Reserve 02",
-            "id": "l10",
-            "description": "Seed Reserve 02 is an underwater seed reserve.",
-            "longitude": 28,
-            "latitude": -12,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_02"
-        },
-        {
-            "name": "Seed Reserve 03",
-            "id": "l1",
-            "description": "Seed Reserve 03 is an underwater seed reserve.",
-            "longitude": 118,
-            "latitude": 13,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_03"
-        },
-        {
-            "name": "Seed Reserve 04",
-            "id": "l11",
-            "description": "Seed Reserve is an underwater seed reserve.",
-            "longitude": 57,
-            "latitude": -14,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_04"
-        },
-        {
-            "name": "Seed Reserve 05",
-            "id": "l13",
-            "description": "Seed Reserve 05 is an underwater seed reserve.",
-            "longitude": 80,
-            "latitude": -52,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_05"
-        },
-        {
-            "name": "Seed Reserve 07",
-            "id": "l3",
-            "description": "Seed Reserve 07 is an underwater seed reserve.",
-            "longitude": 111,
-            "latitude": 53,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_07"
-        },
-        {
-            "name": "Seed Reserve 08",
-            "id": "l16",
-            "description": "Seed Reserve 08 is an underwater seed reserve.",
-            "longitude": 57,
-            "latitude": -41,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_08"
-        },
-        {
-            "name": "Seed Reserve 09",
-            "id": "l9",
-            "description": "Seed Reserve 09 is an underwater seed reserve.",
-            "longitude": 16,
-            "latitude": 15,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_09"
-        },
-        {
-            "name": "Seed Reserve 10",
-            "id": "l4",
-            "description": "Seed Reserve 10 is an underwater seed reserve.",
-            "longitude": 90,
-            "latitude": 51,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_10"
-        },
-        {
-            "name": "Seed Reserve 11",
-            "id": "l14",
-            "description": "Seed Reserve 11 is an underwater seed reserve.",
-            "longitude": 70,
-            "latitude": -68,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_11"
-        },
-        {
-            "name": "Seed Reserve 12",
-            "id": "l6",
-            "description": "Seed Reserve 12 is an underwater seed reserve.",
-            "longitude": 79,
-            "latitude": -6,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_12"
-        },
-        {
-            "name": "Seed Reserve 13",
-            "id": "l15",
-            "description": "Seed Reserve 13 is an underwater seed reserve.",
-            "longitude": 52,
-            "latitude": -56,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_13"
-        },
-        {
-            "name": "Seed Reserve 14",
-            "id": "l8",
-            "description": "Seed Reserve 14 is an underwater seed reserve.",
-            "longitude": 40,
-            "latitude": 17,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_14"
-        },
-        {
-            "name": "Seed Reserve 15",
-            "id": "l5",
-            "description": "Seed Reserve 15 is an underwater seed reserve.",
-            "longitude": 96,
-            "latitude": 30,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_15"
-        },
-        {
-            "name": "Seed Reserve 16",
-            "id": "l12",
-            "description": "Seed Reserve 16 is an underwater seed reserve.",
-            "longitude": 87,
-            "latitude": -36,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_16"
-        },
-        {
-            "name": "Seed Reserve 20",
-            "id": "l2",
-            "description": "Seed Reserve 20 is an underwater seed reserve.",
-            "longitude": 126,
-            "latitude": 35,
-            "type": "SeedVault",
-            "gameid": "SeedReserve_20"
-        }
-    ],
-    "caves": [
-        {
-            "name": "Twin Tide",
-            "id": "c1",
-            "description": "Twin Tide is a cave. Entrance at 97m depth. Max depth 103m",
-            "longitude": 110,
-            "latitude": 28,
-            "type": "Cave",
-            "gameid": "Cave07-11,27"
-        },
-        {
-            "name": "North Lantern",
-            "id": "c2",
-            "description": "North Lantern is a cave. Entrance at 66m depth. Max depth 93m",
-            "longitude": 55,
-            "latitude": -82,
-            "type": "Cave",
-            "gameid": "Cave04-55,-82"
-        },
-        {
-            "name": "Grey Mouth",
-            "id": "c3",
-            "description": "Grey Mouth is a cave. Entrance at 200m depth. Max depth 200m",
-            "longitude": 110,
-            "latitude": 4,
-            "type": "Cave",
-            "gameid": "Cave02-110,4"
-        },
-        {
-            "name": "South Echo",
-            "id": "c4",
-            "description": "South Echo is a cave. Entrance at 94m depth. Max depth 94m",
-            "longitude": 75,
-            "latitude": 38,
-            "type": "Cave",
-            "gameid": "Cave05-74,38"
-        },
-        {
-            "name": "Deep Silence",
-            "id": "c5",
-            "description": "Deep Silence is a cave. Entrance at 110m depth. Max depth 170m",
-            "longitude": 49,
-            "latitude": -20,
-            "type": "Cave",
-            "gameid": "Cave06-49,-20"
-        },
-        {
-            "name": "Far Horizon",
-            "id": "c6",
-            "description": "Far Horizon is a cave. Entrance at 137m depth. Max depth 170m",
-            "longitude": 134,
-            "latitude": 55,
-            "type": "Cave",
-            "gameid": "Cave03-134,55"
-        },
-        {
-            "name": "First Whisper",
-            "id": "c7",
-            "description": "First Whisper is a cave. Entrance at 80m depth. Max depth 80m",
-            "longitude": 9,
-            "latitude": 5,
-            "type": "Cave",
-            "gameid": "Cave01-9,55"
-        }
-    ]
+﻿{
+  "locations": [
+    {
+      "name": "Sanctuary 37",
+      "id": "1",
+      "description": "Sanctuary 37 is the starter area.",
+      "longitude": 12,
+      "latitude": 8,
+      "type": "Hanger",
+      "gameid": "SanctuaryDock37"
+    },
+    {
+      "name": "Habitat Node 06-3.5",
+      "id": "1a",
+      "description": "Habitat Node 06-3.5 is a habitat platform.",
+      "longitude": 24,
+      "latitude": 4,
+      "type": "Habitat",
+      "gameid": "HabitatNode06"
+    },
+    {
+      "name": "Navigation Beacon 49",
+      "id": "2",
+      "description": "Navigation Beacon 49 is the first navigation beacon.",
+      "longitude": 34,
+      "latitude": 6,
+      "type": "NavBeacon",
+      "radarRadius": 27,
+      "gameid": "NavigationBeacon49"
+    },
+    {
+      "name": "Lazarus Complex",
+      "id": "3",
+      "description": "Lazarus Complex is a human growth facility.",
+      "longitude": 70,
+      "latitude": -2,
+      "type": "Lazarus",
+      "radarRadius": 31,
+      "secondaryNumbers": "6,7,21,22,23,24,51,52,53,54",
+      "gameid": "LazarusComplex"
+    },
+    {
+      "name": "Norfolk Grave",
+      "id": "4",
+      "description": "Norfolk Grave is an underwater ruin.",
+      "longitude": 60,
+      "latitude": -41,
+      "type": "Ruin",
+      "gameid": "NorfolkGrave"
+    },
+    {
+      "name": "Navigation Beacon 15",
+      "id": "5",
+      "description": "Navigation Beacon 15 is another navigation beacon.",
+      "longitude": 70,
+      "latitude": -53,
+      "type": "NavBeacon",
+      "radarRadius": 30,
+      "gameid": "NavigationBeacon15"
+    },
+    {
+      "name": "Seed Vault Prometheus",
+      "id": "6",
+      "description": "Seed Vault Prometheus is a seed vault.",
+      "longitude": 82,
+      "latitude": -65,
+      "type": "SeedVault",
+      "gameid": "SeedVaultA"
+    },
+    {
+      "name": "Helios Reserve Orion",
+      "id": "7",
+      "description": "Helios Reserve Orion is power platform with both solar and wind power.",
+      "longitude": 54,
+      "latitude": 9,
+      "type": "HeliosReserve",
+      "gameid": "HeliosReserveA"
+    },
+    {
+      "name": "Refuel Outpost Gamma",
+      "id": "8",
+      "description": "Refuel Outpost Gamma is a fuel depot with both diesel and petrol.",
+      "longitude": 48,
+      "latitude": -6,
+      "type": "RefuelOutpost",
+      "primaryNumbers": "19",
+      "gameid": "RefuelOutpostA"
+    },
+    {
+      "name": "Black Vein Station",
+      "id": "9",
+      "description": "Black Vein Station is an oil rig that can mine infinite oil.",
+      "longitude": 50,
+      "latitude": -70,
+      "type": "OilRig",
+      "flags": "exo",
+      "gameid": "BlackVeinStation"
+    },
+    {
+      "name": "Hampton Grave",
+      "id": "10",
+      "description": "Hampton Grave is an underwater ruin.",
+      "longitude": 103,
+      "latitude": 19,
+      "type": "Ruin",
+      "gameid": "HamptonGrave"
+    },
+    {
+      "name": "Exodus Station",
+      "id": "11",
+      "description": "Exodus Station is a rocket launch platform.",
+      "longitude": 126,
+      "latitude": 48,
+      "type": "Rocket",
+      "primaryNumbers": "2",
+      "secondaryNumbers": "8,32,24-9",
+      "gameid": "ExodusStation"
+    },
+    {
+      "name": "The Last Listener Station",
+      "id": "12",
+      "description": "The Last Listener Station is a navigation beacon.",
+      "longitude": 116,
+      "latitude": 11,
+      "type": "NavBeacon",
+      "radarRadius": 9,
+      "gameid": "TheLastListener"
+    },
+    {
+      "name": "Habitat Node 03-12.3",
+      "id": "13",
+      "description": "Habitat Node 03-12.3 is a habitat platform.",
+      "longitude": 98,
+      "latitude": 15,
+      "type": "Habitat",
+      "gameid": "HabitatNode03"
+    },
+    {
+      "name": "Habitat Node 09-4",
+      "id": "14",
+      "description": "Habitat Node 09-4 is a habitat platform also known as Shark Base. Also has two underwater loot rooms the later being at 120m.",
+      "longitude": 83,
+      "latitude": 16,
+      "type": "Habitat",
+      "underwaterLoot": true,
+      "gameid": "HabitatNode09"
+    },
+    {
+      "name": "Habitat Node 08-16",
+      "id": "15",
+      "description": "Habitat Node 08-16 is a habitat platform.",
+      "longitude": 131,
+      "latitude": 21,
+      "type": "Habitat",
+      "gameid": "HabitatNode08"
+    },
+    {
+      "name": "Habitat Node 21-7",
+      "id": "16",
+      "description": "Habitat Node 21-7 is a habitat platform.",
+      "longitude": 105,
+      "latitude": 50,
+      "type": "Habitat",
+      "gameid": "HabitatNode14"
+    },
+    {
+      "name": "Nomads Tower",
+      "id": "17",
+      "description": "Nomads Tower is a tower.",
+      "longitude": 75,
+      "latitude": -31,
+      "type": "Hanger",
+      "underwaterLoot": true,
+      "gameid": "NomadsTower"
+    },
+    {
+      "name": "Refuel Outpost Theta",
+      "id": "18",
+      "description": "Refuel Outpost Theta is a fuel depot.",
+      "longitude": 85,
+      "latitude": -45,
+      "type": "RefuelOutpost",
+      "flags": "exo",
+      "primaryNumbers": "23",
+      "secondaryNumbers": "2,3",
+      "gameid": "RefuelOutpostC"
+    },
+    {
+      "name": "Habitat Node 05-14.5",
+      "id": "19",
+      "description": "Habitat Node 05-14.5 is a habitat platform.",
+      "longitude": 92,
+      "latitude": -57,
+      "type": "Habitat",
+      "underwaterLoot": true,
+      "gameid": "HabitatNode-05-14.5"
+    },
+    {
+      "name": "Central Warehouse Alpha",
+      "id": "20",
+      "description": "Central Warehouse Alpha is a warehouse with lots of loot and hostiles.",
+      "longitude": 67,
+      "latitude": 23,
+      "type": "Hanger",
+      "gameid": "DepotA"
+    },
+    {
+      "name": "Navigation Beacon 32",
+      "id": "21",
+      "description": "Navigation Beacon 32 is a navigation beacon.",
+      "longitude": 109,
+      "latitude": 35,
+      "type": "NavBeacon",
+      "radarRadius": 29,
+      "primaryNumbers": "2",
+      "secondaryNumbers": "32,72,0",
+      "gameid": "NavigationBeacon32"
+    },
+    {
+      "name": "Salem Grave",
+      "id": "22",
+      "description": "Salem Grave is an underwater ruin.",
+      "longitude": 109,
+      "latitude": 55,
+      "type": "Ruin",
+      "gameid": "SalemGrave"
+    },
+    {
+      "name": "Helios Reserve Lyra",
+      "id": "23",
+      "description": "Helios Reserve Lyra is a power platform.",
+      "longitude": 121,
+      "latitude": 29,
+      "type": "HeliosReserve",
+      "gameid": "HeliosReserve24"
+    },
+    {
+      "name": "Dover Grave",
+      "id": "24",
+      "description": "Dover Grave is an underwater ruin.",
+      "longitude": 137,
+      "latitude": 35,
+      "type": "Ruin",
+      "gameid": "DoverGrave"
+    },
+    {
+      "name": "Refuel Outpost Delta",
+      "id": "25",
+      "description": "Refuel Outpost Delta is a fuel depot.",
+      "longitude": 93,
+      "latitude": 39,
+      "type": "RefuelOutpost",
+      "underwaterLoot": true,
+      "primaryNumbers": "6",
+      "secondaryNumbers": "3,4,5",
+      "gameid": "RefuelOutpostB"
+    },
+    {
+      "name": "Lincoln Grave",
+      "id": "26",
+      "description": "Lincoln Grave is an underwater ruin.",
+      "longitude": 81,
+      "latitude": 4,
+      "type": "Ruin",
+      "gameid": "LincolnGrave"
+    },
+    {
+      "name": "Helios Reserve Gemini",
+      "id": "27",
+      "description": "Helios Reserve Gemini is a power platform.",
+      "longitude": 61,
+      "latitude": -26,
+      "type": "HeliosReserve",
+      "gameid": "HeliosReserveC"
+    },
+    {
+      "name": "Winston Grave",
+      "id": "28",
+      "description": "Winston Grave is an underwater ruin.",
+      "longitude": 28,
+      "latitude": -12,
+      "type": "Ruin",
+      "gameid": "WinstonGrave"
+    },
+    {
+      "name": "Brighton Grave",
+      "id": "29",
+      "description": "Brighton Grave is an underwater ruin.",
+      "longitude": 58,
+      "latitude": -14,
+      "type": "Ruin",
+      "gameid": "BrightonGrave"
+    },
+    {
+      "name": "Habitat Node 04-7",
+      "id": "30",
+      "description": "Habitat Node 04-7 is a habitat platform.",
+      "longitude": 83,
+      "latitude": -15,
+      "type": "Habitat",
+      "flags": "fahrt",
+      "underwaterLoot": true,
+      "gameid": "HabitatNode04"
+    },
+    {
+      "name": "Habitat Node 01-2.5",
+      "id": "31",
+      "description": "Habitat Node 01-2.5 is a habitat platform.",
+      "longitude": 69,
+      "latitude": -78,
+      "type": "Habitat",
+      "gameid": "HabitatNode01"
+    },
+    {
+      "name": "York Grave",
+      "id": "32",
+      "description": "York Grave is an underwater ruin.",
+      "longitude": 86,
+      "latitude": -74,
+      "type": "Ruin",
+      "gameid": "YorkGrave"
+    },
+    {
+      "name": "Habitat Node 02-23",
+      "id": "33",
+      "description": "Habitat Node 02-23 is a habitat platform.",
+      "longitude": 48,
+      "latitude": -48,
+      "type": "Habitat",
+      "flags": "rhino, fahrt",
+      "gameid": "HabitatNode02"
+    },
+    {
+      "name": "Helios Reserve Draco",
+      "id": "34",
+      "description": "Helios Reserve Draco is a power platform.",
+      "longitude": 63,
+      "latitude": -63,
+      "type": "HeliosReserve",
+      "primaryNumbers": "2",
+      "secondaryNumbers": "1,3,4,2,5,6,6,7,12,6",
+      "flags": "exo",
+      "gameid": "HeliosReserveD"
+    },
+    {
+      "name": "Sanctuary Dock 12",
+      "id": "34a",
+      "description": "Sanctuary Dock 12 is another docking area.",
+      "longitude": 89,
+      "latitude": 27,
+      "type": "Hanger",
+      "gameid": "SanctuaryDock12"
+    },
+    {
+      "name": "NDNS Node 29, -2",
+      "id": "35",
+      "description": "NDNS Node 29, -2 is a NDNS Node. (Improperly named as 55,-2)",
+      "longitude": 29,
+      "latitude": -2,
+      "type": "NDNS",
+      "primaryNumbers": "2",
+      "gameid": "GrowthContainer02"
+    },
+    {
+      "name": "NDNS Node 55, -2",
+      "id": "36",
+      "description": "NDNS Node 55, -2 is a NDNS Node.",
+      "longitude": 55,
+      "latitude": -2,
+      "type": "NDNS",
+      "primaryNumbers": "1",
+      "gameid": "GrowthContainer01"
+    },
+    {
+      "name": "NDNS Node 70, 14",
+      "id": "37",
+      "description": "NDNS Node 70, 14 is a NDNS Node.",
+      "longitude": 70,
+      "latitude": 14,
+      "type": "NDNS",
+      "primaryNumbers": "10",
+      "gameid": "GrowthContainer10"
+    },
+    {
+      "name": "NDNS Node 84, -2",
+      "id": "38",
+      "description": "NDNS Node 84, -2 is a NDNS Node.",
+      "longitude": 85,
+      "latitude": -2,
+      "type": "NDNS",
+      "primaryNumbers": "4",
+      "gameid": "GrowthContainer04"
+    },
+    {
+      "name": "NDNS Node 70, -17",
+      "id": "39",
+      "description": "NDNS Node 70, -17 is a NDNS Node.",
+      "longitude": 70,
+      "latitude": -17,
+      "type": "NDNS",
+      "primaryNumbers": "7",
+      "gameid": "GrowthContainer07"
+    },
+    {
+      "name": "NDNS Node 70, -42",
+      "id": "40",
+      "description": "NDNS Node 70, -42 is a NDNS Node.",
+      "longitude": 70,
+      "latitude": -42,
+      "type": "NDNS",
+      "primaryNumbers": "8",
+      "gameid": "GrowthContainer08"
+    },
+    {
+      "name": "NDNS Node 70, -82",
+      "id": "41",
+      "description": "NDNS Node 70, -82 is a NDNS Node.",
+      "longitude": 70,
+      "latitude": -82,
+      "type": "NDNS",
+      "primaryNumbers": "9",
+      "gameid": "GrowthContainer09"
+    },
+    {
+      "name": "Transposium",
+      "id": "h17",
+      "description": "Transposium is a maze puzzle location.",
+      "longitude": 112,
+      "latitude": 22,
+      "type": "Maze",
+      "gameid": "Maze1"
+    },
+    {
+      "name": "Platform Omega",
+      "id": "43",
+      "description": "Platform Omega is a shark nursery bay.",
+      "longitude": 90,
+      "latitude": 6,
+      "type": "SharkBay",
+      "gameid": "Platform_Omega"
+    },
+    {
+      "name": "Talon Offshore Proving Deck",
+      "id": "44",
+      "description": "Talon Offshore Proving Deck is Roller Boi Factory.",
+      "longitude": 97,
+      "latitude": 58,
+      "type": "RollerFactory",
+      "gameid": "Proving_Deck"
+    }
+  ],
+  "hiddenLocations": [
+    {
+      "name": "Habitat Node 10-4",
+      "id": "h1",
+      "description": "Habitat Node 10-4 is a habitat platform.",
+      "longitude": 31,
+      "latitude": -31,
+      "type": "Habitat",
+      "gameid": "HabitatNode10"
+    },
+    {
+      "name": "Seed Reserve 06",
+      "id": "h2",
+      "description": "Seed Reserve 06 is an underwater seed reserve.",
+      "longitude": 100,
+      "latitude": -8,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_06"
+    },
+    {
+      "name": "Seed Reserve 17",
+      "id": "h3",
+      "description": "Seed Reserve 17 is an underwater seed reserve.",
+      "longitude": 43,
+      "latitude": -29,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_17"
+    },
+    {
+      "name": "Seed Reserve 18",
+      "id": "h4",
+      "description": "Seed Reserve 18 is an underwater seed reserve.",
+      "longitude": 94,
+      "latitude": -78,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_18"
+    },
+    {
+      "name": "Seed Reserve 19",
+      "id": "h5",
+      "description": "Seed Reserve 19 is an underwater seed reserve.",
+      "longitude": 67,
+      "latitude": 33,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_19"
+    },
+    {
+      "name": "NDNS Node 110, -2",
+      "id": "h6",
+      "description": "NDNS Node 110, -2 is a NDNS Node.",
+      "longitude": 110,
+      "latitude": -2,
+      "type": "NDNS",
+      "primaryNumbers": "5",
+      "gameid": "GrowthContainer05"
+    },
+    {
+      "name": "NDNS Node 150, -2",
+      "id": "h7",
+      "description": "NDNS Node 150, -2 is a NDNS Node.",
+      "longitude": 150,
+      "latitude": -2,
+      "type": "NDNS",
+      "primaryNumbers": "6",
+      "gameid": "GrowthContainer06"
+    },
+    {
+      "name": "NDNS Node -10, -2",
+      "id": "h8",
+      "description": "NDNS Node -10, -2 is a NDNS Node.",
+      "longitude": -10,
+      "latitude": -2,
+      "type": "NDNS",
+      "primaryNumbers": "3",
+      "gameid": "GrowthContainer03"
+    },
+    {
+      "name": "NDNS Node 70, 38",
+      "id": "h9",
+      "description": "NDNS Node 70, 38 is a NDNS Node.",
+      "longitude": 70,
+      "latitude": 38,
+      "type": "NDNS",
+      "primaryNumbers": "11",
+      "gameid": "GrowthContainer11"
+    },
+    {
+      "name": "NDNS Node 70, 78",
+      "id": "h10",
+      "description": "NDNS Node 70, 78 is a NDNS Node.",
+      "longitude": 70,
+      "latitude": 78,
+      "type": "NDNS",
+      "primaryNumbers": "12",
+      "gameid": "GrowthContainer12"
+    },
+    {
+      "name":  "NDNs Node -70,-2",
+      "id":  "h21",
+      "description":  "NDNS Node -70, -2 is a NDNS Node.",
+      "longitude":  -70,
+      "latitude":  -2,
+      "type":  "NDNS",
+      "gameid":  "GrowthContainer13"
+    },
+    {
+      "name":  "NDNs Node 70,-142",
+      "id":  "h22",
+      "description":  "NDNS Node 70, -142 is a NDNS Node.",
+      "longitude":  70,
+      "latitude":  -142,
+      "type":  "NDNS",
+      "gameid":  "GrowthContainer14"
+    },
+    {
+      "name":  "NDNs Node 70,138",
+      "id":  "h23",
+      "description":  "NDNS Node 70, 138 is a NDNS Node.",
+      "longitude":  70,
+      "latitude":  138,
+      "type":  "NDNS",
+      "gameid":  "GrowthContainer15"
+    },
+    {
+      "name":  "NDNs Node 210.-2",
+      "id":  "h24",
+      "description":  "NDNS Node 210, -2 is a NDNS Node.",
+      "longitude":  210,
+      "latitude":  -2,
+      "type":  "NDNS",
+      "gameid":  "GrowthContainer16"
+    },
+    {
+      "name": "Habitat Node 38-98",
+      "id": "h11",
+      "description": "Habitat Node 38-98 is a habitat platform. The final location for the Mother quest line.",
+      "longitude": 9,
+      "latitude": -37,
+      "type": "Habitat",
+      "gameid": "HabitatNode-38-98"
+    },
+    {
+      "name": "Unlisted Tower",
+      "id": "h12",
+      "description": "Unlisted Tower, Paint x5",
+      "longitude": 113,
+      "latitude": -21,
+      "type": "RockySpire",
+      "gameid": "UnlistedTower",
+      "underwaterLoot": true
+    },
+    {
+      "name": "Quarantine Stack Amen",
+      "id": "h13",
+      "description": "Quarantine Stack Amen is a quarantine stack. Paint x1, Power Triode 336",
+      "longitude": 147,
+      "latitude": -38,
+      "type": "RockySpire",
+      "gameid": "QuarantineStackAmen"
+    },
+    {
+      "name": "Quarantine Stack Aurora",
+      "id": "h14",
+      "description": "Quarantine Stack Aurora is a quarantine stack. Paint x2, Power Triode 268",
+      "longitude": 160,
+      "latitude": -38,
+      "type": "RockySpire",
+      "gameid": "QuarantineStackAurora"
+    },
+    {
+      "name": "Quarantine Stack Chorus",
+      "id": "h15",
+      "description": "Quarantine Stack Chorus is a quarantine stack. Paint x1, Power Triode 108",
+      "longitude": 147,
+      "latitude": -32,
+      "type": "RockySpire",
+      "gameid": "QuarantineStackChorus"
+    },
+    {
+      "name": "Quarantine Stack Dawn",
+      "id": "h16",
+      "description": "Quarantine Stack Dawn is a quarantine stack. Paint x1, Power Triode 437",
+      "longitude": 150,
+      "latitude": -46,
+      "type": "RockySpire",
+      "gameid": "QuarantineStackDawn"
+    },
+    {
+      "name": "Statue Rocky Spire",
+      "id": "h18",
+      "description": "Statue on top of a very tall rocky spire.",
+      "longitude": 183,
+      "latitude": -38,
+      "type": "RockySpire",
+      "gameid": "StatueRockySpire"
+    },
+    {
+      "name": "Courier Sieve Node Facility",
+      "id": "h20",
+      "description": "Courier Sieve Node Facility is a location for Star Child.",
+      "longitude": 169,
+      "latitude": -2,
+      "type": "StarChild",
+      "gameid": "StarChildA"
+    }
+  ],
+  "lastListenerLocations": [
+    {
+      "name": "Seed Reserve 01",
+      "id": "l7",
+      "description": "Seed Reserve 01 is an underwater seed reserve.",
+      "longitude": 60,
+      "latitude": 11,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_01"
+    },
+    {
+      "name": "Seed Reserve 02",
+      "id": "l10",
+      "description": "Seed Reserve 02 is an underwater seed reserve.",
+      "longitude": 29,
+      "latitude": -12,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_02"
+    },
+    {
+      "name": "Seed Reserve 03",
+      "id": "l1",
+      "description": "Seed Reserve 03 is an underwater seed reserve.",
+      "longitude": 119,
+      "latitude": 14,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_03"
+    },
+    {
+      "name": "Seed Reserve 04",
+      "id": "l11",
+      "description": "Seed Reserve is an underwater seed reserve.",
+      "longitude": 58,
+      "latitude": -13,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_04"
+    },
+    {
+      "name": "Seed Reserve 05",
+      "id": "l13",
+      "description": "Seed Reserve 05 is an underwater seed reserve.",
+      "longitude": 81,
+      "latitude": -51,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_05"
+    },
+    {
+      "name": "Seed Reserve 07",
+      "id": "l3",
+      "description": "Seed Reserve 07 is an underwater seed reserve.",
+      "longitude": 111,
+      "latitude": 53,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_07"
+    },
+    {
+      "name": "Seed Reserve 08",
+      "id": "l16",
+      "description": "Seed Reserve 08 is an underwater seed reserve.",
+      "longitude": 58,
+      "latitude": -41,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_08"
+    },
+    {
+      "name": "Seed Reserve 09",
+      "id": "l9",
+      "description": "Seed Reserve 09 is an underwater seed reserve.",
+      "longitude": 16,
+      "latitude": 15,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_09"
+    },
+    {
+      "name": "Seed Reserve 10",
+      "id": "l4",
+      "description": "Seed Reserve 10 is an underwater seed reserve.",
+      "longitude": 91,
+      "latitude": 52,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_10"
+    },
+    {
+      "name": "Seed Reserve 11",
+      "id": "l14",
+      "description": "Seed Reserve 11 is an underwater seed reserve.",
+      "longitude": 71,
+      "latitude": -67,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_11"
+    },
+    {
+      "name": "Seed Reserve 12",
+      "id": "l6",
+      "description": "Seed Reserve 12 is an underwater seed reserve.",
+      "longitude": 80,
+      "latitude": -6,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_12"
+    },
+    {
+      "name": "Seed Reserve 13",
+      "id": "l15",
+      "description": "Seed Reserve 13 is an underwater seed reserve.",
+      "longitude": 53,
+      "latitude": -56,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_13"
+    },
+    {
+      "name": "Seed Reserve 14",
+      "id": "l8",
+      "description": "Seed Reserve 14 is an underwater seed reserve.",
+      "longitude": 40,
+      "latitude": 17,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_14"
+    },
+    {
+      "name": "Seed Reserve 15",
+      "id": "l5",
+      "description": "Seed Reserve 15 is an underwater seed reserve.",
+      "longitude": 97,
+      "latitude": 31,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_15"
+    },
+    {
+      "name": "Seed Reserve 16",
+      "id": "l12",
+      "description": "Seed Reserve 16 is an underwater seed reserve.",
+      "longitude": 88,
+      "latitude": -36,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_16"
+    },
+    {
+      "name": "Seed Reserve 20",
+      "id": "l2",
+      "description": "Seed Reserve 20 is an underwater seed reserve.",
+      "longitude": 127,
+      "latitude": 35,
+      "type": "SeedVault",
+      "gameid": "SeedReserve_20"
+    }
+  ],
+  "caves": [
+    {
+      "name": "Twin Tide",
+      "id": "c1",
+      "description": "Twin Tide is a cave. Entrance at 97m depth. Max depth 103m",
+      "longitude": 111,
+      "latitude": 27,
+      "type": "Cave",
+      "gameid": "Cave07-11,27"
+    },
+    {
+      "name": "North Lantern",
+      "id": "c2",
+      "description": "North Lantern is a cave. Entrance at 66m depth. Max depth 93m",
+      "longitude": 55,
+      "latitude": -82,
+      "type": "Cave",
+      "gameid": "Cave04-55,-82"
+    },
+    {
+      "name": "Grey Mouth",
+      "id": "c3",
+      "description": "Grey Mouth is a cave. Entrance at 200m depth. Max depth 200m",
+      "longitude": 111,
+      "latitude": 4,
+      "type": "Cave",
+      "gameid": "Cave02-110,4"
+    },
+    {
+      "name": "South Echo",
+      "id": "c4",
+      "description": "South Echo is a cave. Entrance at 94m depth. Max depth 94m",
+      "longitude": 75,
+      "latitude": 38,
+      "type": "Cave",
+      "gameid": "Cave05-74,38"
+    },
+    {
+      "name": "Deep Silence",
+      "id": "c5",
+      "description": "Deep Silence is a cave. Entrance at 110m depth. Max depth 170m",
+      "longitude": 50,
+      "latitude": -20,
+      "type": "Cave",
+      "gameid": "Cave06-49,-20"
+    },
+    {
+      "name": "Far Horizon",
+      "id": "c6",
+      "description": "Far Horizon is a cave. Entrance at 137m depth. Max depth 170m",
+      "longitude": 134,
+      "latitude": 54,
+      "type": "Cave",
+      "gameid": "Cave03-134,55"
+    },
+    {
+      "name": "First Whisper",
+      "id": "c7",
+      "description": "First Whisper is a cave. Entrance at 80m depth. Max depth 80m",
+      "longitude": 9,
+      "latitude": 5,
+      "type": "Cave",
+      "gameid": "Cave01-9,55"
+    }
+  ]
 }
