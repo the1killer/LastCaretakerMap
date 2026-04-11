@@ -1,6 +1,6 @@
 {
   "name": "lastcaretakermap",
-  "version": "1.3.0",
+  "version": "1.3.5",
   "description": "Interactive map application with Leaflet.js",
   "type": "module",
   "scripts": {
