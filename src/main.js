@@ -40,6 +40,7 @@ new BackgroundLayer().addTo(map);
 let msz = parseFloat(localStorage.getItem('cloth-map-msz')) || 80;
 let xmod = parseFloat(localStorage.getItem('cloth-map-xmod')) || 50; // Offset to align the cloth map
 let ymod = parseFloat(localStorage.getItem('cloth-map-ymod')) || 90;
+let rotation = parseFloat(localStorage.getItem('cloth-map-rotation')) || 10;
 const YSZ_RATIO = 0.8056640625; // Vertical adjustment factor
 let clothMapBounds = [[-YSZ_RATIO*msz+xmod, -msz+ymod], 
                         [YSZ_RATIO*msz+xmod, msz+ymod]];
@@ -48,14 +49,31 @@ function updateClothMapBounds() {
     const ysz = YSZ_RATIO * msz;
     const newBounds = [[-ysz + xmod, -msz + ymod], [ysz + xmod, msz + ymod]];
     clothMapLayer.setBounds(newBounds);
+    updateClothMapRotation();
+}
+
+function updateClothMapRotation() {
+    if (clothMapLayer) clothMapLayer._applyRotation?.();
 }
 
 // Create custom rotated image overlay
 const RotatedImageOverlay = L.ImageOverlay.extend({
     _initImage: function () {
         L.ImageOverlay.prototype._initImage.call(this);
-        // this._image.style.transform = 'rotate(10deg)';
-        // this._image.style.transformOrigin = 'center center';
+        this._image.style.transformOrigin = 'center center';
+        this._applyRotation();
+    },
+    _reset: function () {
+        L.ImageOverlay.prototype._reset.call(this);
+        this._applyRotation();
+    },
+    _applyRotation: function () {
+        if (!this._image) return;
+        // Leaflet sets translate3d via setPosition; append our rotation to it
+        const current = this._image.style.transform || '';
+        const withoutRotate = current.replace(/\s*rotate\([^)]*\)/, '');
+        this._image.style.transform = `${withoutRotate} rotate(${rotation}deg)`.trim();
+        this._image.style.transformOrigin = 'center center';
     }
 });
 
@@ -66,6 +84,7 @@ let clothMapLayer = new RotatedImageOverlay('./images/ingame_cloth_map.png', clo
     zIndex: 1,
     className: 'cloth-map-rotated'
 }).addTo(map);
+clothMapLayer.on('add', updateClothMapRotation);
 
 let clothMapVisible = false;
 
@@ -849,6 +868,9 @@ const initialShowClothMap = localStorage.getItem('show-cloth-map');
 if (initialShowClothMap !== 'true') {
     map.removeLayer(clothMapLayer);
     clothMapVisible = false;
+} else {
+    clothMapVisible = true;
+    updateClothMapRotation();
 }
 setClothMapControlsVisible(initialShowClothMap === 'true');
 
@@ -875,12 +897,27 @@ setupSearch();
         mszSlider.value = msz; mszValue.textContent = msz;
     }
 
+    const rotationSlider = document.getElementById('rotation-slider');
+    const rotationValue = document.getElementById('rotation-value');
+    if (rotationSlider) {
+        rotationSlider.value = rotation; rotationValue.textContent = rotation;
+    }
+
     if (mszSlider) {
         mszSlider.addEventListener('input', () => {
             msz = parseFloat(mszSlider.value);
             mszValue.textContent = msz;
             localStorage.setItem('cloth-map-msz', msz);
             updateClothMapBounds();
+        });
+    }
+
+    if (rotationSlider) {
+        rotationSlider.addEventListener('input', () => {
+            rotation = parseFloat(rotationSlider.value);
+            rotationValue.textContent = rotation;
+            localStorage.setItem('cloth-map-rotation', rotation);
+            updateClothMapRotation();
         });
     }
 
