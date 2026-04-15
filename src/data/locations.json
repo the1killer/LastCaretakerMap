@@ -202,6 +202,7 @@
       "longitude": 67,
       "latitude": 23,
       "type": "Hanger",
+      "primaryNumbers": "9",
       "gameid": "DepotA"
     },
     {
@@ -552,6 +553,7 @@
       "longitude":  -70,
       "latitude":  -2,
       "type":  "NDNS",
+      "primaryNumbers": "13",
       "gameid":  "GrowthContainer13"
     },
     {
@@ -561,6 +563,7 @@
       "longitude":  70,
       "latitude":  -142,
       "type":  "NDNS",
+      "primaryNumbers": "14",
       "gameid":  "GrowthContainer14"
     },
     {
@@ -570,6 +573,7 @@
       "longitude":  70,
       "latitude":  138,
       "type":  "NDNS",
+      "primaryNumbers": "15",
       "gameid":  "GrowthContainer15"
     },
     {
@@ -579,6 +583,7 @@
       "longitude":  210,
       "latitude":  -2,
       "type":  "NDNS",
+      "primaryNumbers": "16",
       "gameid":  "GrowthContainer16"
     },
     {
