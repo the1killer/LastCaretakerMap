@@ -69,17 +69,20 @@ settingsButton.addEventListener('click', () => {
     settingsPopup.classList.add('active');
     // Load current settings state
     loadSettingsState();
+    gtag('event', 'settings_open');
 });
 
 // Close settings popup
 closeSettingsButton.addEventListener('click', () => {
     settingsPopup.classList.remove('active');
+    gtag('event', 'settings_close', { method: 'button' });
 });
 
 // Close popup when clicking outside
 settingsPopup.addEventListener('click', (e) => {
     if (e.target === settingsPopup) {
         settingsPopup.classList.remove('active');
+        gtag('event', 'settings_close', { method: 'outside_click' });
     }
 });
 
@@ -87,12 +90,14 @@ settingsPopup.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && settingsPopup.classList.contains('active')) {
         settingsPopup.classList.remove('active');
+        gtag('event', 'settings_close', { method: 'escape_key' });
     }
 });
 
 // Clear local data
 clearDataButton.addEventListener('click', () => {
     if (confirm('Are you sure you want to clear all local data? This will reset all visibility preferences.')) {
+        gtag('event', 'settings_clear_data');
         // Clear all marker visibility states for all location types
         const allLocations = [...locations, ...hiddenLocations, ...lastListenerLocations, ...caves];
         allLocations.forEach(location => {
@@ -158,30 +163,35 @@ function saveSettingsState() {
 showHiddenCheckbox.addEventListener('change', () => {
     saveSettingsState();
     refreshDisplay();
+    gtag('event', 'settings_toggle', { setting: 'show_hidden_locations', value: showHiddenCheckbox.checked });
 });
 
 // Handle show last listener locations toggle
 showLastListenerCheckbox.addEventListener('change', () => {
     saveSettingsState();
     refreshDisplay();
+    gtag('event', 'settings_toggle', { setting: 'show_last_listener', value: showLastListenerCheckbox.checked });
 });
 
 // Handle show caves toggle
 showCavesCheckbox.addEventListener('change', () => {
     saveSettingsState();
     refreshDisplay();
+    gtag('event', 'settings_toggle', { setting: 'show_caves', value: showCavesCheckbox.checked });
 });
 
 // Handle display primary numbers toggle
 showPrimaryNumbersCheckbox.addEventListener('change', () => {
     saveSettingsState();
     refreshDisplay();
+    gtag('event', 'settings_toggle', { setting: 'show_primary_numbers', value: showPrimaryNumbersCheckbox.checked });
 });
 
 // Handle show visit overlays toggle (no full refresh needed, just apply CSS class)
 showVisitOverlaysCheckbox.addEventListener('change', () => {
     saveSettingsState();
     applyVisitOverlayVisibility();
+    gtag('event', 'settings_toggle', { setting: 'show_visit_overlays', value: showVisitOverlaysCheckbox.checked });
 });
 
 // Populate marker color settings grid
@@ -217,6 +227,7 @@ if (resetColorsButton) {
         });
         populateColorSettings();
         refreshDisplay();
+        gtag('event', 'settings_reset_colors');
     });
 }
 
@@ -229,5 +240,6 @@ if (allWhiteButton) {
         });
         populateColorSettings();
         refreshDisplay();
+        gtag('event', 'settings_all_white_colors');
     });
 }
