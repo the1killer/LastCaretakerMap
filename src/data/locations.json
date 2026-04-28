@@ -869,6 +869,15 @@
       "latitude": 5,
       "type": "Cave",
       "gameid": "Cave01-9,55"
+    },
+    {
+      "name": "Hidden Unmarked Cave",
+      "id": "c8",
+      "description": "Hidden Unmarked Cave is a cave. Entrance at 115m depth. Not marked in game even after visiting.",
+      "longitude": 80,
+      "latitude": 4,
+      "type": "Cave",
+      "gameid": "notmarkedingame80,4"
     }
   ]
 }
