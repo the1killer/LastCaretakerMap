@@ -1,6 +1,7 @@
 import {
     refreshDisplay,
     applyVisitOverlayVisibility,
+    toggleBackgroundLayer,
     locations,
     hiddenLocations,
     lastListenerLocations,
@@ -70,6 +71,9 @@ const showLastListenerCheckbox = document.getElementById('show-last-listener');
 const showCavesCheckbox = document.getElementById('show-caves');
 const showPrimaryNumbersCheckbox = document.getElementById('show-primary-numbers');
 const showVisitOverlaysCheckbox = document.getElementById('show-visit-overlays');
+const useSolidBackgroundCheckbox = document.getElementById('use-solid-background');
+const backgroundColorPicker = document.getElementById('background-color');
+const showClothMapCheckbox = document.getElementById('show-cloth-map');
 
 // Open settings popup
 settingsButton.addEventListener('click', () => {
@@ -110,30 +114,33 @@ clearDataButton.addEventListener('click', () => {
         allLocations.forEach(location => {
             localStorage.removeItem(`marker-visible-${location.id}`);
         });
-        
+
         // Clear category visibility states
         localStorage.removeItem('category-visible-main-locations');
         localStorage.removeItem('category-visible-hidden-locations');
         localStorage.removeItem('category-visible-last-listener-locations');
         localStorage.removeItem('category-visible-caves-locations');
-        
+
         // Clear settings
         localStorage.removeItem('show-hidden-locations');
         localStorage.removeItem('show-last-listener');
         localStorage.removeItem('show-caves');
         localStorage.removeItem('show-primary-numbers');
         localStorage.removeItem('show-visit-overlays');
-        
+        localStorage.removeItem('use-solid-background');
+        localStorage.removeItem('background-color');
+        localStorage.removeItem('show-cloth-map');
+
         // Clear all visit states
         allLocations.forEach(location => {
             localStorage.removeItem(`location-visit-${location.id}`);
         });
-        
+
         // Clear marker color settings
         Object.keys(defaultMarkerColors).forEach(type => {
             localStorage.removeItem(`marker-color-${type}`);
         });
-        
+
         // Reload the page to reset everything
         window.location.reload();
     }
@@ -146,12 +153,18 @@ function loadSettingsState() {
     const showCaves = localStorage.getItem('show-caves') !== 'false';
     const showPrimaryNumbers = localStorage.getItem('show-primary-numbers') === 'true';
     const showVisitOverlays = localStorage.getItem('show-visit-overlays') !== 'false';
-    
+    const useSolidBackground = localStorage.getItem('use-solid-background') === 'true';
+    const backgroundColor = localStorage.getItem('background-color') || '#17531b';
+    const showClothMap = localStorage.getItem('show-cloth-map') === 'true';
+
     showHiddenCheckbox.checked = showHidden;
     showLastListenerCheckbox.checked = showLastListener;
     showCavesCheckbox.checked = showCaves;
     showPrimaryNumbersCheckbox.checked = showPrimaryNumbers;
     showVisitOverlaysCheckbox.checked = showVisitOverlays;
+    useSolidBackgroundCheckbox.checked = useSolidBackground;
+    backgroundColorPicker.value = backgroundColor;
+    showClothMapCheckbox.checked = showClothMap;
 
     // Populate marker color pickers
     populateColorSettings();
@@ -164,6 +177,9 @@ function saveSettingsState() {
     localStorage.setItem('show-caves', showCavesCheckbox.checked);
     localStorage.setItem('show-primary-numbers', showPrimaryNumbersCheckbox.checked);
     localStorage.setItem('show-visit-overlays', showVisitOverlaysCheckbox.checked);
+    localStorage.setItem('use-solid-background', useSolidBackgroundCheckbox.checked);
+    localStorage.setItem('background-color', backgroundColorPicker.value);
+    localStorage.setItem('show-cloth-map', showClothMapCheckbox.checked);
 }
 
 // Handle show hidden locations toggle
@@ -200,6 +216,41 @@ showVisitOverlaysCheckbox.addEventListener('change', () => {
     applyVisitOverlayVisibility();
     gtag('event', 'settings_toggle', { setting: 'show_visit_overlays', value: showVisitOverlaysCheckbox.checked });
 });
+
+// Handle use solid background toggle
+useSolidBackgroundCheckbox.addEventListener('change', () => {
+    saveSettingsState();
+    applyBackgroundStyle();
+    gtag('event', 'settings_toggle', { setting: 'use_solid_background', value: useSolidBackgroundCheckbox.checked });
+});
+
+// Handle background color change
+backgroundColorPicker.addEventListener('input', () => {
+    saveSettingsState();
+    applyBackgroundStyle();
+    gtag('event', 'settings_change', { setting: 'background_color', value: backgroundColorPicker.value });
+});
+
+// Handle show cloth map toggle
+showClothMapCheckbox.addEventListener('change', () => {
+    saveSettingsState();
+    gtag('event', 'settings_toggle', { setting: 'show_cloth_map', value: showClothMapCheckbox.checked });
+});
+
+// Apply background style based on settings
+function applyBackgroundStyle() {
+    const useSolid = localStorage.getItem('use-solid-background') === 'true';
+    const bgColor = localStorage.getItem('background-color') || '#17531b';
+    const mapElement = document.getElementById('map');
+
+    if (useSolid) {
+        mapElement.style.background = bgColor;
+        toggleBackgroundLayer(false); // Hide the background image layer
+    } else {
+        mapElement.style.background = '#000000';
+        toggleBackgroundLayer(true); // Show the background image layer
+    }
+}
 
 // Populate marker color settings grid
 function populateColorSettings() {
@@ -250,3 +301,6 @@ if (allWhiteButton) {
         gtag('event', 'settings_all_white_colors');
     });
 }
+
+// Apply background style on page load (delayed to ensure proper initialization)
+requestAnimationFrame(() => applyBackgroundStyle());

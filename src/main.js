@@ -33,7 +33,20 @@ const BackgroundLayer = L.GridLayer.extend({
 });
 
 // Add tiled background layer
-new BackgroundLayer().addTo(map);
+let backgroundLayer = new BackgroundLayer().addTo(map);
+
+// Export function to toggle background layer visibility
+export function toggleBackgroundLayer(visible) {
+    if (visible) {
+        if (!backgroundLayer || !map.hasLayer(backgroundLayer)) {
+            backgroundLayer = new BackgroundLayer().addTo(map);
+        }
+    } else {
+        if (backgroundLayer && map.hasLayer(backgroundLayer)) {
+            map.removeLayer(backgroundLayer);
+        }
+    }
+}
 
 // Add cloth map as a non-tiling image overlay with rotation
 // Define bounds to match the map's coordinate system (adjust as needed)
@@ -737,108 +750,7 @@ function highlightMarker(locationId) {
     updateHash();
 }
 
-// Settings popup functionality
-const settingsPopup = document.getElementById('settings-popup');
-const settingsButton = document.getElementById('settings-button');
-const closeSettingsButton = document.getElementById('close-settings');
-const clearDataButton = document.getElementById('clear-data-button');
-const showHiddenCheckbox = document.getElementById('show-hidden-locations');
-const showLastListenerCheckbox = document.getElementById('show-last-listener');
-const showCavesCheckbox = document.getElementById('show-caves');
-const showClothMapCheckbox = document.getElementById('show-cloth-map');
-
-// Open settings popup
-settingsButton.addEventListener('click', () => {
-    settingsPopup.classList.add('active');
-    // Load current settings state
-    loadSettingsState();
-});
-
-// Close settings popup
-closeSettingsButton.addEventListener('click', () => {
-    settingsPopup.classList.remove('active');
-});
-
-// Close popup when clicking outside
-settingsPopup.addEventListener('click', (e) => {
-    if (e.target === settingsPopup) {
-        settingsPopup.classList.remove('active');
-    }
-});
-
-// Close popup with Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && settingsPopup.classList.contains('active')) {
-        settingsPopup.classList.remove('active');
-    }
-});
-
-// Clear local data
-clearDataButton.addEventListener('click', () => {
-    if (confirm('Are you sure you want to clear all local data? This will reset all visibility preferences.')) {
-        // Clear all marker visibility states for all location types
-        const allLocations = [...locations, ...hiddenLocations, ...lastListenerLocations, ...caves];
-        allLocations.forEach(location => {
-            localStorage.removeItem(`marker-visible-${location.id}`);
-        });
-        
-        // Clear category visibility states
-        localStorage.removeItem('category-visible-main-locations');
-        localStorage.removeItem('category-visible-hidden-locations');
-        localStorage.removeItem('category-visible-last-listener-locations');
-        localStorage.removeItem('category-visible-caves-locations');
-        
-        // Clear settings
-        localStorage.removeItem('show-hidden-locations');
-        localStorage.removeItem('show-last-listener');
-        localStorage.removeItem('show-caves');
-        localStorage.removeItem('show-cloth-map');
-        
-        // Reload the page to reset everything
-        window.location.reload();
-    }
-});
-
-// Load settings state from localStorage
-function loadSettingsState() {
-    const showHidden = localStorage.getItem('show-hidden-locations') === 'true';
-    const showLastListener = localStorage.getItem('show-last-listener') === 'true';
-    const showCaves = localStorage.getItem('show-caves') === 'true';
-    const showClothMap = localStorage.getItem('show-cloth-map');
-    
-    showHiddenCheckbox.checked = showHidden;
-    showLastListenerCheckbox.checked = showLastListener;
-    showCavesCheckbox.checked = showCaves;
-    showClothMapCheckbox.checked = showClothMap === null ? false : showClothMap === 'true';
-}
-
-// Save settings state to localStorage
-function saveSettingsState() {
-    localStorage.setItem('show-hidden-locations', showHiddenCheckbox.checked);
-    localStorage.setItem('show-last-listener', showLastListenerCheckbox.checked);
-    localStorage.setItem('show-caves', showCavesCheckbox.checked);
-    localStorage.setItem('show-cloth-map', showClothMapCheckbox.checked);
-}
-
-// Handle show hidden locations toggle
-showHiddenCheckbox.addEventListener('change', () => {
-    saveSettingsState();
-    refreshDisplay();
-});
-
-// Handle show last listener locations toggle
-showLastListenerCheckbox.addEventListener('change', () => {
-    saveSettingsState();
-    refreshDisplay();
-});
-
-// Handle show caves toggle
-showCavesCheckbox.addEventListener('change', () => {
-    saveSettingsState();
-    refreshDisplay();
-});
-
-// Handle show cloth map toggle
+// Handle show cloth map toggle (only cloth map handling stays here)
 function setClothMapControlsVisible(visible) {
     const display = visible ? '' : 'none';
     const left = document.getElementById('cloth-map-controls-left');
@@ -847,8 +759,19 @@ function setClothMapControlsVisible(visible) {
     if (right) right.style.display = display;
 }
 
+// Initialize cloth map visibility from localStorage
+const showClothMapCheckbox = document.getElementById('show-cloth-map');
+const initialShowClothMap = localStorage.getItem('show-cloth-map');
+if (initialShowClothMap !== 'true') {
+    map.removeLayer(clothMapLayer);
+    clothMapVisible = false;
+} else {
+    clothMapVisible = true;
+    updateClothMapRotation();
+}
+setClothMapControlsVisible(initialShowClothMap === 'true');
+
 showClothMapCheckbox.addEventListener('change', () => {
-    saveSettingsState();
     if (showClothMapCheckbox.checked) {
         if (!clothMapVisible) {
             clothMapLayer.addTo(map);
@@ -862,17 +785,6 @@ showClothMapCheckbox.addEventListener('change', () => {
     }
     setClothMapControlsVisible(showClothMapCheckbox.checked);
 });
-
-// Initialize cloth map visibility from localStorage
-const initialShowClothMap = localStorage.getItem('show-cloth-map');
-if (initialShowClothMap !== 'true') {
-    map.removeLayer(clothMapLayer);
-    clothMapVisible = false;
-} else {
-    clothMapVisible = true;
-    updateClothMapRotation();
-}
-setClothMapControlsVisible(initialShowClothMap === 'true');
 
 // Initialize the application
 refreshDisplay();
