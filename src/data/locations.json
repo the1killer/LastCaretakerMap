@@ -214,7 +214,7 @@
       "type": "NavBeacon",
       "radarRadius": 29,
       "primaryNumbers": "2",
-      "secondaryNumbers": "32,72,0",
+      "secondaryNumbers": "32,72,0,1,2,505",
       "gameid": "NavigationBeacon32"
     },
     {
