@@ -19,7 +19,7 @@
 
         gtag('config', 'G-YZ96EQNFSB');
     </script>
-  <script type="module" crossorigin src="./assets/index-BHgyW3HY.js"></script>
+  <script type="module" crossorigin src="./assets/index-CTwKlkL9.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-N-AIsefS.css">
 </head>
 <body>
@@ -119,6 +119,17 @@
                         </label>
                     </div>
                     <div class="setting-item">
+                        <label class="setting-toggle">
+                            <input type="checkbox" id="use-solid-background">
+                            <span>Use Solid Color Background</span>
+                        </label>
+                        <p class="setting-description">Replace the background map image with a solid color</p>
+                        <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">
+                            <label for="background-color" style="color: #ccc; font-size: 13px; white-space: nowrap;">Background Color:</label>
+                            <input type="color" id="background-color" value="#17531b" style="width: 50px; height: 32px; border: 1px solid #555; border-radius: 4px; cursor: pointer;">
+                        </div>
+                    </div>
+                    <div class="setting-item">
                         <h4 class="color-section-title">Marker Colors</h4>
                         <p class="setting-description" style="margin-bottom: 12px;">Customize label colors per marker type</p>
                         <div id="marker-color-settings" class="marker-color-grid"></div>
@@ -136,7 +147,7 @@
 
         <div id="map">
             <div id="version-panel">
-                v1.3.5 by <a href="https://github.com/the1killer/" target="_blank" rel="noopener noreferrer">The1Killer</a>
+                v1.4.0 by <a href="https://github.com/the1killer/" target="_blank" rel="noopener noreferrer">The1Killer</a>
             </div>
         </div>
         
