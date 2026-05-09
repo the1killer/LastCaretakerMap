@@ -25,7 +25,9 @@ const defaultMarkerColors = {
     OilRig: '#ffffff',
     SharkBay: '#E61CE6',
     StarChild: '#E61CE6',
-    RollerFactory: '#E61CE6'
+    RollerFactory: '#E61CE6',
+    GyroPlatform: '#ff9900',
+    Silo: '#ff9900'
 };
 
 // Friendly display names for types
@@ -43,7 +45,12 @@ const typeDisplayNames = {
     Cave: 'Cave',
     SeedVault: 'Seed Vault',
     Lazarus: 'Lazarus',
-    OilRig: 'Oil Rig'
+    OilRig: 'Oil Rig',
+    SharkBay: 'Shark Bay',
+    StarChild: 'Star Child',
+    RollerFactory: 'Roller Factory',
+    GyroPlatform: 'Gyro Platform',
+    Silo: 'Silo'
 };
 
 // Get the marker color for a given type, checking user overrides first
