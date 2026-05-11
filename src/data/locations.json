@@ -161,7 +161,8 @@
               "longitude": 105,
               "latitude": 50,
               "type": "Habitat",
-              "gameid": "HabitatNode14"
+              "gameid": "HabitatNode14",
+              "secondaryNumbers": "0,02,04,05,07,10,17"
             },
             {
               "name": "Nomads Tower",
@@ -233,6 +234,7 @@
               "longitude": 121,
               "latitude": 29,
               "type": "HeliosReserve",
+              "primaryNumbers": "24",
               "gameid": "HeliosReserve24"
             },
             {
