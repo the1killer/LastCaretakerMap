@@ -452,94 +452,94 @@
               "gameid": "Proving_Deck"
             },
             {
-              "name":  "SGS-E-81-6660",
-              "id":  "45",
-              "description":  "A platform for the Gyrocopter.",
-              "longitude":  135,
-              "latitude":  -15,
-              "type":  "GyroPlatform",
-              "gameid":  "GyrocopyterPlatformG"
+              "name": "SGS-E-81-6660",
+              "id": "45",
+              "description": "A platform for the Gyrocopter.",
+              "longitude": 135,
+              "latitude": -15,
+              "type": "GyroPlatform",
+              "gameid": "GyrocopyterPlatformG"
             },
             {
-              "name":  "SGS-NE-115-4600",
-              "id":  "46",
-              "description":  "A platform for the Gyrocopter.",
-              "longitude":  91,
-              "latitude":  -43,
-              "type":  "GyroPlatform",
-              "gameid":  "GyrocopyterPlatformF"
+              "name": "SGS-NE-115-4600",
+              "id": "46",
+              "description": "A platform for the Gyrocopter.",
+              "longitude": 91,
+              "latitude": -43,
+              "type": "GyroPlatform",
+              "gameid": "GyrocopyterPlatformF"
             },
             {
-              "name":  "SGS-SW-115-3255",
-              "id":  "47",
-              "description":  "A platform for the Gyrocopter. Has a Gyrocopter blueprint.",
-              "longitude":  42,
-              "latitude":  15,
-              "type":  "GyroPlatform",
-              "gameid":  "GyrocopyterPlatformA"
+              "name": "SGS-SW-115-3255",
+              "id": "47",
+              "description": "A platform for the Gyrocopter. Has a Gyrocopter blueprint.",
+              "longitude": 42,
+              "latitude": 15,
+              "type": "GyroPlatform",
+              "gameid": "GyrocopyterPlatformA"
             },
             {
-              "name":  "SGS-NW-150-6850",
-              "id":  "48",
-              "description":  "A platform for the Gyrocopter.",
-              "longitude":  16,
-              "latitude":  -44,
-              "type":  "GyroPlatform",
-              "gameid":  "GyrocopyterPlatformH"
+              "name": "SGS-NW-150-6850",
+              "id": "48",
+              "description": "A platform for the Gyrocopter.",
+              "longitude": 16,
+              "latitude": -44,
+              "type": "GyroPlatform",
+              "gameid": "GyrocopyterPlatformH"
             },
             {
-              "name":  "SGS-NE-114-1510",
-              "id":  "49",
-              "description":  "A platform for the Gyrocopter.",
-              "longitude":  78,
-              "latitude":  -15,
-              "type":  "GyroPlatform",
-              "gameid":  "GyrocopyterPlatformD"
+              "name": "SGS-NE-114-1510",
+              "id": "49",
+              "description": "A platform for the Gyrocopter.",
+              "longitude": 78,
+              "latitude": -15,
+              "type": "GyroPlatform",
+              "gameid": "GyrocopyterPlatformD"
             },
             {
-              "name":  "SGS-S-150-6300",
-              "id":  "50",
-              "description":  "A platform for the Gyrocopter.",
-              "longitude":  81,
-              "latitude":  60,
-              "type":  "GyroPlatform",
-              "gameid":  "GyrocopyterPlatformE"
+              "name": "SGS-S-150-6300",
+              "id": "50",
+              "description": "A platform for the Gyrocopter.",
+              "longitude": 81,
+              "latitude": 60,
+              "type": "GyroPlatform",
+              "gameid": "GyrocopyterPlatformE"
             },
             {
-              "name":  "SGS-NW-115-5100",
-              "id":  "51",
-              "description":  "A platform for the Gyrocopter. Has a Gyrocopter blueprint.",
-              "longitude":  62,
-              "latitude":  -52,
-              "type":  "GyroPlatform",
-              "gameid":  "GyrocopyterPlatformB"
+              "name": "SGS-NW-115-5100",
+              "id": "51",
+              "description": "A platform for the Gyrocopter. Has a Gyrocopter blueprint.",
+              "longitude": 62,
+              "latitude": -52,
+              "type": "GyroPlatform",
+              "gameid": "GyrocopyterPlatformB"
             },
             {
-              "name":  "SGS-SE-145-6950",
-              "id":  "52",
-              "description":  "A platform for the Gyrocopter. Has a Gyrocopter blueprint.",
-              "longitude":  131,
-              "latitude":  30,
-              "type":  "GyroPlatform",
-              "gameid":  "GyrocopyterPlatformC"
+              "name": "SGS-SE-145-6950",
+              "id": "52",
+              "description": "A platform for the Gyrocopter. Has a Gyrocopter blueprint.",
+              "longitude": 131,
+              "latitude": 30,
+              "type": "GyroPlatform",
+              "gameid": "GyrocopyterPlatformC"
             },
             {
-              "name":  "MCV-12 Eternal Flame",
-              "id":  "53",
-              "description":  "MCV-12 Eternal Flame is a silo only accessible via Gyrocopter.",
-              "longitude":  74,
-              "latitude":  -74,
-              "type":  "Silo",
-              "gameid":  "SiloA"
+              "name": "MCV-17 Dead Breath",
+              "id": "53",
+              "description": "MCV-17 Dead Breath is a silo only accessible via Gyrocopter.",
+              "longitude": 74,
+              "latitude": -74,
+              "type": "Silo",
+              "gameid": "SiloB"
             },
             {
-              "name":  "MCV-12 Eternal Flame (South)",
-              "id":  "54",
-              "description":  "MCV-12 Eternal Flame (South) is a silo only accessible via Gyrocopter.",
-              "longitude":  89,
-              "latitude":  47,
-              "type":  "Silo",
-              "gameid":  "SiloA"
+              "name": "MCV-12 Eternal Flame",
+              "id": "54",
+              "description": "MCV-12 Eternal Flame is a silo only accessible via Gyrocopter.",
+              "longitude": 89,
+              "latitude": 47,
+              "type": "Silo",
+              "gameid": "SiloA"
             }
           ],
   "hiddenLocations": [
@@ -639,44 +639,44 @@
                 "gameid": "GrowthContainer12"
               },
               {
-                "name":  "NDNs Node -70,-2",
-                "id":  "h21",
-                "description":  "NDNS Node -70, -2 is a NDNS Node.",
-                "longitude":  -70,
-                "latitude":  -2,
-                "type":  "NDNS",
+                "name": "NDNs Node -70,-2",
+                "id": "h21",
+                "description": "NDNS Node -70, -2 is a NDNS Node.",
+                "longitude": -70,
+                "latitude": -2,
+                "type": "NDNS",
                 "primaryNumbers": "13",
-                "gameid":  "GrowthContainer13"
+                "gameid": "GrowthContainer13"
               },
               {
-                "name":  "NDNs Node 70,-142",
-                "id":  "h22",
-                "description":  "NDNS Node 70, -142 is a NDNS Node.",
-                "longitude":  70,
-                "latitude":  -142,
-                "type":  "NDNS",
+                "name": "NDNs Node 70,-142",
+                "id": "h22",
+                "description": "NDNS Node 70, -142 is a NDNS Node.",
+                "longitude": 70,
+                "latitude": -142,
+                "type": "NDNS",
                 "primaryNumbers": "14",
-                "gameid":  "GrowthContainer14"
+                "gameid": "GrowthContainer14"
               },
               {
-                "name":  "NDNs Node 70,138",
-                "id":  "h23",
-                "description":  "NDNS Node 70, 138 is a NDNS Node.",
-                "longitude":  70,
-                "latitude":  138,
-                "type":  "NDNS",
+                "name": "NDNs Node 70,138",
+                "id": "h23",
+                "description": "NDNS Node 70, 138 is a NDNS Node.",
+                "longitude": 70,
+                "latitude": 138,
+                "type": "NDNS",
                 "primaryNumbers": "15",
-                "gameid":  "GrowthContainer15"
+                "gameid": "GrowthContainer15"
               },
               {
-                "name":  "NDNs Node 210.-2",
-                "id":  "h24",
-                "description":  "NDNS Node 210, -2 is a NDNS Node.",
-                "longitude":  210,
-                "latitude":  -2,
-                "type":  "NDNS",
+                "name": "NDNs Node 210.-2",
+                "id": "h24",
+                "description": "NDNS Node 210, -2 is a NDNS Node.",
+                "longitude": 210,
+                "latitude": -2,
+                "type": "NDNS",
                 "primaryNumbers": "16",
-                "gameid":  "GrowthContainer16"
+                "gameid": "GrowthContainer16"
               },
               {
                 "name": "Habitat Node 38-98",
@@ -754,13 +754,13 @@
             ],
   "lastListenerLocations": [
                   {
-                    "name":  "Eden Cradle",
-                    "id":  "l17",
-                    "description":  "Eden Cradle is a maze styled seed vault.",
-                    "longitude":  167,
-                    "latitude":  34,
-                    "type":  "SeedVault",
-                    "gameid":  "SeedVaultB"
+                    "name": "Eden Cradle",
+                    "id": "l17",
+                    "description": "Eden Cradle is a maze styled seed vault.",
+                    "longitude": 167,
+                    "latitude": 34,
+                    "type": "SeedVault",
+                    "gameid": "SeedVaultB"
                   },
                   {
                     "name": "Seed Reserve 01",
