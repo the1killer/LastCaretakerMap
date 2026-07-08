@@ -771,7 +771,7 @@
               },
               {
                 "name":  "The Spire of Command",
-                "id":  "h21",
+                "id":  "h25",
                 "description":  "Statue on top of a very tall rocky spire.",
                 "longitude":  21,
                 "latitude":  46,
@@ -780,7 +780,7 @@
               },
               {
                 "name":  "The Spire of Industry",
-                "id":  "",
+                "id":  "h26",
                 "description":  "",
                 "longitude":  82,
                 "latitude":  -94,
