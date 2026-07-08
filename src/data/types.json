@@ -17,5 +17,8 @@
 	"RollerFactory": "Indicator_RollerBoiFactory.png",
 	"SharkBay": "Indicator_SharkBay.png",
 	"GyroPlatform": "Icon_Helipad.png",
-	"Silo": "Icon_Thepit.png"
+	"Silo": "Icon_Thepit.png",
+	"StatueSpire": "Indicator_StatueSpire.png",
+	"Eden": "Indicator_Eden.png",
+	"Lab": "Indicator_Lab.png"
 }

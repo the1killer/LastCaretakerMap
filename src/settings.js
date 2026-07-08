@@ -28,7 +28,10 @@ const defaultMarkerColors = {
     StarChild: '#E61CE6',
     RollerFactory: '#E61CE6',
     GyroPlatform: '#ff9900',
-    Silo: '#ff9900'
+    Silo: '#ff9900',
+    "StatueSpire": '#CCCCCC',
+    "Eden": '#ffffff',
+    "Lab": '#4eaad4'
 };
 
 // Friendly display names for types
