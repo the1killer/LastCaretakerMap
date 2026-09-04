@@ -542,22 +542,22 @@
               "gameid": "SiloA"
             },
             {
-              "name":  "Research Outpost Theta-9",
-              "id":  "55",
-              "description":  "Research Outpost Theta-9 is a underwater research Lab.",
-              "longitude":  53,
-              "latitude":  -34,
-              "type":  "Lab",
-              "gameid":  "SubmergedLab"
+              "name": "Research Outpost Theta-9",
+              "id": "55",
+              "description": "Research Outpost Theta-9 is a underwater research Lab.",
+              "longitude": 53,
+              "latitude": -34,
+              "type": "Lab",
+              "gameid": "SubmergedLab"
             },
             {
-              "name":  "Pishon",
-              "id":  "56",
-              "description":  "Project Eden Construction Site Pishon. A large habitat platform.",
-              "longitude":  126,
-              "latitude":  -2,
-              "type":  "Eden",
-              "gameid":  "EdenPishon"
+              "name": "Pishon",
+              "id": "56",
+              "description": "Project Eden Construction Site Pishon. A large habitat platform.",
+              "longitude": 126,
+              "latitude": -2,
+              "type": "Eden",
+              "gameid": "EdenPishon"
             }
           ],
   "hiddenLocations": [
@@ -770,22 +770,22 @@
                 "gameid": "StarChildA"
               },
               {
-                "name":  "The Spire of Command",
-                "id":  "h25",
-                "description":  "Statue on top of a very tall rocky spire.",
-                "longitude":  21,
-                "latitude":  46,
-                "type":  "StatueSpire",
-                "gameid":  "Statue_Spire_A"
+                "name": "The Spire of Command",
+                "id": "h25",
+                "description": "Statue on top of a very tall rocky spire.",
+                "longitude": 21,
+                "latitude": 46,
+                "type": "StatueSpire",
+                "gameid": "Statue_Spire_A"
               },
               {
-                "name":  "The Spire of Industry",
-                "id":  "h26",
-                "description":  "",
-                "longitude":  82,
-                "latitude":  -94,
-                "type":  "StatueSpire",
-                "gameid":  "Statue_Spire_C"
+                "name": "The Spire of Industry",
+                "id": "h26",
+                "description": "",
+                "longitude": 82,
+                "latitude": -94,
+                "type": "StatueSpire",
+                "gameid": "Statue_Spire_C"
               }
             ],
   "lastListenerLocations": [
@@ -1017,13 +1017,13 @@
             "gameid": "notmarkedingame80,4"
           },
           {
-            "name":  "The Forth Chamber",
-            "id":  "c9",
-            "description":  "The Forth Chamber is a cave. Entrance at 110m depth. Max depth 110m",
-            "longitude":  110,
-            "latitude":  -33,
-            "type":  "Cave",
-            "gameid":  "Cave10"
+            "name": "The Forth Chamber",
+            "id": "c9",
+            "description": "The Forth Chamber is a cave. Entrance at 110m depth. Max depth 110m",
+            "longitude": 110,
+            "latitude": -33,
+            "type": "Cave",
+            "gameid": "Cave10"
           }
         ]
 }
