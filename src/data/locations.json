@@ -524,6 +524,42 @@
               "gameid": "GyrocopyterPlatformC"
             },
             {
+              "name":  "SGS-SE-101-7200",
+              "id":  "52A",
+              "description":  "A platform for the Gyrocopter.",
+              "longitude":  63,
+              "latitude":  129,
+              "type":  "GyroPlatform",
+              "gameid":  "GyrocopyterPlatformK"
+            },
+            {
+              "name":  "SGS-E-96-11400",
+              "id":  "52B",
+              "description":  "A platform for the Gyrocopter.",
+              "longitude":  183,
+              "latitude":  15,
+              "type":  "GyroPlatform",
+              "gameid":  "GyrocopyterPlatformL"
+            },
+            {
+              "name":  "SGS-W-96-8537",
+              "id":  "52C",
+              "description":  "A platform for the Gyrocopter.",
+              "longitude":  -15,
+              "latitude":  -9,
+              "type":  "GyroPlatform",
+              "gameid":  "GyrocopyterPlatformM"
+            },
+            {
+              "name":  "SGS-SE-101-7200",
+              "id":  "52D",
+              "description":  "A platform for the Gyrocopter.",
+              "longitude":  111,
+              "latitude":  58,
+              "type":  "GyroPlatform",
+              "gameid":  "GyrocopyterPlatformJ"
+            },
+            {
               "name": "MCV-17 Dead Breath",
               "id": "53",
               "description": "MCV-17 Dead Breath is a silo only accessible via Gyrocopter.",
@@ -752,6 +788,15 @@
                 "gameid": "QuarantineStackDawn"
               },
               {
+                "name":  "Manifest Tower",
+                "id":  "h16a",
+                "description":  "Manifest Tower.",
+                "longitude":  156,
+                "latitude":  -42,
+                "type":  "RockySpire",
+                "gameid":  "ManifestTower"
+              },
+              {
                 "name": "The Spire of Exodus",
                 "id": "h18",
                 "description": "Statue on top of a very tall rocky spire.",
@@ -786,6 +831,15 @@
                 "latitude": -94,
                 "type": "StatueSpire",
                 "gameid": "Statue_Spire_C"
+              },
+              {
+                "name":  "North Deep Intake Station",
+                "id":  "h27",
+                "description":  "North Deep Intake Station is a pumping station platform.",
+                "longitude":  66,
+                "latitude":  -136,
+                "type":  "Aron",
+                "gameid":  "Aron_Station"
               }
             ],
   "lastListenerLocations": [
