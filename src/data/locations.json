@@ -355,10 +355,10 @@
               "gameid": "SanctuaryDock12"
             },
             {
-              "name": "NDNS Node 29, -2",
+              "name": "NDNS Node 30, -2",
               "id": "35",
-              "description": "NDNS Node 29, -2 is a NDNS Node. (Improperly named as 55,-2)",
-              "longitude": 29,
+              "description": "NDNS Node 30, -2 is a NDNS Node. (Improperly named as 55,-2)",
+              "longitude": 30,
               "latitude": -2,
               "type": "NDNS",
               "primaryNumbers": "2",
@@ -793,7 +793,7 @@
                 "description":  "Manifest Tower.",
                 "longitude":  156,
                 "latitude":  -42,
-                "type":  "RockySpire",
+                "type":  "GyroPlatform",
                 "gameid":  "ManifestTower"
               },
               {
@@ -1073,7 +1073,7 @@
           {
             "name": "The Forth Chamber",
             "id": "c9",
-            "description": "The Forth Chamber is a cave. Entrance at 110m depth. Max depth 110m",
+            "description": "The Forth Chamber is a cave. Entrance at 123m depth. Max depth 153m",
             "longitude": 110,
             "latitude": -33,
             "type": "Cave",
