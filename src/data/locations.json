@@ -155,9 +155,9 @@
               "gameid": "HabitatNode08"
             },
             {
-              "name": "Habitat Node 21-7",
+              "name": "Habitat Node 14-7",
               "id": "16",
-              "description": "Habitat Node 21-7 is a habitat platform.",
+              "description": "Habitat Node 14-7 is a habitat platform.",
               "longitude": 105,
               "latitude": 50,
               "type": "Habitat",
@@ -488,6 +488,15 @@
               "gameid": "GyrocopyterPlatformH"
             },
             {
+              "name": "SGS-SW-72-6800",
+              "id": "48a",
+              "description": "A platform for the Gyrocopter.",
+              "longitude": 12,
+              "latitude": 32,
+              "type": "GyroPlatform",
+              "gameid": "GyrocopyterPlatformN"
+            },
+            {
               "name": "SGS-NE-114-1510",
               "id": "49",
               "description": "A platform for the Gyrocopter.",
@@ -524,7 +533,7 @@
               "gameid": "GyrocopyterPlatformC"
             },
             {
-              "name":  "SGS-SE-101-7200",
+              "name":  "SGS-S-94-13021",
               "id":  "52A",
               "description":  "A platform for the Gyrocopter.",
               "longitude":  63,
