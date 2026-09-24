@@ -155,14 +155,14 @@
               "gameid":  "HabitatNode08"
             },
             {
-              "name":  "Habitat Node 21-7",
-              "id":  "16",
-              "description":  "Habitat Node 21-7 is a habitat platform.",
-              "longitude":  105,
-              "latitude":  50,
-              "type":  "Habitat",
-              "gameid":  "HabitatNode14",
-              "secondaryNumbers":  "0,02,04,05,07,10,17"
+              "name": "Habitat Node 14-7",
+              "id": "16",
+              "description": "Habitat Node 14-7 is a habitat platform.",
+              "longitude": 105,
+              "latitude": 50,
+              "type": "Habitat",
+              "gameid": "HabitatNode14",
+              "secondaryNumbers": "0,02,04,05,07,10,17"
             },
             {
               "name":  "Nomads Tower",
@@ -488,13 +488,22 @@
               "gameid":  "GyrocopyterPlatformH"
             },
             {
-              "name":  "SGS-NE-114-1510",
-              "id":  "49",
-              "description":  "A platform for the Gyrocopter.",
-              "longitude":  78,
-              "latitude":  -15,
-              "type":  "GyroPlatform",
-              "gameid":  "GyrocopyterPlatformD"
+              "name": "SGS-SW-72-6800",
+              "id": "48a",
+              "description": "A platform for the Gyrocopter.",
+              "longitude": 12,
+              "latitude": 32,
+              "type": "GyroPlatform",
+              "gameid": "GyrocopyterPlatformN"
+            },
+            {
+              "name": "SGS-NE-114-1510",
+              "id": "49",
+              "description": "A platform for the Gyrocopter.",
+              "longitude": 78,
+              "latitude": -15,
+              "type": "GyroPlatform",
+              "gameid": "GyrocopyterPlatformD"
             },
             {
               "name":  "SGS-S-150-6300",
@@ -524,7 +533,7 @@
               "gameid":  "GyrocopyterPlatformC"
             },
             {
-              "name":  "SGS-SE-101-7200",
+              "name":  "SGS-S-94-13021",
               "id":  "52A",
               "description":  "A platform for the Gyrocopter.",
               "longitude":  63,
