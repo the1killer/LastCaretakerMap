@@ -5,8 +5,11 @@ import {
     locations,
     hiddenLocations,
     lastListenerLocations,
-    caves
+    caves,
+    getVisibleTypeFilters,
+    setVisibleTypeFilters
 } from './main.js';
+import locationTypes from './data/types.json';
 
 // Default marker colors per type
 const defaultMarkerColors = {
@@ -67,6 +70,7 @@ export function getMarkerColor(type) {
 // Settings popup functionality
 const settingsPopup = document.getElementById('settings-popup');
 const settingsButton = document.getElementById('settings-button');
+const filterButton = document.getElementById('filter-button');
 const closeSettingsButton = document.getElementById('close-settings');
 const clearDataButton = document.getElementById('clear-data-button');
 const showHiddenCheckbox = document.getElementById('show-hidden-locations');
@@ -78,8 +82,127 @@ const useSolidBackgroundCheckbox = document.getElementById('use-solid-background
 const backgroundColorPicker = document.getElementById('background-color');
 const showClothMapCheckbox = document.getElementById('show-cloth-map');
 
+const typeFilterPopup = document.createElement('div');
+typeFilterPopup.id = 'type-filter-popup';
+typeFilterPopup.className = 'settings-popup type-filter-popup';
+typeFilterPopup.setAttribute('role', 'dialog');
+typeFilterPopup.setAttribute('aria-modal', 'true');
+typeFilterPopup.setAttribute('aria-labelledby', 'type-filter-title');
+typeFilterPopup.innerHTML = `
+    <div class="settings-content">
+        <div class="settings-header">
+            <h3 id="type-filter-title">Filter by Type</h3>
+            <button id="close-type-filter" class="close-button" aria-label="Close type filters">✕</button>
+        </div>
+        <div class="settings-body type-filter-body">
+            <div class="type-filter-actions">
+                <button id="hide-all-types" class="type-filter-action" type="button">Hide All</button>
+                <button id="show-all-types" class="type-filter-action" type="button">Show All</button>
+            </div>
+            <div id="type-filter-panel" class="type-filter-panel"></div>
+        </div>
+    </div>
+`;
+document.body.appendChild(typeFilterPopup);
+const typeFilterPanel = typeFilterPopup.querySelector('#type-filter-panel');
+const closeTypeFilterButton = typeFilterPopup.querySelector('#close-type-filter');
+const hideAllTypesButton = typeFilterPopup.querySelector('#hide-all-types');
+const showAllTypesButton = typeFilterPopup.querySelector('#show-all-types');
+
+function formatTypeName(type) {
+    return type
+        .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+        .replace(/_/g, ' ')
+        .trim();
+}
+
+function getAvailableLocationTypes() {
+    return [...new Set(
+        [...locations, ...hiddenLocations, ...lastListenerLocations, ...caves]
+            .map(location => location.type)
+            .filter(Boolean)
+    )].sort((a, b) => a.localeCompare(b));
+}
+
+function updateTypeFilters(types) {
+    setVisibleTypeFilters(types);
+    renderTypeFilterPanel();
+    refreshDisplay();
+}
+
+function renderTypeFilterPanel() {
+    const activeTypes = getVisibleTypeFilters();
+    const availableTypes = getAvailableLocationTypes();
+
+    typeFilterPanel.innerHTML = availableTypes.map(type => `
+        <label class="type-filter-option">
+            <input type="checkbox" data-type="${type}" ${activeTypes.has(type) ? 'checked' : ''}>
+            ${locationTypes[type] ? `<img src="./images/${locationTypes[type]}" alt="" class="type-filter-icon">` : ''}
+            <span>${typeDisplayNames[type] || formatTypeName(type)}</span>
+        </label>
+    `).join('');
+
+    typeFilterPanel.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const nextTypes = new Set(getVisibleTypeFilters());
+            const type = checkbox.dataset.type;
+
+            if (checkbox.checked) {
+                nextTypes.add(type);
+            } else {
+                nextTypes.delete(type);
+            }
+
+            updateTypeFilters([...nextTypes]);
+        });
+    });
+}
+
+hideAllTypesButton.addEventListener('click', () => {
+    updateTypeFilters([]);
+});
+
+showAllTypesButton.addEventListener('click', () => {
+    updateTypeFilters(getAvailableLocationTypes());
+});
+
+if (filterButton) {
+    filterButton.setAttribute('aria-haspopup', 'dialog');
+    filterButton.setAttribute('aria-expanded', 'false');
+    filterButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const shouldOpen = !typeFilterPopup.classList.contains('active');
+        settingsPopup.classList.remove('active');
+        typeFilterPopup.classList.toggle('active', shouldOpen);
+        filterButton.setAttribute('aria-expanded', String(shouldOpen));
+        if (!shouldOpen) return;
+        renderTypeFilterPanel();
+    });
+
+    closeTypeFilterButton.addEventListener('click', () => {
+        typeFilterPopup.classList.remove('active');
+        filterButton.setAttribute('aria-expanded', 'false');
+    });
+
+    typeFilterPopup.addEventListener('click', (event) => {
+        if (event.target === typeFilterPopup) {
+            typeFilterPopup.classList.remove('active');
+            filterButton.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            typeFilterPopup.classList.remove('active');
+            filterButton.setAttribute('aria-expanded', 'false');
+        }
+    });
+}
+
 // Open settings popup
 settingsButton.addEventListener('click', () => {
+    typeFilterPopup.classList.remove('active');
+    filterButton?.setAttribute('aria-expanded', 'false');
     settingsPopup.classList.add('active');
     // Load current settings state
     loadSettingsState();

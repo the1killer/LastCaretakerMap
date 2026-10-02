@@ -225,6 +225,38 @@ function setCategoryVisibilityState(categoryId, visible) {
     localStorage.setItem(`category-visible-${categoryId}`, visible);
 }
 
+export function getVisibleTypeFilters() {
+    const allTypes = Object.keys(locationTypes);
+    const saved = localStorage.getItem('visible-marker-types');
+
+    if (!saved) {
+        return new Set(allTypes);
+    }
+
+    try {
+        const parsed = JSON.parse(saved);
+        if (!Array.isArray(parsed)) {
+            return new Set(allTypes);
+        }
+
+        const validTypes = parsed.filter(type => allTypes.includes(type));
+        return new Set(validTypes);
+    } catch (error) {
+        return new Set(allTypes);
+    }
+}
+
+export function setVisibleTypeFilters(types) {
+    const allTypes = Object.keys(locationTypes);
+    const uniqueTypes = [...new Set(types.filter(type => allTypes.includes(type)))];
+    localStorage.setItem('visible-marker-types', JSON.stringify(uniqueTypes));
+}
+
+export function filterLocationsByType(locationsList) {
+    const visibleTypes = getVisibleTypeFilters();
+    return locationsList.filter(location => visibleTypes.has(location.type));
+}
+
 // Toggle all markers in a category
 function toggleCategoryVisibility(categoryId, locations) {
     const currentState = getCategoryVisibilityState(categoryId);
@@ -377,8 +409,9 @@ function setupSearch() {
 
 // Filter locations based on search query
 function filterLocations(locations) {
-    if (!searchQuery) return locations;
-    return locations.filter(location => {
+    const typeFilteredLocations = filterLocationsByType(locations);
+    if (!searchQuery) return typeFilteredLocations;
+    return typeFilteredLocations.filter(location => {
         const nameMatch = location.name.toLowerCase().includes(searchQuery);
         if (!searchAllText) {
             return nameMatch;
@@ -443,6 +476,10 @@ export function refreshDisplay() {
 // Add markers to the map
 function addMarkersToMap(locations, locationCategory = 'regular') {
     locations.forEach(location => {
+        if (!getVisibleTypeFilters().has(location.type)) {
+            return;
+        }
+
         const isVisible = getVisibilityState(location.id);
         const showPrimaryNumbers = localStorage.getItem('show-primary-numbers') === 'true';
         const primaryNumber = location.primaryNumber || location.primaryNumbers;
